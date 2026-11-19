@@ -392,6 +392,24 @@
     });
   });
 
+  /* ------------------------------------------- four sources, one phone stage
+     The share loop is 7.5s per source: the sheet rises, the save lands, and
+     the next beat belongs to the next app. The radio moves when the loop comes
+     round, so the label above the phone always names the screen behind it. */
+  (function () {
+    var stage = $('.showcase-ways');
+    if (!stage) return;
+    var shell = $('.ph-sheet', stage);
+    var sources = $$('.ways-src', stage);
+    if (!shell || sources.length < 2) return;
+    var at = 0;
+    for (var i = 0; i < sources.length; i++) if (sources[i].checked) at = i;
+    shell.addEventListener('animationiteration', function () {
+      at = (at + 1) % sources.length;
+      sources[at].checked = true;
+    });
+  })();
+
   /* the artifact reader's archive is the same fake write, with one row */
   $$('[data-archive-demo]').forEach(function (btn) {
     btn.addEventListener('click', function () { say('Archived — still searchable'); });

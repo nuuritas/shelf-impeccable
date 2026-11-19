@@ -811,3 +811,100 @@ animation-play-state:var(--art-run,running)}
 @keyframes sc-artSwW{0%,88%{opacity:1}88.6%,100%{opacity:0}}
 @keyframes sc-artSwD{0%,88%{opacity:0}88.6%,100%{opacity:1}}
 @keyframes sc-artSwDOn{0%,88%{transform:none}88.6%,100%{transform:scale(1.4)}}
+
+/* ---------------------------------------------------------------- one stage
+   The share sheet, an agent's note and an artifact share one phone: three tabs
+   above it, one caption on it, and the copy column swapping under the tab. The
+   share loop keeps cycling X, LinkedIn, YouTube and the web by itself; the two
+   agent screens are still, because a document does not need to move. */
+.showcase .stage-pick{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip-path:inset(50%)}
+.showcase .stage-tabrow{grid-column:1;grid-row:1;justify-self:center;display:inline-flex;max-width:100%;
+border:1px solid var(--rule);border-radius:var(--r);overflow:hidden;background:var(--card)}
+.showcase .stage-tabrow label{padding:9px 15px;border-right:1px solid var(--rule);color:var(--soft);
+font:500 .875rem/1 var(--ui);white-space:nowrap;cursor:pointer;
+transition:color .15s var(--ease),background-color .15s var(--ease)}
+.showcase .stage-tabrow label:last-child{border-right:0}
+.showcase .stage-tabrow label:hover{color:var(--ink)}
+.showcase #stage-t1:checked ~ .stage-tabrow label[for="stage-t1"],
+.showcase #stage-t2:checked ~ .stage-tabrow label[for="stage-t2"],
+.showcase #stage-t3:checked ~ .stage-tabrow label[for="stage-t3"]{background:var(--ink);color:var(--paper)}
+.showcase #stage-t1:focus-visible ~ .stage-tabrow label[for="stage-t1"],
+.showcase #stage-t2:focus-visible ~ .stage-tabrow label[for="stage-t2"],
+.showcase #stage-t3:focus-visible ~ .stage-tabrow label[for="stage-t3"]{outline:2px solid var(--accent);outline-offset:-3px}
+
+/* the caption on the phone: which app the save is coming from, or what the
+   screen is when the tab is not a share */
+.showcase .ways-now{display:flex;align-items:center;justify-content:center;gap:7px;margin:0 0 11px;
+font:500 .6875rem/1 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--faint)}
+.showcase .ways-now-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none}
+.showcase .ways-now-s,.showcase .ways-now-t{display:none}
+.showcase #ways-src-x:checked ~ #stage-t1:checked ~ .ways-stage .ways-now-s--x,
+.showcase #ways-src-linkedin:checked ~ #stage-t1:checked ~ .ways-stage .ways-now-s--linkedin,
+.showcase #ways-src-youtube:checked ~ #stage-t1:checked ~ .ways-stage .ways-now-s--youtube,
+.showcase #ways-src-web:checked ~ #stage-t1:checked ~ .ways-stage .ways-now-s--web{display:inline}
+.showcase #stage-t2:checked ~ .ways-stage .ways-now-t--note,
+.showcase #stage-t3:checked ~ .ways-stage .ways-now-t--doc{display:inline}
+
+/* the copy column carries one story per tab */
+.showcase .stage-panel{display:none;gap:var(--s4)}
+.showcase #stage-t1:checked ~ .ways-copy .is-src,
+.showcase #stage-t2:checked ~ .ways-copy .is-note,
+.showcase #stage-t3:checked ~ .ways-copy .is-doc{display:grid;animation:sc-rise .42s var(--ease) both}
+.showcase .stage-kicker{margin:0 0 -6px;font:500 .6875rem/1 var(--mono);letter-spacing:.1em;
+text-transform:uppercase;color:var(--accent)}
+
+/* a tab's screen sits where the share screens sit, under the status bar */
+.showcase .ph-tab{position:absolute;left:0;right:0;top:26px;bottom:0;display:none;background:var(--paper)}
+.showcase #stage-t2:checked ~ .ways-stage .ph-note,
+.showcase #stage-t3:checked ~ .ways-stage .ph-doc{display:block}
+.showcase #stage-t2:checked ~ .ways-stage .ph-src,
+.showcase #stage-t3:checked ~ .ways-stage .ph-src,
+.showcase #stage-t2:checked ~ .ways-stage .ph-shelf,
+.showcase #stage-t3:checked ~ .ways-stage .ph-shelf,
+.showcase #stage-t2:checked ~ .ways-stage .ph-dim,
+.showcase #stage-t3:checked ~ .ways-stage .ph-dim,
+.showcase #stage-t2:checked ~ .ways-stage .ph-sheet,
+.showcase #stage-t3:checked ~ .ways-stage .ph-sheet,
+.showcase #stage-t2:checked ~ .ways-stage .ph-toast,
+.showcase #stage-t3:checked ~ .ways-stage .ph-toast{display:none}
+
+.showcase .ph-note{padding:0 12px;animation:sc-rise .42s var(--ease) both}
+.showcase .ph-note-card{border-color:#d9e1f6;background:linear-gradient(180deg,#fbfcff,#f6f8ff)}
+.showcase .ph-av.is-ai{background:var(--accent);color:#fff;font-family:var(--mono);font-size:.5rem;letter-spacing:.04em}
+.showcase .ph-kind{font:500 .4375rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);
+background:#fff;border:1px solid #dde4f7;border-radius:3px;padding:2px 4px}
+.showcase .ph-title{margin:7px 0 0;font:600 .8125rem/1.28 var(--ui);letter-spacing:-.012em;color:var(--ink)}
+
+.showcase .ph-doc{display:none;flex-direction:column;background:var(--n-paper)}
+.showcase #stage-t3:checked ~ .ways-stage .ph-doc{display:flex}
+.showcase .ph-doc .a-npbar{flex:0 0 auto}
+.showcase .ph-doc .a-npbody{flex:1;min-height:0;overflow:hidden}
+.showcase .ph-doc .a-npbody .a-doc{padding:11px 12px 12px}
+
+/* one column: the tabs, then the phone, then the story */
+@media(max-width:900px){
+.showcase .stage-tabrow{grid-column:1;grid-row:auto;order:0}
+}
+
+/* the agent's note screen is a still, not a moment in the share loop: the
+   cards are there when the tab is, and the sweep never runs */
+.showcase .ph-note .ph-card{animation:none;opacity:1;transform:none}
+.showcase .ph-note .ph-card::after{display:none}
+
+/* a ref you can type: the one command in the copy is set as a command */
+.showcase .ways-sources code{font:.86em/1 var(--mono);padding:2px 5px;border-radius:4px;
+background:var(--accent-wash);color:var(--ink);white-space:nowrap}
+
+/* both columns start on the phone's top edge: the tabs and the caption sit
+   above it, and the copy begins where the screen does instead of floating in
+   the middle of a tall phone */
+.showcase .ways{align-items:start}
+.showcase .ways-copy{grid-row:2;align-self:start;padding-top:22px}
+@media(max-width:900px){
+.showcase .ways-copy{grid-row:auto;padding-top:0}
+}
+
+/* one share per source. The loop is retimed so each of the four sources gets
+   its own beat, and app.js moves the radio on when the loop comes round. */
+.showcase .ways-stage *{animation-duration:7.5s}
+.showcase .ways-src{display:none}
