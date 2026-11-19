@@ -908,3 +908,6 @@ background:var(--accent-wash);color:var(--ink);white-space:nowrap}
    its own beat, and app.js moves the radio on when the loop comes round. */
 .showcase .ways-stage *{animation-duration:7.5s}
 .showcase .ways-src{display:none}
+
+/* both agent screens arrive the same way, so switching tabs never snaps */
+.showcase .ph-doc{animation:sc-rise .42s var(--ease) both}
