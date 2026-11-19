@@ -1,10 +1,65 @@
-/* The demo's whole script: one filter, one toggle, one clipboard.
+/* The demo's whole script: reveal on scroll, one filter, one toggle, one clipboard.
    No framework, no build step, nothing that needs to phone home. */
 (function () {
   'use strict';
 
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+
+  /* ---------------------------------------------------------- reveal */
+  /* Mark the page as scripted once this file runs, so the safety timer in
+     the head stops waiting and does not force the hidden blocks open. */
+  window.__shelfMotion = 1;
+
+  var rv = $$('.rv');
+  /* `now` is the part that belongs to the first screen: it plays once the
+     browser has painted the initial state, so the entrance is a transition
+     rather than a jump. Everything else waits until it is scrolled into view. */
+  var nowEls = rv.filter(function (n) { return n.classList.contains('now'); });
+  var later = rv.filter(function (n) { return !n.classList.contains('now'); });
+
+  if (nowEls.length) {
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        nowEls.forEach(function (n) { n.classList.add('in'); });
+      });
+    });
+  }
+
+  if (later.length) {
+    var ticking = false;
+
+    var sweep = function () {
+      ticking = false;
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      var rest = [];
+      later.forEach(function (n) {
+        var r = n.getBoundingClientRect();
+        /* in view, or already scrolled past — an anchor jump must not leave
+           the middle of the page invisible behind us */
+        if (r.bottom <= 0 || (r.top < vh - 32 && r.bottom > 0)) {
+          n.classList.add('in');
+        } else {
+          rest.push(n);
+        }
+      });
+      later = rest;
+      if (!later.length) {
+        window.removeEventListener('scroll', onScroll);
+        window.removeEventListener('resize', onScroll);
+      }
+    };
+
+    var onScroll = function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(sweep);
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    requestAnimationFrame(sweep);
+  }
 
   /* ---------------------------------------------------------- toast */
   var toast = $('#toast');
