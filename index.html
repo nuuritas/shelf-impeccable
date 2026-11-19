@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Shelf Cloud · a library for the links you keep</title>
+<meta name="description" content="Shelf Cloud saves links from X, LinkedIn, YouTube or any page, writes a summary, and keeps one searchable library. AI agents can file notes too.">
+<meta name="theme-color" content="#f4f6f9">
+<link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <svg class="mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><path d="M3.1 5.1h3.1v14.7H3.1z"/><path d="M7.5 5.1h3.1v14.7H7.5z"/><path d="M12.4 5.5l3-.4 1.9 14.5-3 .4z" fill="currentColor" fill-opacity=".18"/><path d="M2.4 20.9h19.2"/></svg>
+      Shelf Cloud
+    </a>
+    <nav id="menu">
+      <a href="#how">How it works</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="library.html">Library</a>
+    </nav>
+    <div class="right">
+      <a href="library.html">Log in</a>
+      <a class="btn" href="library.html">Start free</a>
+    </div>
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" data-nav-toggle><i></i></button>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <h1 class="display">A library for the links you <em>keep</em>.</h1>
+        <p class="lede">Shelf Cloud saves what you send it from X, LinkedIn, YouTube or any page, writes a short summary, and keeps one library you can search. An agent can file its own research here too.</p>
+        <div class="hero-actions">
+          <a class="btn btn-lg" href="library.html">Create a free account</a>
+          <a class="link" href="#how">See how it works</a>
+        </div>
+        <p class="hero-note">No card required. Every workspace is on Cloud Pro for now, with the managed AI key included.</p>
+      </div>
+
+      <div class="hero-shelf">
+        <article class="card shelf-card">
+          <div class="meta"><span class="chip">Web</span> <b>Maggie Appleton</b> <span class="when">· 12 Nov 2026</span></div>
+          <h3>The quiet return of RSS</h3>
+          <p class="summary">RSS was not beaten by a better product, it was left out of the one everybody opens. The case is for a list you own: a feed you picked, a reader that keeps its place, and no ranking deciding what comes next.</p>
+          <div class="foot">
+            <span class="chip chip-outline">Reading</span>
+            <span class="chip chip-outline">design</span>
+            <span class="ref-box ref">K7F2M</span>
+          </div>
+        </article>
+
+        <div class="shelf-next">
+          <a href="post.html">
+            <span class="dot"></span>
+            <span class="t">Keeping a research notebook</span>
+            <span class="ref">H3QDX</span>
+          </a>
+          <a href="post.html">
+            <span class="dot"></span>
+            <span class="t">A type scale you can hold in your head</span>
+            <span class="ref">M9T4W</span>
+          </a>
+        </div>
+
+        <p class="hero-aside"><span>11 more on the shelf</span><span class="line"></span><span>4 today</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="What Shelf does">
+    <dl class="facts">
+    <div class="wrap">
+      <div class="f">
+        <dt class="micro">Saves from</dt>
+        <dd>X, LinkedIn, YouTube, any page</dd>
+      </div>
+      <div class="f">
+        <dt class="micro">Comes back as</dt>
+        <dd>A summary you read in ten seconds</dd>
+      </div>
+      <div class="f">
+        <dt class="micro">Stays in</dt>
+        <dd>One library, searchable by text</dd>
+      </div>
+    </div>
+    </dl>
+  </section>
+
+  <section class="section" id="how">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="micro">The share sheet</p>
+        <h2 class="h2">Share it, and it is on the shelf.</h2>
+        <p class="body">One habit in every app you read in: tap share, choose Shelf, and the link arrives with its text and a summary. Nothing to paste, nothing to file.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <span class="n">01</span>
+          <h3 class="h3">Tap share, then Shelf.</h3>
+          <p>The sheet lists Shelf first. One tap and the link leaves the app you were reading in.</p>
+        </div>
+        <div class="step">
+          <span class="n">02</span>
+          <h3 class="h3">Shelf reads the source.</h3>
+          <p>The post text with what it quotes, a video’s title and description, or the title and description a page publishes.</p>
+        </div>
+        <div class="step">
+          <span class="n">03</span>
+          <h3 class="h3">It lands with a summary.</h3>
+          <p>The save is on the shelf before you switch apps, with the source attached and a summary to skim.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="agents">
+    <div class="wrap">
+      <div class="panel">
+        <div>
+          <p class="micro">For agents</p>
+          <h2 class="h2" style="margin-top:12px">A research note is a save too.</h2>
+          <p class="body">An agent files what it found with one request. It gets a ref back, shares the shelf’s search, and its HTML artifacts open in a sandboxed page — the same list a person reads.</p>
+          <div class="actions">
+            <a class="link" href="library.html">See a note on the shelf</a>
+            <a class="link link-quiet" href="#how">Read the API</a>
+          </div>
+        </div>
+
+        <div class="code">
+          <div class="bar"><span class="dot"></span><span>POST /api/posts</span></div>
+<pre><span class="c">// one note, filed by an agent</span>
+{
+  <span class="k">"kind"</span>: <span class="s">"note"</span>,
+  <span class="k">"title"</span>: <span class="s">"Six design skills, tried"</span>,
+  <span class="k">"html"</span>: <span class="s">"&lt;article&gt;…&lt;/article&gt;"</span>,
+  <span class="k">"clientId"</span>: <span class="s">"x3gum-research"</span>
+}
+
+<span class="c">→ 201  { "ref": "v29y8" }</span></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="pricing" style="padding-top:0">
+    <div class="wrap">
+      <div class="plan">
+        <div>
+          <p class="micro">Pricing</p>
+          <h2 class="h2" style="margin-top:12px">One plan, while it is early.</h2>
+          <p class="body" style="margin-top:12px;max-width:46ch">Every workspace is on Cloud Pro. The managed AI key is included, so a summary arrives without you pasting a key anywhere. Checkout opens later; nothing to cancel today.</p>
+          <p class="body" style="margin-top:16px;color:var(--faint);font-size:13px">The self-hosted Worker is open source and free, if you would rather run it on your own Cloudflare account.</p>
+        </div>
+
+        <div class="plan-card">
+          <div class="row"><span class="price">Cloud Pro</span><span class="per">included</span></div>
+          <p class="body">For one person and the links they keep.</p>
+          <ul class="plan-list">
+            <li><span class="tick">✓</span>Unlimited saves, one searchable library</li>
+            <li><span class="tick">✓</span>Summaries on the managed key</li>
+            <li><span class="tick">✓</span>Web, Android, iOS and the hosted MCP</li>
+            <li><span class="tick">✓</span>Agent notes and HTML artifacts</li>
+          </ul>
+          <a class="btn btn-lg" href="library.html">Create a free account</a>
+          <p class="fine">No card. No seat count.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <svg class="mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><path d="M3.1 5.1h3.1v14.7H3.1z"/><path d="M7.5 5.1h3.1v14.7H7.5z"/><path d="M12.4 5.5l3-.4 1.9 14.5-3 .4z" fill="currentColor" fill-opacity=".18"/><path d="M2.4 20.9h19.2"/></svg>
+          Shelf Cloud
+        </a>
+        <p class="blurb">A hosted library for the links you keep. Send from any device, read the summary, search the rest.</p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="library.html">Start free</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Apps</h4>
+        <ul>
+          <li><a href="library.html">Android APK</a></li>
+          <li><a href="library.html">iOS · TestFlight</a></li>
+          <li><a href="library.html">Hosted MCP</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Source</h4>
+        <ul>
+          <li><a href="library.html">nuuritas/shelf</a></li>
+          <li><a href="library.html">Changelog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="library.html">Privacy</a></li>
+          <li><a href="library.html">Terms</a></li>
+          <li><a href="library.html">Support</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Shelf Cloud</span>
+      <span>·</span>
+      <span>Design study — Impeccable</span>
+      <span class="right"><span>Paper #f4f6f9</span><span>Ink #0f1720</span><span>Cobalt #1d4ed8</span></span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"><span class="tick">✓</span><span id="toast-text">Copied</span></div>
+<script src="assets/app.js"></script>
+</body>
+</html>
