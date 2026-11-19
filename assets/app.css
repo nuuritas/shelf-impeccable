@@ -676,14 +676,25 @@ a.src:hover{color:var(--accent)}
   .post-head .w-only{display:none}
   .doc{padding:20px 18px 24px}
   .post-actions{flex-wrap:wrap;gap:10px}
-  .still.reel{width:156px}
+  .still.reel{width:100%;height:148px;aspect-ratio:auto}
+  .still.reel .glyph{display:none}
+  .still.reel .t{font-size:15px;bottom:11px;max-width:72%}
+  .still.reel .k{left:13px;top:11px}
+  .still.reel .n{right:13px;top:11px}
   .save-split{grid-template-columns:minmax(0,1fr);gap:0}
 }
 
 @media (max-width:360px){
   .fmenu>summary{padding:0 7px;font-size:11.5px}
   .fmenu .fname{font-size:11px}
-  .still.reel{width:140px}
+  .still.reel{width:100%;height:132px}
+  /* the head line is the one row that must not truncate the author: drop the
+     separators and the avatar's width before it drops a name */
+  .save-top{gap:5px}
+  .by{gap:4px}
+  .by .d{display:none}
+  .av{width:20px;height:20px;font-size:8.5px}
+  .ref{font-size:8.5px;padding:4px 6px}
 }
 
 /* ---------------------------------------------------------------- motion
@@ -758,7 +769,11 @@ a.src:hover{color:var(--accent)}
 .chrome i{width:7px;height:7px;border-radius:50%;background:var(--rule-strong);display:block}
 .chrome .url{margin:0 auto;font-family:var(--mono);font-size:10px;color:var(--faint);letter-spacing:.02em}
 .web-frame{width:min(100%,1152px);margin:0 auto}
-.web-frame .vp{width:100%;overflow:hidden;aspect-ratio:1440/900;background:#fff}
+.web-frame .vp{position:relative;width:100%;overflow:hidden;aspect-ratio:1440/900;background:#fff}
+/* the frame is a window onto a scrolling page: the last pixels fade rather
+   than cutting a card in half */
+.web-frame .vp::after{content:"";position:absolute;left:0;right:0;bottom:0;height:64px;pointer-events:none;
+  background:linear-gradient(180deg,rgba(244,246,249,0),rgba(244,246,249,.95))}
 .web-frame iframe{width:1440px;height:900px;border:0;zoom:.76}
 .phones{display:flex;gap:32px;flex-wrap:wrap;align-items:flex-start}
 .phone{width:312px;flex:none}
