@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#f4f6f9">
 <script>document.documentElement.className+=' js';(function(){setTimeout(function(){if(window.__shelfMotion)return;var n=document.querySelectorAll('.rv');for(var i=0;i<n.length;i++)n[i].classList.add('in')},2600)})()</script>
 <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/app.css?v=13e44cbe">
+<link rel="stylesheet" href="assets/app.css?v=8b041abb">
 <link rel="stylesheet" href="assets/showcase.css?v=35104fcb">
 </head>
 <body>
@@ -21,6 +21,7 @@
     </a>
     <nav id="menu">
       <a href="#how">How it works</a>
+      <a href="#apps">Apps</a>
       <a href="pricing.html">Pricing</a>
       <a href="library.html">Library</a>
     </nav>
@@ -861,6 +862,49 @@ stroke-linejoin="round" aria-hidden="true"><path d="M1.9 5.4a1.7 1.7 0 0 1 1.7-1
     </div>
   </section>
 
+  <section class="section" id="library">
+    <div class="wrap lib-split">
+      <div class="lib-copy rv">
+        <p class="micro">The library</p>
+        <h2 class="h2" style="margin-top:12px">A shelf, not another feed.</h2>
+        <p class="body">Every save lands in the same place with what the page said and a summary of it. Nothing is sorted by an algorithm.</p>
+        <dl class="rows">
+          <div class="row"><dt>One place for every save.</dt><dd>A link from the Android share sheet, the web app or a browser tab lands on the same shelf, with its source and the date it was saved.</dd></div>
+          <div class="row"><dt>It reads before you do.</dt><dd>Shelf fetches what the page publishes, keeps the text, and adds captions for video when they arrive. A short summary tells you whether the piece is worth the ten minutes.</dd></div>
+          <div class="row"><dt>Search that remembers.</dt><dd>Search titles, summaries and the saved text. Topics and an archive keep the shelf from turning into a pile.</dd></div>
+          <div class="row"><dt>One library, three clients.</dt><dd>The web app, the Android app and the iOS app read the same account. Save on the phone, read it on the laptop.</dd></div>
+          <div class="row"><dt>A shelf for what an agent writes.</dt><dd>An agent files a research note or a finished HTML document with the shelf CLI, and reads it back through the same search. The shelf holds the artifacts, not only the links.</dd></div>
+        </dl>
+      </div>
+
+      <div class="book rv" style="--d:.1s" aria-hidden="true">
+        <div class="book-bar"><span class="book-title">Library</span><span class="book-count">45 saved</span></div>
+        <div class="book-search"><span>Search titles, summaries, saved text</span><kbd>&#8984;K</kbd></div>
+        <div class="book-tabs"><span class="on">All <i>45</i></span><span>Reading <i>7</i></span><span>Archive <i>38</i></span></div>
+        <ol class="book-list">
+          <li><span class="chip">Web</span><b>The quiet return of RSS</b><span class="ref">K7F2M</span></li>
+          <li><span class="chip">X</span><b>Feeds never died, they moved into readers</b><span class="ref">R4K9P</span></li>
+          <li><span class="chip">YouTube</span><b>A type scale you can hold in your head</b><span class="ref">W7D2F</span></li>
+          <li><span class="chip">Web</span><b>Keeping a research notebook</b><span class="ref">B9X4Q</span></li>
+          <li><span class="chip">LinkedIn</span><b>The case for the small, chronological blog</b><span class="ref">P2X8K</span></li>
+          <li><span class="chip">Web</span><b>Notes on a four-hour block</b><span class="ref">T6BQM</span></li>
+          <li><span class="chip">Agent</span><b>How teams ship agent tooling</b><span class="ref">N8W3E</span></li>
+          <li><span class="chip">Web</span><b>The ten-minute rule for tabs</b><span class="ref">C4N7H</span></li>
+          <li><span class="chip">X</span><b>Small tools, one job each</b><span class="ref">J8S2D</span></li>
+          <li><span class="chip">YouTube</span><b>A reading list you actually finish</b><span class="ref">F5T9B</span></li>
+        </ol>
+        <p class="book-foot"><span>Search: <em>&ldquo;own the list&rdquo;</em> &middot; 3 results</span><span>Newest first</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="statement">
+    <div class="wrap">
+      <p class="micro rv">Why it is short</p>
+      <p class="statement-text rv" style="--d:.08s">The point of a summary is not to replace the article. It is to tell you whether to spend <em>the ten minutes</em>.</p>
+    </div>
+  </section>
+
   <section class="section" id="pricing" style="padding-top:0">
     <div class="wrap">
       <div class="plan-grid rv">
@@ -883,6 +927,54 @@ stroke-linejoin="round" aria-hidden="true"><path d="M1.9 5.4a1.7 1.7 0 0 1 1.7-1
           <a class="btn btn-lg" href="library.html">Create a free account</a>
           <p class="fine">No card. No seat count.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="apps">
+    <div class="wrap">
+      <div class="band-head rv">
+        <div>
+          <p class="micro">Clients</p>
+          <h2 class="h2" style="margin-top:12px">Save from the phone. Read anywhere.</h2>
+        </div>
+        <p class="body">The web library and two native apps read the same account.</p>
+      </div>
+
+      <div class="clients">
+        <article class="client rv">
+          <p class="micro">Android</p>
+          <h3>A share sheet that files for you.</h3>
+          <p class="body">Send a link from any app's share sheet, then read and search the shelf, archive a save you are done with, and point the app at Shelf Cloud or at your own Worker in settings.</p>
+          <a class="link" href="https://github.com/nuuritas/shelfcloud-apk/releases/latest" rel="noopener">Download the signed APK</a>
+        </article>
+        <article class="client rv" style="--d:.08s">
+          <p class="micro">iOS</p>
+          <h3>SwiftUI, from the same shelf.</h3>
+          <p class="body">A native app in SwiftUI, on TestFlight while it is in beta. The share sheet saves a link, and the library, the summaries, the archive and the settings are all in the app.</p>
+          <a class="link" href="https://testflight.apple.com/join/mXUn54N4" rel="noopener">Join the beta on TestFlight</a>
+        </article>
+      </div>
+      <p class="band-foot rv">Both clients can point at Shelf Cloud or at your own Worker.</p>
+    </div>
+  </section>
+
+  <section class="close">
+    <div class="wrap close-grid">
+      <div class="rv">
+        <p class="micro">Start</p>
+        <h2 class="close-h">Start with one link.</h2>
+        <p class="close-p">Create a free account and save the first thing you meant to read.</p>
+        <div class="close-actions">
+          <a class="btn btn-lg btn-accent" href="library.html">Create a free account</a>
+          <a class="link" href="pricing.html">See what is included</a>
+        </div>
+      </div>
+
+      <div class="term rv" style="--d:.1s" aria-hidden="true">
+        <div><span class="p">$</span> shelf add https://thequietfeed.com/rss</div>
+        <div class="ok"><span>&#10003;</span> saved &middot; <span class="r">#K7F2M</span> &middot; summary ready</div>
+        <div class="dim">one ref, one search, one list</div>
       </div>
     </div>
   </section>
@@ -910,8 +1002,8 @@ stroke-linejoin="round" aria-hidden="true"><path d="M1.9 5.4a1.7 1.7 0 0 1 1.7-1
       <div>
         <h4>Apps</h4>
         <ul>
-          <li><a href="library.html">Android APK</a></li>
-          <li><a href="library.html">iOS · TestFlight</a></li>
+          <li><a href="https://github.com/nuuritas/shelfcloud-apk/releases/latest" rel="noopener">Android APK</a></li>
+          <li><a href="https://testflight.apple.com/join/mXUn54N4" rel="noopener">iOS · TestFlight</a></li>
           <li><a href="library.html">Hosted MCP</a></li>
         </ul>
       </div>
