@@ -30,6 +30,8 @@
 *,*::before,*::after{box-sizing:border-box}
 [hidden]{display:none!important}
 html{-webkit-text-size-adjust:100%}
+html.embedded{scrollbar-width:none}
+html.embedded::-webkit-scrollbar{display:none;width:0;height:0}
 body{
   margin:0;background:var(--paper);color:var(--ink);
   font-family:var(--sans);font-size:15.5px;line-height:1.62;
@@ -323,6 +325,8 @@ section[id],#apps{scroll-margin-top:76px}
 .search input::placeholder{color:var(--faint)}
 .search .i{width:13px;height:13px;color:var(--faint);flex:none}
 .av-btn{width:32px;height:32px;border-radius:50%;background:var(--deep);color:var(--ink-soft);display:grid;place-items:center;font-size:11px;font-weight:600;border:1px solid var(--rule)}
+.icon-round{width:32px;height:32px;border-radius:50%;border:1px solid var(--rule);background:#fff;color:var(--ink-soft);display:none;place-items:center}
+.m-only{display:none}
 
 .app-body{padding:26px 28px 64px;max-width:1080px;width:100%}
 .app-head{display:flex;align-items:flex-end;gap:10px;padding-bottom:18px;border-bottom:1px solid var(--rule)}
@@ -347,15 +351,28 @@ section[id],#apps{scroll-margin-top:76px}
 .row-save .ico{width:26px;height:26px;border-radius:7px;background:var(--deep);color:var(--ink-soft);display:grid;place-items:center;font-size:9px;font-family:var(--mono);margin-top:1px;flex:none}
 .row-save .who{display:flex;align-items:center;gap:7px;font-size:11.5px;color:var(--faint)}
 .row-save .who b{color:var(--ink-soft);font-weight:560}
-.row-save h3{margin-top:3px;font-size:15.5px;line-height:1.36;letter-spacing:-.016em;font-weight:580}
-.row-save p{margin-top:4px;font-size:13px;line-height:1.6;color:var(--soft);overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.row-save h3{margin-top:3px;font-size:16px;line-height:1.36;letter-spacing:-.017em;font-weight:580;max-width:56ch}
+.row-save p{margin-top:4px;font-size:13px;line-height:1.6;color:var(--soft);max-width:74ch;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
 .row-save .tags{display:flex;gap:6px;margin-top:9px;align-items:center}
-.row-save .end{display:flex;flex-direction:column;align-items:flex-end;gap:8px;padding-top:2px}
-.row-save .acts{display:flex;gap:4px;opacity:.5;transition:opacity var(--speed)}
+.row-save .end{display:flex;flex-direction:row;align-items:center;gap:8px;padding-top:0}
+.row-save .acts{display:flex;gap:2px;opacity:.45;transition:opacity var(--speed)}
 .row-save:hover .acts,.row-save:focus-within .acts{opacity:1}
 .icon-btn{width:26px;height:26px;border-radius:6px;display:grid;place-items:center;color:var(--faint);border:1px solid transparent;transition:all var(--speed)}
 .icon-btn:hover{background:#fff;border-color:var(--rule);color:var(--ink)}
 .empty{padding:56px 0;text-align:center;color:var(--faint);font-size:13.5px}
+
+/* a date is the only grouping the shelf has: no ranking, so the month is
+   the one thing that tells you where you are */
+.group{display:flex;align-items:center;gap:12px;margin:26px 0 0;padding:0 14px;
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--faint)}
+.group::after{content:"";flex:1;height:1px;background:var(--rule)}
+.list > .group:first-child{margin-top:6px}
+
+/* an agent's note is not a link: it gets the one wash on the shelf */
+.row-save.note{background:linear-gradient(90deg,rgba(29,78,216,.055),rgba(29,78,216,0) 58%)}
+.row-save.note:hover{background:linear-gradient(90deg,rgba(29,78,216,.085),rgba(29,78,216,0) 58%)}
+.row-save.note .ico{background:var(--accent-wash);color:var(--accent);font-size:8px;letter-spacing:.02em}
+.chip-note{background:var(--accent-wash);color:var(--accent)}
 
 /* ---------------------------------------------------------------- post view */
 .post{max-width:760px;width:100%;margin:0 auto;padding:34px 28px 80px}
@@ -363,6 +380,7 @@ section[id],#apps{scroll-margin-top:76px}
 .crumb a:hover{color:var(--ink)}
 .post-head{margin-top:22px;padding-bottom:22px;border-bottom:1px solid var(--rule)}
 .post-head .meta{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--faint)}
+.post-head .meta .chip{text-transform:none;letter-spacing:.02em}
 .post-head h1{margin-top:12px;font-size:clamp(25px,3.2vw,34px);line-height:1.16;letter-spacing:-.032em;font-weight:640;max-width:26ch}
 .post-head .sub{margin-top:12px;font-size:13.5px;color:var(--soft);line-height:1.65;max-width:60ch}
 .summary-box{margin-top:26px;padding:20px 22px;border:1px solid var(--rule);border-radius:var(--r);background:#fff}
@@ -446,6 +464,48 @@ section[id],#apps{scroll-margin-top:76px}
   .foot-bottom .right{margin-left:0;width:100%}
 }
 
+/* The app changes shell at 900, the width at which the rail would become a
+   sliver: the bar and the dock take over there, not at a phone-only 760. */
+@media (max-width:900px){
+  /* the phone is the app, not the desktop with the rail removed */
+  .app-bar{height:56px;padding:0 14px;gap:8px}
+  .app-bar .right{gap:8px}
+  .app-bar .search{position:absolute;left:0;right:0;top:100%;width:auto;height:48px;display:none;
+    padding:0 14px;border:0;border-bottom:1px solid var(--rule);border-radius:0;background:var(--paper)}
+  .app-bar.searching .search{display:flex}
+  .app-bar.searching + .app-body .toolbar{top:104px}
+  .app-bar .search input{font-size:15px}
+  .m-only{display:grid}
+  .m-brand .m-ws{max-width:46vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .app-body{padding:16px 16px 112px}
+  .app-head{padding-bottom:12px;border-bottom:0}
+  .app-head h1{font-size:24px}
+  .app-head .count{padding-bottom:2px}
+  .app-head .actions{display:none}
+  .toolbar{position:sticky;top:56px;z-index:15;background:var(--paper);padding:8px 0 10px;border-bottom:1px solid var(--rule);gap:8px}
+  .seg{width:100%;display:grid;grid-template-columns:repeat(3,1fr)}
+  .seg button{height:30px;padding:0}
+  .chips{margin-left:0;width:100%;overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px;scrollbar-width:none}
+  .chips::-webkit-scrollbar{display:none}
+  .chip-btn{height:30px;flex:none}
+  .list{display:grid;gap:10px;margin-top:4px}
+  .group{margin:16px 0 0;padding:0 2px}
+  .row-save{grid-template-columns:24px minmax(0,1fr);gap:11px;padding:14px 14px 12px;
+    border:1px solid var(--rule);border-radius:12px;background:#fff}
+  .row-save:hover{transform:none;background:#fff}
+  .row-save.note:hover{background:linear-gradient(90deg,rgba(29,78,216,.055),rgba(29,78,216,0) 58%)}
+  .row-save .ico{width:24px;height:24px;border-radius:6px;font-size:8px;margin-top:1px}
+  .row-save .who{font-size:11px}
+  .row-save h3{font-size:16px;line-height:1.34;margin-top:4px}
+  .row-save p{font-size:13px;-webkit-line-clamp:3}
+  .row-save .end{grid-column:1/-1;flex-direction:row;align-items:center;justify-content:space-between;
+    gap:10px;padding-top:10px;margin-top:4px;border-top:1px solid var(--rule)}
+  .row-save .acts{opacity:1;gap:2px}
+  .row-save .ref-box{height:22px;font-size:10px}
+  .app-body{padding-bottom:110px}
+  .dock{display:flex}
+}
+
 @media (max-width:760px){
   .site-nav .wrap{height:56px;gap:12px}
   .site-nav nav,.site-nav .right{display:none}
@@ -462,36 +522,26 @@ section[id],#apps{scroll-margin-top:76px}
   .hero-actions .link{align-self:center;border-bottom:0;color:var(--ink-soft)}
   .shelf-card{padding:16px}
   .shelf-card h3{font-size:18px}
-  .app-head{flex-wrap:wrap;align-items:center;gap:10px}
-  .app-head .actions{width:100%;margin-left:0}
-  .app-head .actions .btn{flex:1}
-  .toolbar{gap:8px}
-  .chips{margin-left:0;width:100%;overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px;scrollbar-width:none}
-  .chips::-webkit-scrollbar{display:none}
-  .row-save{grid-template-columns:22px minmax(0,1fr);gap:12px;padding:14px 4px}
-  .row-save .ico{width:22px;height:22px;border-radius:6px;font-size:8px}
-  .row-save .end{grid-column:2;flex-direction:row;align-items:center;padding-top:0;justify-content:space-between}
-  .row-save .acts{opacity:1}
-  .row-save .ref-box{height:20px;font-size:9.5px}
   .post{padding:18px 18px 96px;max-width:none}
   .post-actions{flex-wrap:wrap;gap:12px;row-gap:14px}
   .post-actions .btn{width:100%}
   .post-facts .f{flex-direction:column;gap:4px}
   .post-facts dt{width:auto}
-  .app-body{padding-bottom:110px}
-  .dock{display:flex}
 }
 
-@media (min-width:761px){.dock{display:none}}
+@media (min-width:901px){.dock{display:none}}
 
 /* the phone dock — the app's own navigation at 390, not a hamburger */
 .dock{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(244,246,249,.94);
   backdrop-filter:blur(12px);border-top:1px solid var(--rule);padding:8px 10px calc(8px + env(safe-area-inset-bottom));
   align-items:center;justify-content:space-between}
-.dock a{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:9.5px;color:var(--faint);padding:4px 12px;border-radius:8px}
+.dock a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:44px;min-width:48px;
+  font-size:9.5px;color:var(--faint);padding:5px 10px;border-radius:9px}
 .dock a[aria-current="page"]{color:var(--ink)}
+.dock a[aria-current="page"] .i{color:var(--accent)}
 .dock a .i{width:17px;height:17px}
-.dock .add{width:40px;height:40px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;padding:0}
+.dock .add{width:44px;height:44px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;padding:0;
+  box-shadow:0 10px 22px -12px rgba(15,23,32,.7)}
 
 /* ---------------------------------------------------------------- motion
    The first screen assembles once, then stops. Motion is a crossfade plus a
@@ -550,4 +600,54 @@ section[id],#apps{scroll-margin-top:76px}
   .btn:hover,.btn:active,.shelf-card:hover,.shelf-next a:hover,
   .row-save:hover,.next-list a:hover,.dock .add:hover{transform:none}
   .shelf-next a:hover .dot{transform:none}
+}
+
+/* ---------------------------------------------------------------- review sheet
+   /screens is not part of the site: it is the delivery sheet, the app at two
+   real sizes, live in frames rather than pasted as pictures. */
+.rev-top{border-bottom:1px solid var(--rule)}
+.rev-top .wrap{display:flex;align-items:center;gap:14px;height:64px}
+.rev-top .micro{margin-left:auto}
+.rev{padding:64px 0 104px}
+.rev h1{max-width:20ch}
+.rev .lede{margin-top:14px;max-width:56ch}
+.rev-sec{margin-top:72px}
+.rev-sec > .micro{margin-bottom:16px}
+.frame{border:1px solid var(--rule-strong);border-radius:12px;background:#fff;overflow:hidden;
+  box-shadow:0 1px 2px rgba(15,23,32,.05),0 40px 70px -56px rgba(15,23,32,.55)}
+.chrome{display:flex;align-items:center;gap:8px;height:34px;padding:0 12px;border-bottom:1px solid var(--rule);background:#f8fafc}
+.chrome i{width:7px;height:7px;border-radius:50%;background:var(--rule-strong);display:block}
+.chrome .url{margin:0 auto;font-family:var(--mono);font-size:10px;color:var(--faint);letter-spacing:.02em}
+.web-frame{width:min(100%,1152px);margin:0 auto}
+.web-frame .vp{width:100%;overflow:hidden;aspect-ratio:1440/900;background:#fff}
+.web-frame iframe{width:1440px;height:900px;border:0;zoom:.76}
+.phones{display:flex;gap:32px;flex-wrap:wrap;align-items:flex-start}
+.phone{width:312px;flex:none}
+.phone .bezel{background:var(--ink);padding:9px;border-radius:30px;
+  box-shadow:0 2px 4px rgba(15,23,32,.1),0 34px 60px -40px rgba(15,23,32,.7)}
+.phone .screen{position:relative;width:294px;height:636px;border-radius:22px;overflow:hidden;background:var(--paper)}
+.phone iframe{width:390px;height:844px;border:0;zoom:.754;display:block}
+.phone figcaption{display:flex;align-items:baseline;gap:8px;margin-top:14px;font-size:12px;color:var(--soft)}
+.phone figcaption b{font-weight:560;color:var(--ink)}
+.phone figcaption .ref{margin-left:auto;font-size:9.5px;color:var(--faint)}
+.rev-notes{max-width:34ch}
+.rev-notes h3{font-size:14px;font-weight:590;letter-spacing:-.012em}
+.rev-notes ul{margin-top:12px;display:grid;gap:10px;font-size:13px;line-height:1.55;color:var(--soft)}
+.rev-notes li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px}
+.rev-notes li::before{content:"—";color:var(--faint)}
+.rev-grid{display:flex;gap:64px;align-items:flex-start;flex-wrap:wrap}
+@media (max-width:1199px){.web-frame iframe{zoom:.7}}
+@media (max-width:1079px){.web-frame iframe{zoom:.64}}
+@media (max-width:999px){.web-frame iframe{zoom:.58}}
+@media (max-width:940px){.web-sec{display:none}.rev{padding:44px 0 72px}.rev-sec{margin-top:48px}}
+@media (max-width:760px){
+  .rev-top .micro{display:none}
+  .phones{flex-direction:column;gap:28px;align-items:center}
+  .rev-notes{max-width:none}
+}
+@media (max-width:360px){
+  .phone{width:264px}
+  .phone .bezel{padding:8px;border-radius:26px}
+  .phone .screen{width:248px;height:536px;border-radius:19px}
+  .phone iframe{zoom:.636}
 }

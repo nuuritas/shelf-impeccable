@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#f4f6f9">
 <script>document.documentElement.className+=' js';(function(){setTimeout(function(){if(window.__shelfMotion)return;var n=document.querySelectorAll('.rv');for(var i=0;i<n.length;i++)n[i].classList.add('in')},2600)})()</script>
 <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/app.css?v=0f108fc9">
+<link rel="stylesheet" href="assets/app.css?v=0f0c8177">
 </head>
 <body>
 
@@ -30,13 +30,13 @@
       <a href="library.html" aria-current="page">
         <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
         Library
-        <span class="count">7</span>
+        <span class="count">12</span>
       </a>
       <a href="library.html">
         <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h7v13H4zM13 7h7v13h-7z"/></svg>
         Topics
       </a>
-      <a href="post.html">
+      <a href="library.html">
         <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg>
         Search
       </a>
@@ -48,14 +48,14 @@
 
     <p class="side-label micro">Topics</p>
     <div class="side-topics">
-      <a href="library.html" data-topic-jump="reading"><span class="sw"></span>Reading<span class="count">3</span></a>
-      <a href="library.html" data-topic-jump="design"><span class="sw"></span>Design<span class="count">3</span></a>
-      <a href="library.html" data-topic-jump="work"><span class="sw"></span>Work<span class="count">3</span></a>
+      <a href="library.html" data-topic-jump="reading"><span class="sw"></span>Reading<span class="count">4</span></a>
+      <a href="library.html" data-topic-jump="design"><span class="sw"></span>Design<span class="count">6</span></a>
+      <a href="library.html" data-topic-jump="work"><span class="sw"></span>Work<span class="count">6</span></a>
     </div>
 
     <div class="side-foot">
       <a href="pricing.html">Plan · Cloud Pro</a>
-      <a href="index.html">Web changelog</a>
+      <a href="screens.html">App screens</a>
       <a href="index.html">Settings</a>
     </div>
   </aside>
@@ -64,7 +64,7 @@
     <div class="app-bar">
       <a class="brand m-brand" href="index.html">
         <svg class="mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><path d="M3.1 5.1h3.1v14.7H3.1z"/><path d="M7.5 5.1h3.1v14.7H7.5z"/><path d="M12.4 5.5l3-.4 1.9 14.5-3 .4z" fill="currentColor" fill-opacity=".18"/><path d="M2.4 20.9h19.2"/></svg>
-        Shelf Cloud
+        <span class="m-ws">Nuri’s shelf</span>
       </a>
       <span class="here">Library / <b>Active</b></span>
       <div class="right">
@@ -72,6 +72,9 @@
           <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg>
           <input id="q" type="search" placeholder="Search text or author" autocomplete="off" aria-label="Search the library">
         </label>
+        <button class="icon-round m-only" type="button" aria-label="Search" aria-expanded="false" data-search-toggle>
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg>
+        </button>
         <span class="av-btn" title="Signed in as Nuri">N</span>
       </div>
     </div>
@@ -79,7 +82,7 @@
     <div class="app-body">
       <div class="app-head rv now">
         <h1>Library</h1>
-        <span class="count" id="count">12 active</span>
+        <span class="count" id="count">8 active</span>
         <div class="actions">
           <button class="btn" type="button" data-add>Add a link</button>
         </div>
@@ -101,13 +104,15 @@
 
       <div class="list" id="list">
 
-        <article class="row-save rv now" style="--d:0.10s" data-status="active" data-topic="reading design" data-text="the quiet return of rss maggie appleton reader feed reading list">
+        <p class="group">November 2026</p>
+
+        <article class="row-save" data-status="active" data-topic="reading design" data-text="the quiet return of rss maggie appleton reader feed reading list list you own">
           <span class="ico">W</span>
           <div>
             <div class="who"><b>Maggie Appleton</b> · 12 Nov 2026 · Web</div>
             <h3><a href="post.html">The quiet return of RSS</a></h3>
             <p>RSS was not beaten by a better product, it was left out of the one everybody opens. The case here is for a list you own: a feed you picked, a reader that keeps its place, and no ranking deciding what comes next.</p>
-            <div class="tags"><span class="chip chip-outline">Reading</span><span class="chip chip-outline">design</span></div>
+            <div class="tags"><span class="chip chip-outline">Reading</span><span class="chip chip-outline">Design</span></div>
           </div>
           <div class="end">
             <span class="ref-box ref">K7F2M</span>
@@ -122,7 +127,28 @@
           </div>
         </article>
 
-        <article class="row-save rv now" style="--d:0.14s" data-status="active" data-topic="work" data-text="keeping a research notebook selin arslan inbox weekly review index">
+        <article class="row-save note" data-status="active" data-topic="work" data-text="how teams ship agent tooling shelf agent note cli research mcp tooling">
+          <span class="ico">AI</span>
+          <div>
+            <div class="who"><b>Shelf agent</b> · 11 Nov 2026 · Note</div>
+            <h3><a href="post.html">How teams ship agent tooling</a></h3>
+            <p>A research note the agent filed with the shelf CLI, then read back through the same search. Five teams, one pattern: the tooling that stuck wrote into the place people already looked.</p>
+            <div class="tags"><span class="chip chip-note">Agent note</span><span class="chip chip-outline">Work</span></div>
+          </div>
+          <div class="end">
+            <span class="ref-box ref">N8W3E</span>
+            <div class="acts">
+              <button class="icon-btn" type="button" title="Archive" data-archive>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18v4H3zM5 10v9h14v-9M10 14h4"/></svg>
+              </button>
+              <a class="icon-btn" href="post.html" title="Open">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="row-save" data-status="active" data-topic="work" data-text="keeping a research notebook selin arslan inbox weekly review index">
           <span class="ico">W</span>
           <div>
             <div class="who"><b>Selin Arslan</b> · 9 Nov 2026 · Web</div>
@@ -143,7 +169,7 @@
           </div>
         </article>
 
-        <article class="row-save rv now" style="--d:0.17s" data-status="active" data-topic="design" data-text="a type scale you can hold in your head deniz kaya five sizes ratio">
+        <article class="row-save" data-status="active" data-topic="design" data-text="a type scale you can hold in your head deniz kaya five sizes ratio">
           <span class="ico">X</span>
           <div>
             <div class="who"><b>Deniz Kaya</b> · 6 Nov 2026 · X</div>
@@ -164,7 +190,7 @@
           </div>
         </article>
 
-        <article class="row-save rv now" style="--d:0.21s" data-status="active" data-topic="reading work" data-text="reading on a phone is a skill tobias renner column highlights">
+        <article class="row-save" data-status="active" data-topic="reading work" data-text="reading on a phone is a skill you can design for tobias renner column highlights thumb">
           <span class="ico">in</span>
           <div>
             <div class="who"><b>Tobias Renner</b> · 3 Nov 2026 · LinkedIn</div>
@@ -185,10 +211,75 @@
           </div>
         </article>
 
-        <article class="row-save rv now" style="--d:0.24s" data-status="archived" data-topic="design" data-text="colour tokens that survive a dark theme iris chen hex surface ink">
+        <p class="group">October 2026</p>
+
+        <article class="row-save" data-status="active" data-topic="design work" data-text="designing a search you can trust priya raman ranking match intent video">
+          <span class="ico">▶</span>
+          <div>
+            <div class="who"><b>Priya Raman</b> · 31 Oct 2026 · YouTube</div>
+            <h3><a href="post.html">Designing a search you can trust</a></h3>
+            <p>Ranking is a guess about intent. The argument here is for a search that shows the three things it matched and says why, so the list stays something you can correct.</p>
+            <div class="tags"><span class="chip chip-outline">Design</span><span class="chip chip-outline">Work</span></div>
+          </div>
+          <div class="end">
+            <span class="ref-box ref">V6K2S</span>
+            <div class="acts">
+              <button class="icon-btn" type="button" title="Archive" data-archive>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18v4H3zM5 10v9h14v-9M10 14h4"/></svg>
+              </button>
+              <a class="icon-btn" href="post.html" title="Open">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="row-save" data-status="active" data-topic="reading" data-text="the cost of a tab you never close jonas weber browser queue attention">
           <span class="ico">W</span>
           <div>
-            <div class="who"><b>Iris Chen</b> · 28 Oct 2026 · Web</div>
+            <div class="who"><b>Jonas Weber</b> · 29 Oct 2026 · Web</div>
+            <h3><a href="post.html">The cost of a tab you never close</a></h3>
+            <p>A tab is a decision you have not made yet. Keep the count under ten and the browser becomes a place you can finish, instead of a queue that refills itself.</p>
+            <div class="tags"><span class="chip chip-outline">Reading</span></div>
+          </div>
+          <div class="end">
+            <span class="ref-box ref">D2M8T</span>
+            <div class="acts">
+              <button class="icon-btn" type="button" title="Archive" data-archive>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18v4H3zM5 10v9h14v-9M10 14h4"/></svg>
+              </button>
+              <a class="icon-btn" href="post.html" title="Open">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="row-save" data-status="active" data-topic="work design" data-text="write the summary before the outline amara osei drafting argument test">
+          <span class="ico">X</span>
+          <div>
+            <div class="who"><b>Amara Osei</b> · 26 Oct 2026 · X</div>
+            <h3><a href="post.html">Write the summary before the outline</a></h3>
+            <p>If the summary is hard to write, the piece is not finished. Drafting it first is the fastest test of whether the argument holds, and it is the version most people will read.</p>
+            <div class="tags"><span class="chip chip-outline">Work</span><span class="chip chip-outline">Design</span></div>
+          </div>
+          <div class="end">
+            <span class="ref-box ref">J6H9F</span>
+            <div class="acts">
+              <button class="icon-btn" type="button" title="Archive" data-archive>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18v4H3zM5 10v9h14v-9M10 14h4"/></svg>
+              </button>
+              <a class="icon-btn" href="post.html" title="Open">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="row-save" data-status="archived" data-topic="design" data-text="colour tokens that survive a dark theme iris chen hex surface ink">
+          <span class="ico">W</span>
+          <div>
+            <div class="who"><b>Iris Chen</b> · 24 Oct 2026 · Web</div>
             <h3><a href="post.html">Colour tokens that survive a dark theme</a></h3>
             <p>A token is a promise about a job — surface, ink, accent, rule — not a shade. Once the name says what it is for, a dark theme is a second set of values instead of a second stylesheet.</p>
             <div class="tags"><span class="chip chip-outline">Design</span><span class="chip">Archived</span></div>
@@ -206,10 +297,10 @@
           </div>
         </article>
 
-        <article class="row-save rv now" style="--d:0.28s" data-status="archived" data-topic="work" data-text="meetings that could have been a document nadia rahimi decision thread">
+        <article class="row-save" data-status="archived" data-topic="work" data-text="meetings that could have been a document nadia rahimi decision thread">
           <span class="ico">X</span>
           <div>
-            <div class="who"><b>Nadia Rahimi</b> · 24 Oct 2026 · X</div>
+            <div class="who"><b>Nadia Rahimi</b> · 21 Oct 2026 · X</div>
             <h3><a href="post.html">Meetings that could have been a document</a></h3>
             <p>Write the decision, the options and the objection before anyone books a room, and what is left is a comment thread with a date.</p>
             <div class="tags"><span class="chip chip-outline">Work</span><span class="chip">Archived</span></div>
@@ -227,16 +318,37 @@
           </div>
         </article>
 
-        <article class="row-save rv now" style="--d:0.31s" data-status="archived" data-topic="reading" data-text="how to read a paper in twenty minutes kate sokolova abstract figures">
+        <article class="row-save" data-status="archived" data-topic="reading" data-text="how to read a paper in twenty minutes kate sokolova abstract figures">
           <span class="ico">▶</span>
           <div>
-            <div class="who"><b>Kate Sokolova</b> · 19 Oct 2026 · YouTube</div>
+            <div class="who"><b>Kate Sokolova</b> · 16 Oct 2026 · YouTube</div>
             <h3><a href="post.html">How to read a paper in twenty minutes</a></h3>
             <p>Read the abstract, then the figures, then the paragraph that disagrees with the conclusion; the middle is where a paper hides its caveats.</p>
             <div class="tags"><span class="chip chip-outline">Reading</span><span class="chip">Archived</span></div>
           </div>
           <div class="end">
             <span class="ref-box ref">Y4B7Q</span>
+            <div class="acts">
+              <button class="icon-btn" type="button" title="Unarchive" data-archive>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V6M8 10l4-4 4 4M4 20h16"/></svg>
+              </button>
+              <a class="icon-btn" href="post.html" title="Open">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="row-save" data-status="archived" data-topic="design" data-text="a blog is a database with dates owen park archive slug query">
+          <span class="ico">W</span>
+          <div>
+            <div class="who"><b>Owen Park</b> · 9 Oct 2026 · Web</div>
+            <h3><a href="post.html">A blog is a database with dates</a></h3>
+            <p>A post is a row with a date and a slug. Once the archive is seen that way, the design question stops being what to publish and becomes how to query it.</p>
+            <div class="tags"><span class="chip chip-outline">Design</span><span class="chip">Archived</span></div>
+          </div>
+          <div class="end">
+            <span class="ref-box ref">X8R5C</span>
             <div class="acts">
               <button class="icon-btn" type="button" title="Unarchive" data-archive>
                 <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V6M8 10l4-4 4 4M4 20h16"/></svg>
@@ -260,7 +372,7 @@
     <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
     Library
   </a>
-  <a href="library.html">
+  <a href="library.html" data-search>
     <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg>
     Search
   </a>
@@ -278,6 +390,6 @@
 </nav>
 
 <div class="toast" id="toast"><span class="tick">✓</span><span id="toast-text">Copied</span></div>
-<script src="assets/app.js?v=37bb088c"></script>
+<script src="assets/app.js?v=9c63f513"></script>
 </body>
 </html>

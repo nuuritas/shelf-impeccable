@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#f4f6f9">
 <script>document.documentElement.className+=' js';(function(){setTimeout(function(){if(window.__shelfMotion)return;var n=document.querySelectorAll('.rv');for(var i=0;i<n.length;i++)n[i].classList.add('in')},2600)})()</script>
 <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/app.css?v=0f108fc9">
+<link rel="stylesheet" href="assets/app.css?v=0f0c8177">
 </head>
 <body>
 
@@ -27,7 +27,7 @@
       <a href="library.html" aria-current="page">
         <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
         Library
-        <span class="count">7</span>
+        <span class="count">12</span>
       </a>
       <a href="library.html">
         <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h7v13H4zM13 7h7v13h-7z"/></svg>
@@ -44,13 +44,13 @@
     </nav>
     <p class="side-label micro">Topics</p>
     <div class="side-topics">
-      <a href="library.html"><span class="sw"></span>Reading<span class="count">3</span></a>
-      <a href="library.html"><span class="sw"></span>Design<span class="count">3</span></a>
-      <a href="library.html"><span class="sw"></span>Work<span class="count">3</span></a>
+      <a href="library.html"><span class="sw"></span>Reading<span class="count">4</span></a>
+      <a href="library.html"><span class="sw"></span>Design<span class="count">6</span></a>
+      <a href="library.html"><span class="sw"></span>Work<span class="count">6</span></a>
     </div>
     <div class="side-foot">
       <a href="pricing.html">Plan · Cloud Pro</a>
-      <a href="index.html">Web changelog</a>
+      <a href="screens.html">App screens</a>
       <a href="index.html">Settings</a>
     </div>
   </aside>
@@ -59,14 +59,17 @@
     <div class="app-bar">
       <a class="brand m-brand" href="index.html">
         <svg class="mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><path d="M3.1 5.1h3.1v14.7H3.1z"/><path d="M7.5 5.1h3.1v14.7H7.5z"/><path d="M12.4 5.5l3-.4 1.9 14.5-3 .4z" fill="currentColor" fill-opacity=".18"/><path d="M2.4 20.9h19.2"/></svg>
-        Shelf Cloud
+        <span class="m-ws">Nuri’s shelf</span>
       </a>
       <span class="here">Library / <b>K7F2M</b></span>
       <div class="right">
         <label class="search">
           <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg>
-          <input type="search" placeholder="Search text or author" aria-label="Search the library">
+          <input id="q" type="search" placeholder="Search text or author" aria-label="Search the library">
         </label>
+        <button class="icon-round m-only" type="button" aria-label="Search" aria-expanded="false" data-search-toggle>
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg>
+        </button>
         <span class="av-btn" title="Signed in as Nuri">N</span>
       </div>
     </div>
@@ -91,14 +94,14 @@
         <button class="link link-quiet" type="button" data-copy="K7F2M">Copy ref</button>
       </div>
 
-      <dl class="post-facts rv" style="--d:.26s">
+      <dl class="post-facts">
         <div class="f"><dt class="micro">Source</dt><dd>Web · maggieappleton.com</dd></div>
         <div class="f"><dt class="micro">Topics</dt><dd>Reading · Design</dd></div>
         <div class="f"><dt class="micro">Saved</dt><dd>12 Nov 2026, from the share sheet</dd></div>
         <div class="f"><dt class="micro">Ref</dt><dd><span class="ref">K7F2M</span> — unique in this workspace</dd></div>
       </dl>
 
-      <section class="next rv" id="next" style="--d:.32s">
+      <section class="next" id="next">
         <h2>Next on the shelf</h2>
         <div class="next-list">
           <a href="post.html"><span class="chip chip-outline">Work</span>Keeping a research notebook<span class="ref">H3QDX</span></a>
@@ -115,7 +118,7 @@
     <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
     Library
   </a>
-  <a href="library.html">
+  <a href="library.html" data-search>
     <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg>
     Search
   </a>
@@ -133,6 +136,6 @@
 </nav>
 
 <div class="toast" id="toast"><span class="tick">✓</span><span id="toast-text">Copied</span></div>
-<script src="assets/app.js?v=37bb088c"></script>
+<script src="assets/app.js?v=9c63f513"></script>
 </body>
 </html>

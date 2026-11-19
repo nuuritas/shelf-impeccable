@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Screens · Shelf Cloud</title>
+<meta name="description" content="The logged-in Shelf Cloud app at two sizes: the web library and the phone library.">
+<meta name="theme-color" content="#f4f6f9">
+<script>document.documentElement.className+=' js';(function(){setTimeout(function(){if(window.__shelfMotion)return;var n=document.querySelectorAll('.rv');for(var i=0;i<n.length;i++)n[i].classList.add('in')},2600)})()</script>
+<link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/app.css?v=0f0c8177">
+</head>
+<body>
+
+<header class="rev-top">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <svg class="mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><path d="M3.1 5.1h3.1v14.7H3.1z"/><path d="M7.5 5.1h3.1v14.7H7.5z"/><path d="M12.4 5.5l3-.4 1.9 14.5-3 .4z" fill="currentColor" fill-opacity=".18"/><path d="M2.4 20.9h19.2"/></svg>
+      Shelf Cloud
+    </a>
+    <span class="micro">Design review · the app</span>
+    <a class="link" href="index.html">Back to the page</a>
+  </div>
+</header>
+
+<main class="rev">
+  <div class="wrap">
+
+    <h1 class="h1 rv now" style="font-size:clamp(30px,4.2vw,48px);line-height:1.06;letter-spacing:-.038em;font-weight:640">The logged-in shelf, at two sizes.</h1>
+    <p class="lede rv now" style="--d:.08s">Both frames are the live pages, not pictures: the same markup, the same filters, the same archive. The rail is the web; the five-slot bar at the bottom is the phone, which is also the shape the Android and iOS builds use.</p>
+
+    <section class="rev-sec web-sec rv" style="--d:.16s">
+      <p class="micro">Web · from 1280 up</p>
+      <figure class="frame web-frame" style="margin:0">
+        <div class="chrome"><i></i><i></i><i></i><span class="url">shelfcloud.io/library</span></div>
+        <div class="vp"><iframe src="library.html" title="The Shelf Cloud library at desktop width" loading="lazy"></iframe></div>
+      </figure>
+    </section>
+
+    <section class="rev-sec">
+      <p class="micro">Phone · 390 × 844</p>
+      <div class="rev-grid">
+        <div class="phones">
+          <figure class="phone" style="margin:0">
+            <div class="bezel"><div class="screen"><iframe src="library.html" title="The Shelf Cloud library on a phone" loading="lazy"></iframe></div></div>
+            <figcaption><b>Library</b><span>every save, by month</span><span class="ref">390 × 844</span></figcaption>
+          </figure>
+          <figure class="phone" style="margin:0">
+            <div class="bezel"><div class="screen"><iframe src="post.html" title="One saved link on a phone" loading="lazy"></iframe></div></div>
+            <figcaption><b>Reading view</b><span>summary, source, ref</span><span class="ref">390 × 844</span></figcaption>
+          </figure>
+        </div>
+
+        <div class="rev-notes">
+          <h3>What changes on the phone</h3>
+          <ul>
+            <li>The rail becomes a five-slot bar: Library, Search, Add in the middle, Topics, You.</li>
+            <li>A save becomes a card — source, title, three lines, then ref and actions on their own rule.</li>
+            <li>Search leaves the bar and drops out of it on tap; a field beside the brand does not survive 390.</li>
+            <li>The month stays the only grouping. There is still no ranking to explain.</li>
+            <li>One type scale either way: 27/15.5/13 on the web, 24/16/13 on the phone.</li>
+            <li>Nothing is hidden behind a hamburger, and the tap targets are 44px tall.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <p class="body rv" style="margin-top:56px;padding-top:18px;border-top:1px solid var(--rule);max-width:62ch">
+      The web frame follows the site's own breakpoints; at 900 the rail is replaced by the bar, so narrowing this window is the same test as opening it on a phone. The reading view is <a class="link" href="post.html">its own page</a>.
+    </p>
+
+  </div>
+</main>
+
+<footer class="site-foot" style="padding:40px 0 56px;border-top:1px solid var(--rule);background:transparent">
+  <div class="wrap foot-bottom" style="margin-top:0;border-top:0">
+    <span>© 2026 Shelf Cloud</span>
+    <span>·</span>
+    <span>Design study — Impeccable</span>
+    <span class="right"><a class="link" href="index.html">Landing page</a><a class="link" href="library.html">Open the library</a></span>
+  </div>
+</footer>
+
+<script src="assets/app.js?v=9c63f513"></script>
+</body>
+</html>

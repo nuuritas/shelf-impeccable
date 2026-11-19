@@ -3,6 +3,10 @@
 (function () {
   'use strict';
 
+  /* A framed page is a picture of a screen: its scrollbar belongs to the
+     phone frame, not to the page inside it. */
+  if (window.self !== window.top) document.documentElement.className += ' embedded';
+
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
 
@@ -81,10 +85,36 @@
     });
   });
 
+  /* ---------------------------------------------------------- phone search
+     The bar is too narrow for a field, so search is a row that drops under it,
+     the way the native clients open theirs. */
+  var appBar = $('.app-bar');
+  var searchInput = $('#q');
+  function setSearch(open) {
+    if (!appBar) return;
+    appBar.classList.toggle('searching', open);
+    $$('[data-search-toggle]').forEach(function (b) { b.setAttribute('aria-expanded', open ? 'true' : 'false'); });
+    if (open && searchInput) searchInput.focus();
+  }
+  $$('[data-search-toggle]').forEach(function (btn) {
+    btn.addEventListener('click', function () { setSearch(!appBar.classList.contains('searching')); });
+  });
+  $$('[data-search]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      if (!appBar) return;
+      e.preventDefault();
+      setSearch(true);
+    });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && appBar && appBar.classList.contains('searching')) setSearch(false);
+  });
+
   /* ---------------------------------------------------------- library */
   var list = $('#list');
   if (list) {
     var rows = $$('.row-save', list);
+    var groups = $$('.group', list);
     var count = $('#count');
     var empty = $('#empty');
     var scope = 'active';
@@ -104,10 +134,27 @@
         row.hidden = !ok;
         if (ok) shown++;
       });
+
+      /* a month with nothing left under it is not a month */
+      groups.forEach(function (g) { g.hidden = true; });
+      var current = null;
+      Array.prototype.forEach.call(list.children, function (child) {
+        if (child.classList.contains('group')) current = child;
+        else if (child.classList.contains('row-save') && !child.hidden && current) current.hidden = false;
+      });
+
       if (count) {
         count.textContent = shown + ' ' + (scope === 'archived' ? 'archived' : scope === 'all' ? 'saves' : 'active');
       }
       if (empty) empty.hidden = shown !== 0;
+    }
+
+    function pickTopic(value) {
+      topic = value;
+      $$('.chip-btn').forEach(function (b) {
+        b.setAttribute('aria-pressed', b.getAttribute('data-topic') === value ? 'true' : 'false');
+      });
+      apply();
     }
 
     $$('.seg [data-scope]').forEach(function (btn) {
@@ -121,10 +168,18 @@
 
     $$('[data-topic]').forEach(function (btn) {
       btn.addEventListener('click', function () {
-        $$('.chip-btn').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
-        btn.setAttribute('aria-pressed', 'true');
-        topic = btn.getAttribute('data-topic');
-        apply();
+        pickTopic(btn.getAttribute('data-topic'));
+      });
+    });
+
+    /* the rail's topics are filters, not a second page */
+    $$('[data-topic-jump]').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        pickTopic(link.getAttribute('data-topic-jump'));
+        if (window.matchMedia('(max-width: 900px)').matches) {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
       });
     });
 
@@ -170,7 +225,24 @@
       });
     });
 
+    /* a search typed on the reading view arrives here as ?q= */
+    var initial = '';
+    try { initial = new URLSearchParams(location.search).get('q') || ''; } catch (err) {}
+    if (initial && search) { search.value = initial; query = initial.trim().toLowerCase(); }
+
     apply();
+  }
+
+  /* the reading view's field is a way back into the shelf */
+  if (!list && searchInput) {
+    searchInput.addEventListener('keydown', function (e) {
+      if (e.key !== 'Enter') return;
+      var value = searchInput.value.trim();
+      if (!value) return;
+      var lib = $('.dock a[href]');
+      var href = lib ? lib.getAttribute('href') : 'library.html';
+      location.href = href + (href.indexOf('?') === -1 ? '?' : '&') + 'q=' + encodeURIComponent(value);
+    });
   }
 
   /* ---------------------------------------------------------- add a link */
