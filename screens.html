@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#f4f6f9">
 <script>document.documentElement.className+=' js';(function(){setTimeout(function(){if(window.__shelfMotion)return;var n=document.querySelectorAll('.rv');for(var i=0;i<n.length;i++)n[i].classList.add('in')},2600)})()</script>
 <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/app.css?v=0f0c8177">
+<link rel="stylesheet" href="assets/app.css?v=534b1024">
 </head>
 <body>
 
@@ -27,7 +27,7 @@
   <div class="wrap">
 
     <h1 class="h1 rv now" style="font-size:clamp(30px,4.2vw,48px);line-height:1.06;letter-spacing:-.038em;font-weight:640">The logged-in shelf, at two sizes.</h1>
-    <p class="lede rv now" style="--d:.08s">Both frames are the live pages, not pictures: the same markup, the same filters, the same archive. The rail is the web; the five-slot bar at the bottom is the phone, which is also the shape the Android and iOS builds use.</p>
+    <p class="lede rv now" style="--d:.08s">Both frames are the live pages, not pictures: one markup, one card component, the same filters. The rail is the web; the phone is the app — and the shape the Android and iOS builds use.</p>
 
     <section class="rev-sec web-sec rv" style="--d:.16s">
       <p class="micro">Web · from 1280 up</p>
@@ -43,30 +43,34 @@
         <div class="phones">
           <figure class="phone" style="margin:0">
             <div class="bezel"><div class="screen"><iframe src="library.html" title="The Shelf Cloud library on a phone" loading="lazy"></iframe></div></div>
-            <figcaption><b>Library</b><span>every save, by month</span><span class="ref">390 × 844</span></figcaption>
+            <figcaption><b>Library</b><span>every save, newest first</span><span class="ref">390 × 844</span></figcaption>
           </figure>
           <figure class="phone" style="margin:0">
-            <div class="bezel"><div class="screen"><iframe src="post.html" title="One saved link on a phone" loading="lazy"></iframe></div></div>
-            <figcaption><b>Reading view</b><span>summary, source, ref</span><span class="ref">390 × 844</span></figcaption>
+            <div class="bezel"><div class="screen"><iframe src="player.html" title="A reel on the source's own player" loading="lazy"></iframe></div></div>
+            <figcaption><b>Reel</b><span>the source plays it</span><span class="ref">390 × 844</span></figcaption>
+          </figure>
+          <figure class="phone" style="margin:0">
+            <div class="bezel"><div class="screen"><iframe src="post.html" title="An agent artifact on a phone" loading="lazy"></iframe></div></div>
+            <figcaption><b>Artifact</b><span>the document, sandboxed</span><span class="ref">390 × 844</span></figcaption>
           </figure>
         </div>
 
         <div class="rev-notes">
-          <h3>What changes on the phone</h3>
+          <h3>What the shelf holds</h3>
           <ul>
-            <li>The rail becomes a five-slot bar: Library, Search, Add in the middle, Topics, You.</li>
-            <li>A save becomes a card — source, title, three lines, then ref and actions on their own rule.</li>
-            <li>Search leaves the bar and drops out of it on tap; a field beside the brand does not survive 390.</li>
-            <li>The month stays the only grouping. There is still no ranking to explain.</li>
-            <li>One type scale either way: 27/15.5/13 on the web, 24/16/13 on the phone.</li>
-            <li>Nothing is hidden behind a hamburger, and the tap targets are 44px tall.</li>
+            <li>Seven kinds of save, one card: an X post, an X article, a LinkedIn post, a video, a reel, a web page, an agent's artifact.</li>
+            <li>The card carries what the source gave it — the paragraph, the picture, the player's still, the document's opening.</li>
+            <li>The AI summary is a band inside the card, two lines, folding with the text it reads.</li>
+            <li>A tap folds the card. The only screens it opens are the two a card cannot be: a reel and an artifact.</li>
+            <li>Archive, copy and the source live inside the open card, so a folded shelf is all content.</li>
+            <li>Chrome is one bar and one row of four menus; the row scrolls away, and nothing is pinned.</li>
           </ul>
         </div>
       </div>
     </section>
 
     <p class="body rv" style="margin-top:56px;padding-top:18px;border-top:1px solid var(--rule);max-width:62ch">
-      The web frame follows the site's own breakpoints; at 900 the rail is replaced by the bar, so narrowing this window is the same test as opening it on a phone. The reading view is <a class="link" href="post.html">its own page</a>.
+      The web frame follows the site's own breakpoints; at 900 the rail is replaced by the phone bar, so narrowing this window is the same test as opening it on a phone. The artifact is <a class="link" href="post.html">its own page</a>, and the reel is <a class="link" href="player.html">the source's</a>.
     </p>
 
   </div>
@@ -81,6 +85,6 @@
   </div>
 </footer>
 
-<script src="assets/app.js?v=9c63f513"></script>
+<script src="assets/app.js?v=81874082"></script>
 </body>
 </html>

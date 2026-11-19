@@ -1,4 +1,4 @@
-/* The demo's whole script: reveal on scroll, one filter, one toggle, one clipboard.
+/* The demo's whole script: reveal on scroll, one filter, one fold, one clipboard.
    No framework, no build step, nothing that needs to phone home. */
 (function () {
   'use strict';
@@ -77,6 +77,17 @@
     toastTimer = setTimeout(function () { toast.classList.remove('on'); }, 2200);
   }
 
+  function copyRef(value) {
+    if (!value) return;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(value).then(function () {
+        say('Ref ' + value + ' copied');
+      }, function () { say(value); });
+    } else {
+      say(value);
+    }
+  }
+
   /* ---------------------------------------------------------- mobile nav */
   $$('[data-nav-toggle]').forEach(function (btn) {
     btn.addEventListener('click', function () {
@@ -106,6 +117,15 @@
       setSearch(true);
     });
   });
+  $$('[data-focus-search]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      if (!searchInput) return;
+      e.preventDefault();
+      if (appBar && getComputedStyle(searchInput).display === 'none') setSearch(true);
+      searchInput.focus();
+      searchInput.select && searchInput.select();
+    });
+  });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && appBar && appBar.classList.contains('searching')) setSearch(false);
   });
@@ -113,76 +133,128 @@
   /* ---------------------------------------------------------- library */
   var list = $('#list');
   if (list) {
-    var rows = $$('.row-save', list);
-    var groups = $$('.group', list);
-    var count = $('#count');
+    var cards = $$('.save', list);
+    var countTotal = $('#total');
     var empty = $('#empty');
-    var scope = 'active';
-    var topic = 'all';
-    var query = '';
+    var state = { source: '', folder: '', label: '', view: 'active' };
 
-    function apply() {
-      var shown = 0;
-      rows.forEach(function (row) {
-        var status = row.getAttribute('data-status');
-        var topics = (row.getAttribute('data-topic') || '').split(' ');
-        var text = (row.getAttribute('data-text') || '').toLowerCase();
-        var ok =
-          (scope === 'all' || status === scope) &&
-          (topic === 'all' || topics.indexOf(topic) !== -1) &&
-          (!query || text.indexOf(query) !== -1);
-        row.hidden = !ok;
-        if (ok) shown++;
-      });
+    function cs(card, key) { return (card.getAttribute(key) || '').split(' '); }
 
-      /* a month with nothing left under it is not a month */
-      groups.forEach(function (g) { g.hidden = true; });
-      var current = null;
-      Array.prototype.forEach.call(list.children, function (child) {
-        if (child.classList.contains('group')) current = child;
-        else if (child.classList.contains('row-save') && !child.hidden && current) current.hidden = false;
-      });
-
-      if (count) {
-        count.textContent = shown + ' ' + (scope === 'archived' ? 'archived' : scope === 'all' ? 'saves' : 'active');
-      }
-      if (empty) empty.hidden = shown !== 0;
+    function matches(card) {
+      var text = (card.getAttribute('data-text') || '').toLowerCase();
+      return (
+        (!state.source || card.getAttribute('data-source') === state.source) &&
+        (!state.folder || cs(card, 'data-topic').indexOf(state.folder) !== -1) &&
+        (!state.label || cs(card, 'data-label').indexOf(state.label) !== -1) &&
+        (!query || text.indexOf(query) !== -1)
+      );
     }
 
-    function pickTopic(value) {
-      topic = value;
-      $$('.chip-btn').forEach(function (b) {
-        b.setAttribute('aria-pressed', b.getAttribute('data-topic') === value ? 'true' : 'false');
+    function tally(attr, value, status) {
+      return cards.filter(function (c) {
+        var hit = attr === 'data-source' ? c.getAttribute('data-source') === value : cs(c, attr).indexOf(value) !== -1;
+        return hit && (!status || c.getAttribute('data-status') === status);
+      }).length;
+    }
+
+    function apply() {
+      var active = 0;
+      var archived = 0;
+      cards.forEach(function (card) {
+        var status = card.getAttribute('data-status');
+        if (status === 'archived') archived++; else active++;
+        card.hidden = status !== state.view || !matches(card);
       });
+
+      var shown = cards.filter(function (c) { return !c.hidden; }).length;
+      var filtered = state.source || state.folder || state.label || query;
+
+      if (countTotal) {
+        countTotal.textContent = filtered
+          ? shown + (shown === 1 ? ' save' : ' saves')
+          : (state.view === 'archived' ? archived + ' archived' : active + ' active');
+      }
+      if (empty) empty.hidden = shown !== 0;
+
+      /* the menus keep their own tallies, so a count is never stale after an
+         archive moved a save from one view to the other */
+      [['source', 'data-source'], ['folder', 'data-topic'], ['label', 'data-label']].forEach(function (pair) {
+        $$('[data-set^="' + pair[0] + ':"]').forEach(function (item) {
+          var value = item.getAttribute('data-set').split(':')[1];
+          var n = item.querySelector('.n');
+          if (value && n) n.textContent = tally(pair[1], value);
+        });
+      });
+      $$('[data-count="active"]').forEach(function (n) { n.textContent = active; });
+      $$('[data-count="archived"]').forEach(function (n) { n.textContent = archived; });
+      $$('[data-count="view"]').forEach(function (n) { n.textContent = state.view === 'archived' ? archived : active; });
+    }
+
+    function paintMenus() {
+      $$('[data-menu]').forEach(function (menu) {
+        var key = menu.getAttribute('data-menu');
+        var chosen = state[key];
+        var val = menu.querySelector('.fval');
+        var item = menu.querySelector('[data-set="' + key + ':' + (chosen || '') + '"]');
+        menu.classList.toggle('is-set', key === 'view' ? true : !!chosen);
+        if (key === 'view') {
+          val.textContent = chosen === 'archived' ? 'Archived' : 'Active';
+        } else {
+          val.textContent = chosen ? (item ? item.getAttribute('data-label') : chosen) : 'All';
+        }
+        $$('[data-set]', menu).forEach(function (a) { a.removeAttribute('aria-current'); });
+        if (item) item.setAttribute('aria-current', 'true');
+      });
+      $$('[data-topic-jump]').forEach(function (a) {
+        if (state.folder && a.getAttribute('data-topic-jump') === state.folder) a.setAttribute('data-on', '');
+        else a.removeAttribute('data-on');
+      });
+    }
+
+    $$('[data-set]').forEach(function (item) {
+      item.addEventListener('click', function (e) {
+        e.preventDefault();
+        var bits = item.getAttribute('data-set').split(':');
+        state[bits[0]] = bits[1];
+        paintMenus();
+        apply();
+        var menu = item.closest('details');
+        if (menu) menu.open = false;
+      });
+    });
+
+    /* clicking away closes a menu, like every filter menu does */
+    document.addEventListener('click', function (e) {
+      $$('[data-menu][open]').forEach(function (menu) {
+        if (!menu.contains(e.target)) menu.open = false;
+      });
+    });
+
+    function setFolder(value) {
+      state.folder = value || '';
+      paintMenus();
       apply();
     }
 
-    $$('.seg [data-scope]').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        $$('.seg [data-scope]').forEach(function (b) { b.setAttribute('aria-selected', 'false'); });
-        btn.setAttribute('aria-selected', 'true');
-        scope = btn.getAttribute('data-scope');
-        apply();
-      });
-    });
-
-    $$('[data-topic]').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        pickTopic(btn.getAttribute('data-topic'));
-      });
-    });
-
-    /* the rail's topics are filters, not a second page */
     $$('[data-topic-jump]').forEach(function (link) {
       link.addEventListener('click', function (e) {
         e.preventDefault();
-        pickTopic(link.getAttribute('data-topic-jump'));
-        if (window.matchMedia('(max-width: 900px)').matches) {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+        setFolder(link.getAttribute('data-topic-jump'));
+        if (window.matchMedia('(max-width: 900px)').matches) window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     });
 
+    $$('[data-label-jump]').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        state.label = link.getAttribute('data-label-jump');
+        paintMenus();
+        apply();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+
+    var query = '';
     var search = $('#q');
     if (search) {
       search.addEventListener('input', function () {
@@ -195,33 +267,94 @@
       btn.addEventListener('click', function () {
         if (search) search.value = '';
         query = '';
-        topic = 'all';
-        $$('.chip-btn').forEach(function (b) {
-          b.setAttribute('aria-pressed', b.getAttribute('data-topic') === 'all' ? 'true' : 'false');
-        });
+        state.source = state.folder = state.label = '';
+        paintMenus();
         apply();
       });
     });
 
-    /* Archive is the one write the demo fakes — it moves the row between
-       scopes so the tab does something, instead of printing "demo". */
-    $$('[data-archive]', list).forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var row = btn.closest('.row-save');
-        var archived = row.getAttribute('data-status') === 'archived';
-        row.setAttribute('data-status', archived ? 'active' : 'archived');
-        var tags = $('.tags', row);
-        var chip = $('.chip:not(.chip-outline)', tags);
-        if (archived) {
-          if (chip) chip.remove();
-          btn.title = 'Archive';
-          say('Unarchived — back on the active shelf');
-        } else {
-          if (!chip) tags.appendChild(Object.assign(document.createElement('span'), { className: 'chip', textContent: 'Archived' }));
-          btn.title = 'Unarchive';
-          say('Archived — out of the way, still searchable');
-        }
+    /* ---------------------------------------------------------- the fold
+       A tap on the card reads the rest of it, the way the app does; nothing
+       opens. The actions a card needs when it is open — archive, copy the ref,
+       leave for the source — arrive with the fold, so they cost no pixels
+       while the shelf is being scanned. */
+    function actionsFor(card) {
+      var acts = $('.acts', card);
+      if (acts) return acts;
+      acts = document.createElement('div');
+      acts.className = 'acts';
+
+      var archived = card.getAttribute('data-status') === 'archived';
+      var archive = document.createElement('button');
+      archive.type = 'button';
+      archive.setAttribute('data-archive', '');
+      archive.textContent = archived ? 'Unarchive' : 'Archive';
+      archive.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var wasArchived = card.getAttribute('data-status') === 'archived';
+        card.setAttribute('data-status', wasArchived ? 'active' : 'archived');
+        say(wasArchived ? 'Back on the shelf' : 'Archived — still searchable');
         apply();
+      });
+      acts.appendChild(archive);
+
+      var refBtn = $('.ref', card);
+      if (refBtn) {
+        var copy = document.createElement('button');
+        copy.type = 'button';
+        copy.textContent = 'Copy ref';
+        copy.addEventListener('click', function (e) {
+          e.stopPropagation();
+          copyRef(refBtn.getAttribute('data-copy'));
+        });
+        acts.appendChild(copy);
+      }
+
+      var note = card.getAttribute('data-source') === 'note';
+      var link = note ? $('h3 a', card) : $('a.src', card);
+      if (link) {
+        var out = document.createElement('a');
+        out.href = link.getAttribute('href');
+        if (!note) {
+          out.target = '_blank';
+          out.rel = 'noreferrer';
+          out.textContent = 'Open ' + $('.src', card).textContent + ' ↗';
+        } else {
+          out.textContent = 'Open artifact ↗';
+        }
+        out.className = 'sp';
+        acts.appendChild(out);
+      }
+
+      card.appendChild(acts);
+      return acts;
+    }
+
+    function setOpen(card, open) {
+      card.classList.toggle('is-open', open);
+      var fold = $('.fold', card);
+      if (fold) fold.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (open) actionsFor(card);
+    }
+
+    cards.forEach(function (card) {
+      card.addEventListener('click', function (e) {
+        if (e.target.closest('a,button,input,textarea,select')) return;
+        setOpen(card, !card.classList.contains('is-open'));
+      });
+      var fold = $('.fold', card);
+      if (fold) {
+        fold.addEventListener('click', function (e) {
+          e.stopPropagation();
+          setOpen(card, !card.classList.contains('is-open'));
+        });
+      }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      cards.forEach(function (card) {
+        if (card.classList.contains('is-open')) setOpen(card, false);
       });
     });
 
@@ -230,6 +363,7 @@
     try { initial = new URLSearchParams(location.search).get('q') || ''; } catch (err) {}
     if (initial && search) { search.value = initial; query = initial.trim().toLowerCase(); }
 
+    paintMenus();
     apply();
   }
 
@@ -239,9 +373,7 @@
       if (e.key !== 'Enter') return;
       var value = searchInput.value.trim();
       if (!value) return;
-      var lib = $('.dock a[href]');
-      var href = lib ? lib.getAttribute('href') : 'library.html';
-      location.href = href + (href.indexOf('?') === -1 ? '?' : '&') + 'q=' + encodeURIComponent(value);
+      location.href = 'library.html?q=' + encodeURIComponent(value);
     });
   }
 
@@ -254,15 +386,14 @@
 
   /* ---------------------------------------------------------- copy a ref */
   $$('[data-copy]').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var value = btn.getAttribute('data-copy');
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(value).then(function () {
-          say('Ref ' + value + ' copied');
-        }, function () { say(value); });
-      } else {
-        say(value);
-      }
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      copyRef(btn.getAttribute('data-copy'));
     });
+  });
+
+  /* the artifact reader's archive is the same fake write, with one row */
+  $$('[data-archive-demo]').forEach(function (btn) {
+    btn.addEventListener('click', function () { say('Archived — still searchable'); });
   });
 })();
