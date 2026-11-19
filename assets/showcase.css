@@ -911,3 +911,5 @@ background:var(--accent-wash);color:var(--ink);white-space:nowrap}
 
 /* both agent screens arrive the same way, so switching tabs never snaps */
 .showcase .ph-doc{animation:sc-rise .42s var(--ease) both}
+/* the retimed loop is the share demo's; a tab's screen still rises in 0.42s */
+.showcase .ways-stage .ph-tab{animation-duration:.42s}
