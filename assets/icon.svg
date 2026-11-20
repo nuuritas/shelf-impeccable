@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="t">
+  <title id="t">Shelf Cloud</title>
+  <rect width="512" height="512" rx="116" fill="#f4f6f9"/>
+  <rect x=".75" y=".75" width="510.5" height="510.5" rx="115.25" fill="none" stroke="#0f1720" stroke-opacity=".09" stroke-width="1.5"/>
+  <g transform="translate(256 256) scale(.62) translate(-512 -512)">
+    <g fill="none" stroke="#0f1720" stroke-width="36">
+      <rect x="272" y="184" width="480" height="656" rx="60"/>
+      <path d="M254 526H770"/>
+    </g>
+    <g fill="#0f1720">
+      <rect x="340" y="370" width="60" height="119" rx="10"/>
+      <rect x="424" y="348" width="60" height="141" rx="10"/>
+      <rect x="508" y="396" width="60" height="93" rx="10"/>
+      <rect x="340" y="618" width="60" height="204" rx="10"/>
+      <rect x="424" y="588" width="60" height="234" rx="10"/>
+      <rect x="508" y="644" width="60" height="178" rx="10"/>
+    </g>
+    <rect x="614" y="638" width="56" height="182" rx="10" fill="#1d4ed8" transform="rotate(10 642 729)"/>
+  </g>
+</svg>

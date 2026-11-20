@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nuuritas.github.io/shelf-impeccable/sitemap.xml
