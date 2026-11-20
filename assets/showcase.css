@@ -849,7 +849,7 @@ font:500 .6875rem/1 var(--mono);letter-spacing:.09em;text-transform:uppercase;co
 .showcase .stage-panel{display:none;gap:var(--s4)}
 .showcase #stage-t1:checked ~ .ways-copy .is-src,
 .showcase #stage-t2:checked ~ .ways-copy .is-note,
-.showcase #stage-t3:checked ~ .ways-copy .is-doc{display:grid;animation:sc-rise .42s var(--ease) both}
+.showcase #stage-t3:checked ~ .ways-copy .is-doc{display:flex;flex-direction:column;animation:sc-rise .42s var(--ease) both}
 .showcase .stage-kicker{margin:0 0 -6px;font:500 .6875rem/1 var(--mono);letter-spacing:.1em;
 text-transform:uppercase;color:var(--accent)}
 
@@ -899,9 +899,18 @@ background:var(--accent-wash);color:var(--ink);white-space:nowrap}
    above it, and the copy begins where the screen does instead of floating in
    the middle of a tall phone */
 .showcase .ways{align-items:start}
-.showcase .ways-copy{grid-row:2;align-self:start;padding-top:22px}
+.showcase .ways-copy{grid-row:2;align-self:stretch;padding-top:22px;
+display:flex;flex-direction:column}
+/* The phone is twice as tall as the three steps, so the note that closes the
+   story sits on the phone's foot instead of leaving a hole above the next
+   section. The copy is as tall as the device; the rule lands where the
+   device ends. */
+.showcase .ways-copy > .stage-panel{flex:1;flex-direction:column}
+.showcase .ways-copy .ways-sources{margin-top:auto}
 @media(max-width:900px){
-.showcase .ways-copy{grid-row:auto;padding-top:0}
+.showcase .ways-copy{grid-row:auto;padding-top:0;display:block}
+.showcase .ways-copy > .stage-panel{flex:none}
+.showcase .ways-copy .ways-sources{margin-top:0}
 }
 
 /* one share per source. The loop is retimed so each of the four sources gets

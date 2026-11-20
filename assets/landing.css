@@ -1,0 +1,171 @@
+/* Shelf Cloud — the landing page's own layer.
+   Loaded by /index.html only, after app.css. It composes the four places where
+   the page was still a stack rather than a sequence: the hero's last line, the
+   pull quote (a band instead of a screen of paper), the plan band's footnote,
+   and the clients band. It also gives the phone menu a panel that closes.
+
+   Tokens only. Nothing here retimes a reveal, and nothing here reaches into
+   #how: the stage, its tabs and its share loop are locked. */
+
+/* ---------------------------------------------------------------- hero
+   The right card starts on the headline's cap line, not on the wrap's top
+   edge, and the note under the buttons ends on a balanced line instead of a
+   two-word widow. */
+
+@media (min-width:901px){
+  .hero{padding-bottom:56px}
+  /* 25px is the space between the h1's box and its cap at this size: the card's
+     own top border lands on the first line of type instead of floating above it */
+  .hero-shelf{padding-top:25px}
+  /* the note and "11 more on the shelf" end on one line: the hero's two
+     columns stop together instead of leaving a step at the bottom */
+  .hero-aside{margin-top:13px}
+}
+
+.hero-note{text-wrap:balance}
+
+/* ---------------------------------------------------------------- statement
+   The quote is the page's one full-bleed sentence, so it gets a plate: white
+   against the paper, a hairline above and below, and a cap column that is a
+   real column — mono label, one line of copy, and the rule that separates it
+   from the quote. The 100svh of empty paper that used to sit above and below
+   it is gone; the band's own air is the composition. */
+
+.statement{
+  display:block;
+  min-height:0;
+  padding:60px 0 64px;
+  border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+  background:var(--card);
+}
+.statement > .wrap{
+  display:grid;
+  grid-template-columns:minmax(0,170px) minmax(0,1fr);
+  column-gap:40px;
+  align-items:stretch;
+}
+.statement-cap{padding-right:26px;border-right:1px solid var(--rule)}
+.statement-cap .micro{display:block}
+.statement-note{margin-top:16px;font-size:12.5px;line-height:1.55;letter-spacing:-.004em;color:var(--faint);text-wrap:balance}
+.statement-text{max-width:28ch;text-wrap:pretty}
+
+/* ---------------------------------------------------------------- pricing
+   The self-hosted line is a footnote to the whole band, not a third paragraph
+   in the left column: it closes the band with one hairline, the way the clients
+   band closes, instead of hanging 200px under the lede. */
+
+.plan-foot{
+  margin-top:40px;padding-top:16px;border-top:1px solid var(--rule);
+  font-size:12.5px;line-height:1.6;color:var(--faint);
+}
+.plan-foot span{display:block;max-width:62ch}
+/* Top-aligned, not centred: every other band on this page starts its label on
+   the top edge of the thing it describes (CLIENTS beside the client cards), and
+   a plan is a spec sheet — the label belongs on the card's top rule. */
+.plan-grid{align-items:start}
+
+/* ---------------------------------------------------------------- clients
+   Headline and its line on the left, the diagram of the share sheet under
+   them, the two clients on the right as cards, and one rule under the lot. */
+
+.apps-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1.02fr);
+  grid-template-rows:auto 1fr;
+  column-gap:64px;
+  row-gap:32px;
+  align-items:start;
+}
+.apps-copy{grid-column:1;grid-row:1}
+.apps-copy .h2{margin-top:12px;max-width:16ch;text-wrap:balance}
+.apps-copy .body{margin-top:12px;max-width:42ch}
+.apps-shot{grid-column:1;grid-row:2;align-self:start}
+.apps-cards{grid-column:2;grid-row:1 / span 2;display:grid;gap:14px;align-content:start}
+
+#apps .client{
+  display:block;
+  padding:20px 22px 21px;
+  border:1px solid var(--rule);
+  border-radius:var(--r);
+  background:var(--card);
+}
+.client-top{display:flex;align-items:center;gap:10px}
+.client-top .micro{margin:0}
+.client-top .chip{margin-left:auto;text-transform:none}
+#apps .client h3{margin-top:13px}
+#apps .client .body{margin-top:9px;max-width:58ch}
+#apps .client .link{display:inline-block;margin-top:18px}
+
+.apps-foot{margin-top:40px;padding-top:18px;border-top:1px solid var(--rule);font-size:12.5px;color:var(--faint)}
+
+/* the share sheet as a diagram: the phone's own vocabulary — the file row, four
+   app tiles with Shelf first, and the one action it saves — without the phone
+   around it, because #how already has the phone */
+.sheet-mini{
+  max-width:332px;
+  padding:10px 12px 12px;
+  border:1px solid var(--rule);
+  border-radius:12px;
+  background:var(--card);
+}
+.sheet-mini-grab{display:block;width:30px;height:3px;margin:1px auto 12px;border-radius:2px;background:var(--rule-strong)}
+.sheet-mini-file{display:flex;align-items:center;gap:9px}
+.sheet-mini-tile{
+  flex:none;display:grid;place-items:center;width:26px;height:26px;border-radius:7px;
+  background:var(--deep);color:var(--soft);
+}
+.sheet-mini-tile svg{width:13px;height:13px}
+.sheet-mini-name{display:grid;gap:2px;min-width:0}
+.sheet-mini-name b{
+  font-size:11.5px;font-weight:580;line-height:1.25;letter-spacing:-.012em;color:var(--ink);
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.sheet-mini-name span{font-family:var(--mono);font-size:8.5px;letter-spacing:.04em;color:var(--faint)}
+
+.sheet-mini-apps{display:flex;gap:4px;margin-top:12px;padding-top:12px;border-top:1px solid var(--rule)}
+.sheet-mini-app{flex:1;min-width:0;display:grid;justify-items:center;gap:5px}
+.sheet-mini-app .ico{
+  display:grid;place-items:center;width:100%;max-width:44px;aspect-ratio:1;
+  border-radius:9px;background:var(--deep);color:var(--soft);
+}
+.sheet-mini-app .ico svg{width:14px;height:14px}
+.sheet-mini-app.is-on .ico{background:var(--ink);color:var(--card)}
+.sheet-mini-app.is-on .ico svg{width:18px;height:18px}
+.sheet-mini-app em{font-style:normal;font-size:8.5px;line-height:1;letter-spacing:.01em;color:var(--faint);white-space:nowrap}
+.sheet-mini-app.is-on em{color:var(--ink-soft)}
+
+.sheet-mini-save{
+  display:flex;align-items:center;gap:7px;
+  margin:12px 0 0;padding-top:11px;border-top:1px solid var(--rule);
+  font-size:11px;letter-spacing:-.004em;color:var(--ink-soft);
+}
+.sheet-mini-save svg{flex:none;width:13px;height:13px;color:var(--faint)}
+.sheet-mini-save b{
+  margin-left:auto;font-family:var(--mono);font-size:8px;font-weight:500;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--accent);
+}
+.apps-figcap{
+  margin-top:12px;font-family:var(--mono);font-size:9px;line-height:1.5;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--faint);
+}
+
+/* ---------------------------------------------------------------- narrow */
+@media (max-width:900px){
+  .statement{padding:44px 0 46px}
+  .statement > .wrap{grid-template-columns:minmax(0,1fr);column-gap:0;row-gap:18px}
+  .statement-cap{padding-right:0;border-right:0}
+  .statement-note{margin-top:9px;max-width:34ch}
+  .statement-text{max-width:32ch}
+
+  .apps-grid{grid-template-columns:minmax(0,1fr);grid-template-rows:auto;row-gap:28px}
+  .apps-copy,.apps-shot,.apps-cards{grid-column:1;grid-row:auto}
+  .apps-copy .h2,.apps-copy .body{max-width:52ch}
+  .apps-cards{gap:12px}
+  .apps-foot{margin-top:32px}
+}
+
+@media (max-width:560px){
+  .sheet-mini{max-width:none}
+  #apps .client{padding:18px 18px 19px}
+}

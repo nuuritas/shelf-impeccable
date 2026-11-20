@@ -1,0 +1,441 @@
+/* Shelf Cloud — the library page. Loaded after app.css, on /library only.
+   One rule holds the whole shelf together: pictures bleed, words measure, and
+   every save wears the same four bands — who it came from, what it says, the
+   summary, and where it is filed. No card is a thumbnail in a corner. */
+
+.shell{
+  --rail:248px;
+  --shelf:760px;
+  --gut:40px;
+  --card-pad:22px;
+  grid-template-columns:var(--rail) minmax(0,1fr);
+}
+
+/* ---------------------------------------------------------------- the rail
+   The panel is the column, not the viewport: it paints the full height of the
+   page, and its contents stay put in a 100dvh box of their own that scrolls
+   when the viewport is short. No white rail stopping at the fold. */
+.side{
+  position:static;height:auto;padding:0;overflow:hidden;
+  align-self:stretch;display:block;
+}
+.side-in{
+  position:sticky;top:0;display:flex;flex-direction:column;
+  height:100vh;height:100dvh;overflow-y:auto;overscroll-behavior:contain;
+  padding:16px 12px;scrollbar-width:thin;scrollbar-color:var(--rule) transparent;
+}
+.side-in::-webkit-scrollbar{width:9px}
+.side-in::-webkit-scrollbar-thumb{background:var(--rule-strong);border-radius:9px}
+.side-in::-webkit-scrollbar-track{background:transparent}
+
+/* the rail's lower half carries the one thing the shelf is for */
+.rail-hint{margin-top:18px;padding:14px 9px 0;border-top:1px solid var(--rule)}
+.rail-hint b{
+  display:block;margin-bottom:5px;font-family:var(--mono);font-size:9.5px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--soft);font-weight:500;
+}
+.rail-hint p{font-size:11.5px;line-height:1.55;color:var(--faint);max-width:21ch}
+.rail-hint p+p{margin-top:5px}
+.side-foot{margin-top:auto}
+
+/* ---------------------------------------------------------------- the bar
+   One sticky surface, two rows: the app's chrome on top, the shelf's index
+   under it. Both rows sit on the same measure as the cards, so the control bar
+   and the list share one left edge. */
+.app-bar{display:block;height:auto;padding:0}
+.bar-in{
+  display:flex;flex-wrap:wrap;align-items:center;
+  width:100%;max-width:var(--shelf);margin:0 auto;padding:0 var(--gut);
+}
+.bar-in>.crumbs,.bar-in>.m-brand,.bar-in>.right{height:58px}
+
+.shelf-bar{
+  /* the index sits under the pinned chrome on the desk, as it always has; on a
+     phone it is content and scrolls away (the ≤900 block un-sticks it) */
+  position:sticky;top:58px;z-index:29;
+  display:flex;align-items:center;gap:20px;height:58px;width:100%;
+  max-width:var(--shelf);margin:0 auto;padding:0 var(--gut);
+  border-top:1px solid var(--rule);
+  background:rgba(244,246,249,.95);backdrop-filter:blur(10px);
+}
+.shelf-title{display:flex;align-items:center;gap:10px;flex:none;min-width:0}
+.shelf-title h1{font-size:17px;line-height:1;letter-spacing:-.026em;font-weight:620;white-space:nowrap}
+.shelf-title .total{
+  flex:none;font-family:var(--mono);font-size:9.5px;letter-spacing:.04em;
+  color:var(--soft);white-space:nowrap;background:var(--deep);border-radius:4px;
+  padding:2px 6px;line-height:1.5;
+}
+.shelf-bar .add-link{margin-left:auto;flex:none;gap:6px}
+.shelf-bar .add-link svg{width:12px;height:12px;stroke-width:2;flex:none}
+/* the phone's add control lives in the pinned chrome row, not in the row that
+   scrolls away: a 30px ink square beside search and the avatar */
+.add-chip{
+  width:30px;height:30px;flex:none;border-radius:8px;background:var(--ink);color:#fff;
+  transition:background var(--speed),transform var(--speed);
+}
+.add-chip svg{width:14px;height:14px;stroke-width:2.2}
+.add-chip:hover{background:#1b2734}
+.add-chip:active{transform:translateY(1px)}
+
+/* the cut strip: one bordered group, four cells, one divider each — not five
+   pills of equal weight. A set cut shows its value in the one cobalt. */
+.filters{
+  display:flex;align-items:stretch;gap:0;padding:0;flex:none;height:34px;
+  border:1px solid var(--rule);border-radius:8px;background:var(--card);
+}
+.fmenu{position:relative;display:flex}
+.fmenu>summary{
+  height:32px;padding:0 11px;border:0;border-radius:0;background:none;
+  display:flex;align-items:center;gap:6px;font-size:12px;color:var(--soft);
+}
+.fmenu+.fmenu>summary{border-left:1px solid var(--rule)}
+.fmenu:first-child>summary{border-radius:7px 0 0 7px}
+.fmenu:last-child>summary{border-radius:0 7px 7px 0}
+.fmenu>summary:hover{background:var(--paper);color:var(--ink)}
+.fmenu[open]>summary{border-color:transparent;background:var(--paper);color:var(--ink)}
+.fmenu.is-set>summary{background:var(--paper)}
+.fmenu .fname{
+  font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--faint);font-weight:500;
+}
+.fmenu .fval{color:var(--ink);font-weight:550;font-size:12.5px;letter-spacing:-.006em}
+.fmenu.is-set .fval{color:var(--accent)}
+.fmenu:not(.is-set) .fval{color:var(--faint);font-weight:500}
+.fmenu .fcount{
+  font-family:var(--mono);font-size:9px;color:var(--faint);
+  background:var(--deep);border-radius:3px;padding:1px 4px;
+}
+.fmenu .caret{color:var(--faint);font-size:7px;line-height:1}
+.fmenu .panel{top:calc(100% + 8px)}
+.fmenu .panel .opt{
+  display:flex;align-items:center;gap:8px;width:100%;padding:7px 9px;
+  border-radius:6px;font-size:12.8px;color:var(--ink-soft);text-align:left;
+  transition:background var(--speed),color var(--speed);
+}
+.fmenu .panel .opt:hover{background:var(--deep)}
+.fmenu .panel .opt[aria-current="true"]{background:var(--accent-wash);color:var(--accent)}
+.fmenu .panel .opt .n{margin-left:auto;font-family:var(--mono);font-size:9.5px;color:var(--faint)}
+
+/* the column itself */
+.app-body{padding:20px 0 52px}
+.col{max-width:var(--shelf);padding:0 var(--gut)}
+
+/* ---------------------------------------------------------------- the save
+   Four bands in one order on all ten saves: the meta line, the picture (when
+   the source gave one), the title and its summary, the filing line. A card is
+   as tall as its contents and no taller, which is what gives the list its
+   rhythm: two short notes in a row, then a talk that takes the whole width. */
+.list{gap:10px}
+/* one measure for the words, so the author's text and the summary band end on
+   the same line; pictures are the only thing that runs the full width */
+.shell{--measure:560px}
+.save{
+  padding:14px var(--card-pad) 13px;border-radius:12px;min-width:0;
+  overflow:clip;
+}
+.save-top{gap:8px}
+.by{font-size:11.8px}
+.save-top .tail{margin-left:auto}
+
+.save h2{
+  margin-top:11px;font-size:17px;line-height:1.3;letter-spacing:-.019em;
+  font-weight:590;max-width:42ch;
+}
+.save h2 a:hover{text-decoration:underline;text-underline-offset:3px}
+.save .txt{
+  margin-top:9px;font-size:13.8px;line-height:1.6;letter-spacing:-.004em;
+  color:var(--ink-soft);max-width:var(--measure);
+}
+.save-top+.txt{margin-top:10px}
+.save-top+.txt.lead{font-size:14.2px;color:var(--ink-soft)}
+.save h2+.txt{margin-top:6px}
+
+.ai{margin-top:11px;padding:8px 10px 8px 8px;max-width:var(--measure);border-radius:7px}
+.ai p{font-size:12.8px;line-height:1.55}
+
+/* the filing line: folder, labels, then the ref you can type and the fold */
+.save-foot{
+  display:flex;align-items:center;gap:12px;margin-top:13px;padding-top:10px;
+  border-top:1px solid var(--rule);
+}
+.save-foot .labels{margin-top:0;gap:6px;min-width:0}
+.save-foot .tail{margin-left:auto;display:flex;align-items:center;gap:3px;flex:none}
+.save-foot .ref{
+  font-size:9.5px;letter-spacing:.06em;color:var(--soft);padding:2px 6px;
+  border:1px solid var(--rule);border-radius:5px;background:var(--card);
+}
+.save-foot .ref:hover{color:var(--ink);border-color:var(--faint)}
+.save .fold{width:24px;height:24px;margin-right:-4px}
+
+.lab{
+  display:inline-flex;align-items:center;gap:5px;font-size:10px;line-height:1.6;
+  padding:1px 7px;border-radius:5px;color:var(--soft);border-color:var(--rule);
+}
+.lab .sw{width:5px;height:5px;border-radius:1.5px;background:var(--rule-strong);flex:none}
+.lab[data-topic-jump="reading"] .sw{background:var(--accent)}
+.lab[data-topic-jump="design"] .sw{background:var(--ok)}
+.lab[data-topic-jump="work"] .sw{background:var(--warn)}
+.lab[data-on]{color:var(--ink);border-color:var(--rule-strong)}
+.note-tag{align-self:center;font-size:8px;padding:1px 5px}
+
+/* an artifact is the one object that is not a link: it keeps the one wash */
+.save.note{background:linear-gradient(180deg,#fbfcff,#f6f8ff)}
+
+/* ---------------------------------------------------------------- the band
+   A picture owns the full width of the card and runs into its edges, so image
+   and text are one object instead of two designs side by side. */
+.band{
+  display:block;position:relative;overflow:hidden;background:var(--ink);
+  margin:12px calc(var(--card-pad) * -1) 0;
+}
+.band .still{margin:0;border:0;border-radius:0;width:100%;height:100%;isolation:auto}
+.band .still:hover .play{transform:translate(-50%,-50%) scale(1.06)}
+
+/* a reel is a portrait poster and the reel's own caption on one dark stage:
+   the picture is not a thumbnail floating in a letterbox */
+.band.reel-band{
+  display:grid;grid-template-columns:236px minmax(0,1fr);
+  gap:26px;align-items:center;padding:22px;
+  background:linear-gradient(122deg,#0c131b 0%,#1a2636 60%,#101923 100%);
+}
+.reel-band .still.reel{
+  width:100%;height:auto;aspect-ratio:4/5;border:1px solid rgba(255,255,255,.14);
+  box-shadow:0 30px 60px -34px rgba(0,0,0,.95);
+}
+.reel-band .still.reel .n{top:11px;right:11px}
+.reel-meta{display:flex;flex-direction:column;gap:8px;min-width:0;color:#fff}
+.reel-meta .rm-by{
+  display:flex;align-items:center;gap:7px;font-size:12px;
+  color:rgba(255,255,255,.6);letter-spacing:-.004em;
+}
+.reel-meta .rm-av{
+  width:20px;height:20px;border-radius:50%;display:grid;place-items:center;flex:none;
+  background:rgba(255,255,255,.13);font-size:7.5px;font-weight:600;
+  color:rgba(255,255,255,.82);
+}
+.reel-meta .rm-k{
+  font-family:var(--mono);font-size:8.5px;letter-spacing:.15em;text-transform:uppercase;
+  color:rgba(255,255,255,.44);
+}
+.reel-meta .rm-quote{
+  font-size:20px;line-height:1.24;letter-spacing:-.032em;font-weight:540;
+  color:rgba(255,255,255,.95);max-width:19ch;text-wrap:balance;
+}
+.reel-meta .rm-cue{
+  display:inline-flex;align-items:center;gap:6px;margin-top:4px;
+  font-size:11.5px;color:rgba(255,255,255,.66);
+}
+.reel-meta .rm-cue svg{opacity:.75;transition:transform var(--speed)}
+.reel-band:hover .rm-cue svg{transform:translate(1px,-1px)}
+
+/* a talk is a player's poster: the kicker, the title inside the frame, the
+   length, and the play control where a player puts it — not an empty gradient */
+.band.video-band .still.video{height:auto;aspect-ratio:2.9/1}
+.band.video-band .still .k{left:var(--card-pad);top:15px}
+.band.video-band .still .n{left:auto;right:var(--card-pad);bottom:15px}
+.band.video-band .still .play{
+  left:auto;right:38px;top:50%;transform:translateY(-50%);width:46px;height:46px;
+}
+.band.video-band .still:hover .play{transform:translateY(-50%) scale(1.06)}
+.talk-plate{
+  position:absolute;left:var(--card-pad);bottom:15px;z-index:2;
+  display:flex;flex-direction:column;gap:8px;max-width:56%;
+}
+.talk-plate .talk-speaker{
+  font-size:clamp(21px,2.4vw,32px);line-height:1.02;letter-spacing:-.04em;
+  font-weight:560;color:#fff;text-wrap:balance;
+}
+.talk-plate .talk-by{
+  font-family:var(--mono);font-size:8px;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.5);
+}
+.band.plate-band{background:var(--card);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.plate-band .still{background:var(--card)}
+.band .still.cover{height:186px}
+.band .still.cover .t{font-size:22px;max-width:56%}
+.band .still.wide{height:140px}
+.band .still.cover .k,.band .still.wide .k{left:var(--card-pad)}
+.band .still.cover .n,.band .still.wide .n{right:var(--card-pad)}
+
+/* ---------------------------------------------------------------- the end
+   The list closes on a sentence that belongs to the product, then one row that
+   invites the next save — not a cut where the cards stop. */
+.shelf-end{margin-top:26px;padding:20px 0 0;border-top:1px solid var(--rule)}
+.end-line{
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:0 8px;
+  font-size:12.5px;line-height:1.6;color:var(--soft);max-width:54ch;
+}
+.end-line .k{
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--faint);
+}
+.end-add{
+  display:flex;align-items:center;gap:12px;width:100%;margin-top:16px;
+  padding:0 16px;height:56px;border:1px dashed var(--rule-strong);border-radius:10px;
+  text-align:left;transition:border-color var(--speed),background var(--speed);
+}
+.end-add:hover{border-color:var(--faint);background:var(--card)}
+.end-add .plus{
+  width:22px;height:22px;flex:none;display:grid;place-items:center;border-radius:50%;
+  border:1px solid var(--rule-strong);color:var(--soft);font-size:13px;line-height:1;
+}
+.end-add .t{display:block;font-size:13.5px;font-weight:550;color:var(--ink)}
+.end-add .sub{display:block;font-size:11.5px;color:var(--faint);line-height:1.5}
+.end-foot{
+  display:none;flex-direction:column;gap:9px;margin-top:20px;padding-top:14px;
+  border-top:1px solid var(--rule);font-size:12px;color:var(--soft);
+}
+.end-foot .grp{display:flex;flex-wrap:wrap;gap:6px 18px}
+.end-foot .meta{font-size:11.5px;color:var(--faint)}
+.end-foot a{color:inherit}
+.end-foot a[aria-current="page"]{color:var(--ink);font-weight:560}
+
+.empty{
+  margin-top:10px;padding:36px 22px;border:1px solid var(--rule);border-radius:12px;
+  text-align:left;font-size:13px;color:var(--soft);background:transparent;
+}
+.empty .k{
+  display:block;margin-bottom:6px;font-family:var(--mono);font-size:9.5px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--faint);
+}
+.empty .link{margin-left:2px}
+
+/* ---------------------------------------------------------------- responsive */
+@media (max-width:1180px){
+  .shell{--shelf:100%;--gut:32px}
+}
+/* the rail keeps 248px; between 901 and 1023 the index cannot hold its heading
+   and the four cuts on one line, so the heading goes and the cuts stay */
+@media (max-width:1023px) and (min-width:901px){
+  .shelf-title{display:none}
+  .shelf-bar{gap:12px}
+}
+@media (max-width:900px){
+  /* the rail is the desktop's chrome; the phone carries the same cuts in the
+     bar it can actually reach, and closes on the shelf's own footer */
+  .shell{grid-template-columns:minmax(0,1fr);--gut:16px;--card-pad:15px}
+  .side{display:none}
+  .app-body{padding-bottom:44px}
+
+  /* only the chrome row is pinned. The app-bar box dissolves, so the sticky
+     row's containing block is the whole column and it can stay for the page. */
+  .app-bar{display:contents}
+  .bar-in{
+    position:sticky;top:0;z-index:30;height:56px;padding:0 var(--gut);
+    background:rgba(244,246,249,.95);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--rule);
+  }
+  .bar-in>.crumbs,.bar-in>.m-brand,.bar-in>.right{height:56px}
+  /* the cut strip is content, not chrome: it scrolls away with the list, and
+     the one add control lives in the pinned row above it */
+  .shelf-bar{
+    position:static;z-index:auto;background:none;backdrop-filter:none;
+    flex:0 0 auto;width:100%;max-width:none;height:auto;flex-wrap:wrap;gap:8px 10px;
+    margin:0;padding:8px var(--gut) 9px;border-top:0;
+  }
+  .shelf-title{display:none}
+  .filters{flex:1 1 auto}
+  .shelf-bar .add-link{display:none}
+
+  /* a phone gets the same four cuts as four chips, not a squeezed table */
+  .filters{border:0;background:none;gap:6px;height:auto;flex-wrap:wrap;min-width:0}
+  .fmenu>summary{height:30px;padding:0 10px;gap:5px;border:1px solid var(--rule);
+    border-radius:7px;background:var(--card)}
+  .fmenu:first-child>summary,.fmenu:last-child>summary{border-radius:7px}
+  .fmenu+.fmenu>summary{border-left:1px solid var(--rule)}
+  .fmenu .fname{font-size:8.5px;letter-spacing:.08em}
+  .fmenu:not(.is-set) .fval{display:none}
+  .fmenu .fval{font-size:12px}
+  .fmenu .caret{display:inline;font-size:7px;margin-left:1px}
+  .fmenu .fcount{font-size:8.5px}
+
+  .save{padding:13px var(--card-pad) 12px;border-radius:11px}
+  .list{gap:9px}
+  .save-foot{flex-wrap:wrap;gap:8px}
+  .save-foot .tail{margin-left:auto}
+  .save .fold{width:28px;height:28px;margin:-4px -5px -4px 0}
+  .save-foot .ref{padding:4px 7px}
+  .lab{padding:2px 8px}
+
+  .band{margin-top:11px}
+  .band.reel-band{grid-template-columns:186px minmax(0,1fr);gap:20px;padding:18px}
+  .reel-meta .rm-quote{font-size:17px}
+  .band.video-band .still .play{right:24px;width:40px;height:40px}
+  .band .still.cover{height:176px}
+  .band .still.wide{height:132px}
+  .band .still.cover .t{font-size:18px;max-width:64%}
+
+  .shelf-end{margin-top:22px;padding-top:18px}
+  .end-add{height:54px;padding:0 14px}
+  .end-add .sub{display:none}
+  .end-foot{display:flex}
+  .empty{padding:32px 16px}
+}
+@media (max-width:560px){
+  .filters{flex:1 1 100%}
+  .shelf-bar{padding:8px var(--gut) 10px}
+
+  /* a phone gets one full-width poster, its caption set inside the dark at the
+     bottom — not a thumbnail beside a narrow column of three-line type */
+  .band.reel-band{
+    display:block;position:relative;height:312px;padding:0;background:#0c131b;
+  }
+  .reel-band .still.reel{
+    position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;
+    border:0;border-radius:0;box-shadow:none;
+  }
+  .reel-band .still.reel .glyph{font-size:172px;left:-12px;bottom:104px}
+  .reel-band .still.reel .play{top:33%;width:44px;height:44px}
+  /* the overlay below already names the author and the length; the artwork's
+     corner labels would say both twice */
+  .reel-band .still.reel .k,.reel-band .still.reel .n{display:none}
+  .reel-meta{
+    position:absolute;left:0;right:0;bottom:0;z-index:3;
+    gap:6px;padding:58px 17px 16px;
+    background:linear-gradient(180deg,rgba(8,12,18,0),rgba(8,12,18,.9) 46%,rgba(8,12,18,.97));
+  }
+  .reel-meta .rm-by{font-size:12px}
+  .reel-meta .rm-k{font-size:8.5px;letter-spacing:.14em}
+  .reel-meta .rm-quote{font-size:19px;line-height:1.22;max-width:26ch}
+  .reel-meta .rm-cue{font-size:11px;margin-top:3px}
+  .band.video-band .still .k{left:15px;top:12px}
+  .band.video-band .still .n{right:15px;bottom:12px}
+  .band.video-band .still .play{right:16px;width:34px;height:34px}
+  .talk-plate{left:15px;bottom:12px;max-width:68%;gap:5px}
+  .talk-plate .talk-speaker{font-size:21px}
+  .talk-plate .talk-by{font-size:7.5px;letter-spacing:.12em}
+  .band .still.video{aspect-ratio:1.9/1}
+  .band.video-band .still.video{aspect-ratio:1.9/1}
+  /* a menu opens under the whole cut strip, so no chip's panel can run off
+     either edge of a 320px screen */
+  .filters{position:relative}
+  .fmenu{position:static}
+  .fmenu .panel{
+    left:0;right:auto;min-width:0;top:calc(100% + 8px);
+    width:min(260px, calc(100vw - 32px));
+  }
+  .fmenu:nth-last-child(1) .panel,.fmenu:nth-last-child(2) .panel{left:0;right:auto}
+  .band .still.cover{height:158px}
+  .band .still.cover .t{font-size:16.5px;max-width:70%}
+  .band .still.cover .cols{right:14px;width:26%}
+  .band .still.wide{height:118px}
+  .band .still.wide .t{font-size:15px;top:30px}
+}
+@media (max-width:380px){
+  .shell{--gut:16px}
+  .fmenu>summary{padding:0 7px;gap:4px}
+  .fmenu .fname{font-size:7.5px;letter-spacing:.05em}
+  .save h2{font-size:16px}
+  .band.reel-band{height:300px}
+  .reel-band .still.reel .glyph{font-size:160px;bottom:98px}
+  .reel-meta{padding:52px 15px 14px}
+  .reel-meta .rm-by{font-size:11.5px}
+  .reel-meta .rm-av{width:18px;height:18px}
+  .reel-meta .rm-quote{font-size:18px}
+  .talk-plate{max-width:72%}
+  .talk-plate .talk-speaker{font-size:20px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .band .still:hover .play{transform:translate(-50%,-50%)}
+}

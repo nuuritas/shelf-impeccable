@@ -30,83 +30,143 @@
 <meta name="twitter:description" content="The logged-in Shelf Cloud app at two sizes: the web library and the phone library.">
 <meta name="twitter:image" content="https://nuuritas.github.io/shelf-impeccable/assets/og.png">
 <meta name="twitter:image:alt" content="The Shelf Cloud mark beside a saved link card and its summary.">
-<link rel="stylesheet" href="assets/app.css?v=69645661">
+<link rel="stylesheet" href="assets/app.css?v=f8f0ab3d">
+<link rel="stylesheet" href="assets/pages.css?v=0677232e">
 </head>
 <body>
 
-<header class="rev-top">
+<header class="site-nav">
   <div class="wrap">
     <a class="brand" href="index.html">
       <svg class="mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><path d="M3.1 5.1h3.1v14.7H3.1z"/><path d="M7.5 5.1h3.1v14.7H7.5z"/><path d="M12.4 5.5l3-.4 1.9 14.5-3 .4z" fill="currentColor" fill-opacity=".18"/><path d="M2.4 20.9h19.2"/></svg>
       Shelf Cloud
     </a>
-    <span class="micro">Design review · the app</span>
-    <a class="link" href="index.html">Back to the page</a>
+    <nav id="menu">
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#apps">Apps</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="library.html">Library</a>
+    </nav>
+    <div class="right">
+      <a href="library.html">Log in</a>
+      <a class="btn" href="library.html">Start free</a>
+    </div>
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" data-nav-toggle><i></i></button>
   </div>
 </header>
 
-<main class="rev">
+<main class="sheet">
   <div class="wrap">
 
-    <h1 class="h1 rv now" style="font-size:clamp(30px,4.2vw,48px);line-height:1.06;letter-spacing:-.038em;font-weight:640">The logged-in shelf, at two sizes.</h1>
-    <p class="lede rv now" style="--d:.08s">Both frames are the live pages, not pictures: one markup, one card component, the same filters. The rail is the web; the phone is the app — and the shape the Android and iOS builds use.</p>
-
-    <section class="rev-sec web-sec rv" style="--d:.16s">
-      <p class="micro">Web · from 1280 up</p>
-      <figure class="frame web-frame" style="margin:0">
-        <div class="chrome"><i></i><i></i><i></i><span class="url">shelfcloud.io/library</span></div>
-        <div class="vp"><iframe src="library.html" title="The Shelf Cloud library at desktop width" loading="lazy"></iframe></div>
-      </figure>
-    </section>
-
-    <section class="rev-sec">
-      <p class="micro">Phone · 390 × 844</p>
-      <div class="rev-grid">
-        <div class="phones">
-          <figure class="phone" style="margin:0">
-            <div class="bezel"><div class="screen"><iframe src="library.html" title="The Shelf Cloud library on a phone" loading="lazy"></iframe></div></div>
-            <figcaption><b>Library</b><span>every save, newest first</span><span class="ref">390 × 844</span></figcaption>
-          </figure>
-          <figure class="phone" style="margin:0">
-            <div class="bezel"><div class="screen"><iframe src="player.html" title="A reel on the source's own player" loading="lazy"></iframe></div></div>
-            <figcaption><b>Reel</b><span>the source plays it</span><span class="ref">390 × 844</span></figcaption>
-          </figure>
-          <figure class="phone" style="margin:0">
-            <div class="bezel"><div class="screen"><iframe src="post.html" title="An agent artifact on a phone" loading="lazy"></iframe></div></div>
-            <figcaption><b>Artifact</b><span>the document, sandboxed</span><span class="ref">390 × 844</span></figcaption>
-          </figure>
-        </div>
-
-        <div class="rev-notes">
-          <h2>What the shelf holds</h2>
-          <ul>
-            <li>Seven kinds of save, one card: an X post, an X article, a LinkedIn post, a video, a reel, a web page, an agent's artifact.</li>
-            <li>The card carries what the source gave it — the paragraph, the picture, the player's still, the document's opening.</li>
-            <li>The AI summary is a band inside the card, two lines, folding with the text it reads.</li>
-            <li>A tap folds the card. The only screens it opens are the two a card cannot be: a reel and an artifact.</li>
-            <li>Archive, copy and the source live inside the open card, so a folded shelf is all content.</li>
-            <li>Chrome is one bar and one row of four menus; the row scrolls away, and nothing is pinned.</li>
-          </ul>
-        </div>
+    <section class="sheet-row head rv now">
+      <p class="micro">Screens</p>
+      <div>
+        <h1 class="sheet-h">The logged-in shelf, at two sizes.</h1>
+        <p class="lede sheet-lede">Both frames are the live pages, not pictures: one markup, one card component, the same filters. The rail is the web; the phone is the app — and the shape the Android and iOS builds use.</p>
       </div>
     </section>
 
-    <p class="body rv" style="margin-top:56px;padding-top:18px;border-top:1px solid var(--rule);max-width:62ch">
-      The web frame follows the site's own breakpoints; at 900 the rail is replaced by the phone bar, so narrowing this window is the same test as opening it on a phone. The artifact is <a class="link" href="post.html">its own page</a>, and the reel is <a class="link" href="player.html">the source's</a>.
-    </p>
+    <section class="sheet-row web-sec rv">
+      <p class="micro">Web · from 1280 up</p>
+      <figure class="frame web-frame">
+        <div class="chrome"><i></i><i></i><i></i><span class="url">shelfcloud.io/library</span></div>
+        <div class="vp"><iframe src="library.html" title="The Shelf Cloud library at desktop width"></iframe></div>
+      </figure>
+    </section>
+
+    <section class="sheet-row rv">
+      <p class="micro">Phone · 390 × 844</p>
+      <div class="bezel-row">
+        <figure class="phone">
+          <div class="bezel"><div class="screen"><iframe src="library.html" title="The Shelf Cloud library on a phone"></iframe></div></div>
+          <figcaption><b>Library</b><span class="ref">390 × 844</span><span class="d">every save, newest first</span></figcaption>
+        </figure>
+        <figure class="phone">
+          <div class="bezel"><div class="screen"><iframe src="player.html" title="A reel on the source's own player"></iframe></div></div>
+          <figcaption><b>Reel</b><span class="ref">390 × 844</span><span class="d">the source plays it</span></figcaption>
+        </figure>
+        <figure class="phone">
+          <div class="bezel"><div class="screen"><iframe src="post.html" title="An agent artifact on a phone"></iframe></div></div>
+          <figcaption><b>Artifact</b><span class="ref">390 × 844</span><span class="d">the document, sandboxed</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="sheet-row rv">
+      <p class="micro">Notes</p>
+      <div>
+        <h2 class="note-h">What the shelf holds</h2>
+        <ol class="note-list">
+          <li><span class="n">01</span><span>Seven kinds of save, one card: an X post, an X article, a LinkedIn post, a video, a reel, a web page, an agent's artifact.</span></li>
+          <li><span class="n">02</span><span>The card carries what the source gave it — the paragraph, the picture, the player's still, the document's opening.</span></li>
+          <li><span class="n">03</span><span>The AI summary is a band inside the card, two lines, folding with the text it reads.</span></li>
+          <li><span class="n">04</span><span>A tap folds the card. The only screens it opens are the two a card cannot be: a reel and an artifact.</span></li>
+          <li><span class="n">05</span><span>Archive, copy and the source live inside the open card, so a folded shelf is all content.</span></li>
+          <li><span class="n">06</span><span>Chrome is one bar and one row of four menus; the row scrolls away, and nothing is pinned.</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="sheet-row tail rv">
+      <p class="micro">Reading this sheet</p>
+      <p class="body">The web frame follows the site's own breakpoints; at 900 the rail is replaced by the phone bar, so narrowing this window is the same test as opening it on a phone. The artifact is <a class="link" href="post.html">its own page</a>, and the reel is <a class="link" href="player.html">the source's</a>.</p>
+    </section>
 
   </div>
 </main>
 
-<footer class="site-foot" style="padding:40px 0 56px;border-top:1px solid var(--rule);background:transparent">
-  <div class="wrap foot-bottom" style="margin-top:0;border-top:0">
-    <span>© 2026 Shelf Cloud</span>
-    <span>·</span>
-    <span>Design study — Impeccable</span>
-    <span class="right"><a class="link" href="index.html">Landing page</a><a class="link" href="library.html">Open the library</a></span>
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid rv">
+      <div>
+        <a class="brand" href="index.html">
+          <svg class="mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><path d="M3.1 5.1h3.1v14.7H3.1z"/><path d="M7.5 5.1h3.1v14.7H7.5z"/><path d="M12.4 5.5l3-.4 1.9 14.5-3 .4z" fill="currentColor" fill-opacity=".18"/><path d="M2.4 20.9h19.2"/></svg>
+          Shelf Cloud
+        </a>
+        <p class="blurb">A hosted library for the links you keep. Send from any device, read the summary, search the rest.</p>
+      </div>
+      <div>
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="index.html#how">How it works</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="library.html">Start free</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-h">Apps</p>
+        <ul>
+          <li><a href="https://github.com/nuuritas/shelfcloud-apk/releases/latest" rel="noopener">Android APK</a></li>
+          <li><a href="https://testflight.apple.com/join/mXUn54N4" rel="noopener">iOS · TestFlight</a></li>
+          <li><a href="library.html">Hosted MCP</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-h">Source</p>
+        <ul>
+          <li><a href="library.html">nuuritas/shelf</a></li>
+          <li><a href="library.html">Changelog</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="library.html">Privacy</a></li>
+          <li><a href="library.html">Terms</a></li>
+          <li><a href="library.html">Support</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Shelf Cloud</span>
+      <span>·</span>
+      <span>Design study — Impeccable</span>
+      <a class="link" href="screens.html">Screens</a>
+      <span class="right"><span>Paper #f4f6f9</span><span>Ink #0f1720</span><span>Cobalt #1d4ed8</span></span>
+    </div>
   </div>
 </footer>
 
-<script src="assets/app.js?v=1f9b1a72"></script>
+<script src="assets/app.js?v=3df41100"></script>
 </body>
 </html>

@@ -29,11 +29,7 @@
 
 *,*::before,*::after{box-sizing:border-box}
 [hidden]{display:none!important}
-.vh{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;
-clip-path:inset(50%);white-space:nowrap;border:0}
 html{-webkit-text-size-adjust:100%}
-html.embedded{scrollbar-width:none}
-html.embedded::-webkit-scrollbar{display:none;width:0;height:0}
 body{
   margin:0;background:var(--paper);color:var(--ink);
   font-family:var(--sans);font-size:15.5px;line-height:1.62;
@@ -80,8 +76,6 @@ li{list-style:none}
 .btn-lg{height:48px;padding:0 22px;border-radius:9px;font-size:14.5px;font-weight:570}
 .btn-accent{background:var(--accent)}
 .btn-accent:hover{background:#1a45c2}
-.btn-quiet{background:transparent;color:var(--ink);border:1px solid var(--rule-strong)}
-.btn-quiet:hover{background:#fff;border-color:var(--faint)}
 .link{font-size:13.5px;font-weight:550;color:var(--ink-soft);border-bottom:1px solid var(--rule-strong);padding-bottom:1px;transition:color var(--speed),border-color var(--speed)}
 .link:hover{color:var(--accent);border-color:var(--accent)}
 .link-quiet{color:var(--soft);font-weight:460;border-bottom:1px solid transparent}
@@ -97,7 +91,6 @@ li{list-style:none}
 .ref-box{display:inline-flex;align-items:center;height:22px;padding:0 7px;border:1px solid var(--rule);border-radius:4px;background:#fff}
 
 .card{background:var(--card);border:1px solid var(--rule);border-radius:var(--r)}
-.rule{height:1px;background:var(--rule);border:0}
 
 section[id],#apps{scroll-margin-top:76px}
 
@@ -135,7 +128,7 @@ section[id],#apps{scroll-margin-top:76px}
 .shelf-card .meta{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--faint)}
 .shelf-card .meta b{color:var(--soft);font-weight:500;text-transform:none;letter-spacing:0;font-size:11px}
 .shelf-card .meta .when{text-transform:none;letter-spacing:.01em;font-size:10.5px}
-.shelf-card h3{margin-top:11px;font-size:20px;line-height:1.3;letter-spacing:-.021em;font-weight:600}
+.shelf-card h2,.shelf-card h3{margin-top:11px;font-size:20px;line-height:1.3;letter-spacing:-.021em;font-weight:600}
 .shelf-card .summary{margin-top:8px;font-size:13.5px;line-height:1.62;color:var(--soft)}
 .shelf-card .foot{display:flex;align-items:center;gap:8px;margin-top:14px;padding-top:12px;border-top:1px solid var(--rule);font-size:11.5px;color:var(--faint)}
 .shelf-card .foot .ref-box{margin-left:auto}
@@ -167,7 +160,6 @@ section[id],#apps{scroll-margin-top:76px}
    own entrance still narrows to a 6px rise there, so the preference is honoured
    everywhere it can be without emptying the demo. */
 .showcase{margin-top:38px}
-.showcase-art{margin-top:34px}
 @media (max-width:900px){.showcase{margin-top:26px}}
 .section-head .h2{margin-top:12px}
 .section-head .body{margin-top:12px;max-width:54ch}
@@ -245,19 +237,12 @@ section[id],#apps{scroll-margin-top:76px}
   background-image:linear-gradient(var(--accent),var(--accent));
   background-repeat:no-repeat;background-position:0 100%;background-size:100% .07em;
 }
-
-/* ---------------------------------------------------------------- clients */
-.band-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,32ch);gap:56px;align-items:end}
-.band-head .h2{margin-top:12px}
-.band-head .body{padding-bottom:3px}
-.clients{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin-top:44px;border-top:1px solid var(--rule-strong)}
 .client{padding:26px 34px 30px 0}
 .client + .client{border-left:1px solid var(--rule);padding-left:34px}
 .client .micro{margin-bottom:12px}
 .client h3{font-size:19px;letter-spacing:-.02em;font-weight:590;line-height:1.34}
 .client .body{margin-top:10px;max-width:40ch}
 .client .link{display:inline-block;margin-top:18px}
-.band-foot{margin-top:28px;padding-top:18px;border-top:1px solid var(--rule);font-size:12.5px;color:var(--faint)}
 
 /* ---------------------------------------------------------------- close */
 .close{background:var(--ink);color:#fff;padding:84px 0 88px}
@@ -278,7 +263,7 @@ section[id],#apps{scroll-margin-top:76px}
 .site-foot{border-top:1px solid var(--rule);padding:52px 0 40px;background:#f1f3f7}
 .foot-grid{display:grid;grid-template-columns:1.6fr repeat(4,minmax(0,1fr));gap:40px}
 .foot-grid .blurb{margin-top:12px;font-size:13px;line-height:1.65;color:var(--soft);max-width:30ch}
-.foot-grid h4{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);font-weight:500}
+.foot-grid .foot-h{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);font-weight:500}
 .foot-grid ul{margin-top:12px;display:grid;gap:9px;font-size:13px;color:var(--soft)}
 .foot-grid ul a:hover{color:var(--ink)}
 .foot-bottom{display:flex;align-items:center;gap:16px;margin-top:44px;padding-top:18px;border-top:1px solid var(--rule);font-size:11.5px;color:var(--faint)}
@@ -482,93 +467,7 @@ a.src:hover{color:var(--accent)}
 .still.wide .n{right:14px;bottom:11px}
 .still.wide .k,.still.wide .n{color:var(--faint);opacity:1}
 
-.save-split{display:grid;grid-template-columns:178px minmax(0,1fr);gap:14px;align-items:start;margin-top:9px}
-.save-split .still{margin-top:0}
-.save-split .txt{margin-top:0}
-.save-split .ai{margin-top:8px}
-
 .empty{padding:64px 0;text-align:center;font-size:13px;color:var(--faint)}
-
-/* ---------------------------------------------------------------- artifact
-   The one reading page. The document is painted from stored HTML inside a
-   sandboxed frame in the product; the frame's own bar says so here. */
-.post{max-width:716px;width:100%;margin:0 auto;padding:24px 28px 84px}
-.crumb{display:flex;align-items:center;gap:7px;font-size:11.5px;color:var(--faint)}
-.crumb .ref{color:var(--ink-soft);font-size:10px}
-.post-head{margin-top:18px;padding-bottom:16px;border-bottom:1px solid var(--rule)}
-.post-head .who{display:flex;align-items:center;gap:7px;font-size:11.5px;color:var(--faint);flex-wrap:wrap}
-.post-head .who b{color:var(--ink-soft);font-weight:560}
-.post-head .w-only{display:inline}
-.post-head .ai-chip{font-family:var(--mono);font-size:8px;letter-spacing:.08em;color:var(--accent);background:var(--accent-soft,#e7ecfd);border-radius:4px;padding:2px 5px}
-.post-head h1{margin-top:10px;font-size:clamp(23px,2.8vw,29px);line-height:1.14;letter-spacing:-.03em;font-weight:630;max-width:26ch}
-.post-head .sub{margin-top:9px;font-size:13.5px;line-height:1.6;color:var(--soft);max-width:58ch}
-
-.doc-frame{margin-top:18px;border:1px solid var(--rule);border-radius:10px;overflow:hidden;background:#fff}
-.doc-bar{display:flex;align-items:center;gap:7px;height:28px;padding:0 11px;border-bottom:1px solid var(--rule);
-  background:#f8fafc;font-family:var(--mono);font-size:9px;letter-spacing:.06em;color:var(--faint)}
-.doc-bar .dot{width:5px;height:5px;border-radius:50%;background:var(--ok)}
-.doc-bar .lock{margin-left:auto;font-size:8.5px}
-.doc{padding:26px 28px 30px}
-.doc h2{font-size:16.5px;line-height:1.3;letter-spacing:-.02em;font-weight:620;margin:22px 0 7px}
-.doc h2:first-child{margin-top:0}
-.doc p{margin-top:9px;font-size:13.8px;line-height:1.68;color:var(--ink-soft);max-width:62ch}
-.doc ul{margin-top:9px;display:grid;gap:6px}
-.doc li{position:relative;padding-left:14px;font-size:13.8px;line-height:1.62;color:var(--ink-soft);max-width:62ch}
-.doc li::before{content:"";position:absolute;left:0;top:8px;width:4px;height:4px;border-radius:1px;background:var(--rule-strong)}
-.doc blockquote{margin:16px 0 0;padding:11px 15px;border-left:2px solid var(--accent);background:#f8fafe;
-  font-size:13.4px;line-height:1.66;color:var(--ink-soft);border-radius:0 6px 6px 0}
-.doc .cite{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:20px;padding-top:13px;
-  border-top:1px solid var(--rule);font-family:var(--mono);font-size:9.5px;letter-spacing:.04em;color:var(--faint)}
-.post-actions{display:flex;align-items:center;gap:12px;margin-top:18px}
-.post-meta{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:22px;padding-top:14px;
-  border-top:1px solid var(--rule);font-size:11.5px;color:var(--faint)}
-.post-meta .ref{font-size:9.5px}
-.post-meta code{font-family:var(--mono);font-size:10px;color:var(--ink-soft);background:var(--deep);padding:1px 4px;border-radius:4px}
-
-/* ---------------------------------------------------------------- player
-   The reel's own screen: the source's player, not Shelf's. It exists because a
-   still cannot play, and it is the one place a third-party page is framed, so
-   it wears the source's skin instead of the shelf's. */
-.player{min-height:100vh;background:#0b1118;color:#f4f6f9;display:flex;flex-direction:column}
-.player-bar{flex:none;display:flex;align-items:center;gap:10px;height:54px;padding:0 14px;border-bottom:1px solid rgba(255,255,255,.09)}
-.player-bar .x{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;color:rgba(255,255,255,.7);flex:none;
-  transition:background var(--speed),color var(--speed)}
-.player-bar .x:hover{background:rgba(255,255,255,.08);color:#fff}
-.player-bar .nm{font-size:12.5px;opacity:.72;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.player-bar .ref{margin-left:auto;font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:rgba(255,255,255,.42)}
-.player-stage{flex:1;display:grid;place-items:center;padding:16px}
-.player-frame{position:relative;width:min(100%,388px);aspect-ratio:9/16;max-height:calc(100vh - 150px);
-  border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.1);isolation:isolate;
-  background:radial-gradient(120% 90% at 78% 6%,#2a3a53 0%,#141d29 52%,#0b1118 100%)}
-
-.pf-top{position:absolute;left:0;right:0;top:0;z-index:3;display:flex;align-items:center;gap:8px;padding:13px 14px;
-  background:linear-gradient(180deg,rgba(11,17,24,.72),rgba(11,17,24,0))}
-.pf-av{width:26px;height:26px;border-radius:50%;flex:none;display:grid;place-items:center;font-size:9.5px;font-weight:600;
-  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);color:#fff}
-.pf-name{font-size:12px;font-weight:560;letter-spacing:-.01em}
-.pf-follow{margin-left:auto;font-size:10.5px;padding:3px 8px;border-radius:20px;
-  border:1px solid rgba(255,255,255,.3);color:rgba(255,255,255,.82)}
-
-.pf-glyph{position:absolute;left:-14px;bottom:118px;z-index:1;font-size:190px;line-height:.74;font-weight:600;
-  letter-spacing:-.07em;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.26)}
-
-.pf-play{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);z-index:3;width:52px;height:52px;border-radius:50%;
-  display:grid;place-items:center;color:#0b1118;background:rgba(255,255,255,.94);
-  box-shadow:0 14px 34px -14px rgba(0,0,0,.7);transition:transform .25s cubic-bezier(.22,.75,.25,1)}
-.pf-play svg{width:13px;height:13px}
-.pf-play:hover{transform:translate(-50%,-50%) scale(1.06)}
-
-.pf-foot{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:44px 15px 15px;
-  background:linear-gradient(180deg,rgba(11,17,24,0),rgba(11,17,24,.9) 58%)}
-.pf-cap{font-size:12.5px;line-height:1.55;color:rgba(255,255,255,.92);max-width:33ch}
-.pf-row{display:flex;align-items:center;gap:9px;margin-top:11px}
-.pf-time{font-family:var(--mono);font-size:9px;color:rgba(255,255,255,.6);flex:none}
-.pf-track{flex:1;height:2px;border-radius:2px;background:rgba(255,255,255,.22);overflow:hidden}
-.pf-track i{display:block;width:31%;height:100%;background:rgba(255,255,255,.88)}
-.pf-mute{flex:none;color:rgba(255,255,255,.72);display:grid;place-items:center}
-
-.player-foot{flex:none;padding:0 18px 18px;text-align:center;font-size:11.5px;color:rgba(255,255,255,.5)}
-.player-foot a{color:rgba(255,255,255,.85);text-decoration:underline;text-underline-offset:2px}
 
 /* ---------------------------------------------------------------- copy toast */
 .toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,14px);opacity:0;pointer-events:none;
@@ -673,7 +572,7 @@ a.src:hover{color:var(--accent)}
   .hero-actions .btn-lg,.hero-actions .btn{width:100%}
   .hero-actions .link{align-self:center;border-bottom:0;color:var(--ink-soft)}
   .shelf-card{padding:16px}
-  .shelf-card h3{font-size:18px}
+  .shelf-card h2,.shelf-card h3{font-size:18px}
   .post{padding:16px 16px 72px;max-width:none}
   .post-head .w-only{display:none}
   .doc{padding:20px 18px 24px}
@@ -731,9 +630,6 @@ a.src:hover{color:var(--accent)}
 .step .n{transition:color .3s ease}
 .step:hover .n{color:var(--accent)}
 
-.next-list a{transition:color var(--speed),transform var(--speed)}
-.next-list a:hover{transform:translateX(2px)}
-
 .plan-card{transition:border-color .35s ease,box-shadow .35s ease}
 .plan-card:hover{border-color:var(--faint);box-shadow:0 20px 44px -34px rgba(15,23,32,.35)}
 
@@ -753,18 +649,6 @@ a.src:hover{color:var(--accent)}
   .next-list a:hover,.still:hover .play{transform:none}
   .shelf-next a:hover .dot{transform:none}
 }
-
-/* ---------------------------------------------------------------- review sheet
-   /screens is not part of the site: it is the delivery sheet, the app at two
-   real sizes, live in frames rather than pasted as pictures. */
-.rev-top{border-bottom:1px solid var(--rule)}
-.rev-top .wrap{display:flex;align-items:center;gap:14px;height:64px}
-.rev-top .micro{margin-left:auto}
-.rev{padding:56px 0 72px}
-.rev h1{max-width:20ch}
-.rev .lede{margin-top:14px;max-width:56ch}
-.rev-sec{margin-top:72px}
-.rev-sec > .micro{margin-bottom:16px}
 .frame{border:1px solid var(--rule-strong);border-radius:12px;background:#fff;overflow:hidden;
   box-shadow:0 1px 2px rgba(15,23,32,.05),0 40px 70px -56px rgba(15,23,32,.55)}
 .chrome{display:flex;align-items:center;gap:8px;height:34px;padding:0 12px;border-bottom:1px solid var(--rule);background:#f8fafc}
@@ -777,7 +661,6 @@ a.src:hover{color:var(--accent)}
 .web-frame .vp::after{content:"";position:absolute;left:0;right:0;bottom:0;height:64px;pointer-events:none;
   background:linear-gradient(180deg,rgba(244,246,249,0),rgba(244,246,249,.95))}
 .web-frame iframe{width:1440px;height:900px;border:0;zoom:.76}
-.phones{display:flex;gap:32px;flex-wrap:wrap;align-items:flex-start}
 .phone{width:312px;flex:none}
 .phone .bezel{background:var(--ink);padding:9px;border-radius:30px;
   box-shadow:0 2px 4px rgba(15,23,32,.1),0 34px 60px -40px rgba(15,23,32,.7)}
@@ -786,12 +669,6 @@ a.src:hover{color:var(--accent)}
 .phone figcaption{display:flex;align-items:baseline;gap:8px;margin-top:14px;font-size:12px;color:var(--soft)}
 .phone figcaption b{font-weight:560;color:var(--ink)}
 .phone figcaption .ref{margin-left:auto;font-size:9.5px;color:var(--faint)}
-.rev-notes{max-width:34ch}
-.rev-notes h2{font-size:14px;font-weight:590;letter-spacing:-.012em}
-.rev-notes ul{margin-top:12px;display:grid;gap:10px;font-size:13px;line-height:1.55;color:var(--soft)}
-.rev-notes li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px}
-.rev-notes li::before{content:"—";color:var(--faint)}
-.rev-grid{display:flex;gap:64px;align-items:flex-start;flex-wrap:wrap}
 @media (max-width:1199px){.web-frame iframe{zoom:.7}}
 @media (max-width:1079px){.web-frame iframe{zoom:.64}}
 @media (max-width:999px){.web-frame iframe{zoom:.58}}
@@ -806,4 +683,53 @@ a.src:hover{color:var(--accent)}
   .phone .bezel{padding:8px;border-radius:26px}
   .phone .screen{width:248px;height:536px;border-radius:19px}
   .phone iframe{zoom:.636}
+}
+
+/* ------------------------------ the open menu, shared by every site page
+   One panel in the header flow: links, then the account actions, then a
+   hairline. Kept here rather than on the landing page, because the plan,
+   the sheet and the fallback open the same menu. */
+
+@media (max-width:760px){
+  body.nav-open .site-nav .wrap{
+    flex-wrap:wrap;
+    row-gap:0;
+    column-gap:12px;
+    height:auto;
+    align-items:center;
+  }
+  body.nav-open .site-nav nav{
+    position:static;
+    order:3;
+    flex:1 0 100%;
+    margin:0;
+    padding:4px 0 6px;
+    flex-direction:column;
+    align-items:stretch;
+    gap:0;
+    border:0;
+    background:none;
+  }
+  body.nav-open .site-nav nav a{
+    width:auto;
+    padding:12px 0;
+    font-size:15px;
+    color:var(--ink);
+    border-top:1px solid var(--rule);
+  }
+  body.nav-open .site-nav nav a:first-child{border-top:0}
+  body.nav-open .site-nav .right{
+    position:static;
+    order:4;
+    flex:1 0 100%;
+    margin:0;
+    padding:12px 0 16px;
+    flex-direction:column;
+    align-items:stretch;
+    gap:10px;
+    border:0;
+    border-top:1px solid var(--rule);
+    background:none;
+  }
+  body.nav-open .site-nav .right a{justify-content:center}
 }

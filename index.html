@@ -30,8 +30,9 @@
 <meta name="twitter:description" content="Shelf Cloud saves links from X, LinkedIn, YouTube or any page, writes a summary, and keeps one searchable library. AI agents can file notes too.">
 <meta name="twitter:image" content="https://nuuritas.github.io/shelf-impeccable/assets/og.png">
 <meta name="twitter:image:alt" content="The Shelf Cloud mark beside a saved link card and its summary.">
-<link rel="stylesheet" href="assets/app.css?v=69645661">
-<link rel="stylesheet" href="assets/showcase.css?v=35d1711d">
+<link rel="stylesheet" href="assets/app.css?v=f8f0ab3d">
+<link rel="stylesheet" href="assets/landing.css?v=98584c6d">
+<link rel="stylesheet" href="assets/showcase.css?v=fc366b70">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://nuuritas.github.io/shelf-impeccable/#website","url":"https://nuuritas.github.io/shelf-impeccable/","name":"Shelf Cloud","alternateName":"Shelf","description":"Shelf Cloud saves links from X, LinkedIn, YouTube or any page, writes a summary, and keeps one searchable library.","inLanguage":"en","publisher":{"@id":"https://nuuritas.github.io/shelf-impeccable/#organization"}},{"@type":"Organization","@id":"https://nuuritas.github.io/shelf-impeccable/#organization","name":"Shelf Cloud","url":"https://nuuritas.github.io/shelf-impeccable/","logo":{"@type":"ImageObject","url":"https://nuuritas.github.io/shelf-impeccable/assets/icon-512.png","width":512,"height":512}}]}
 </script>
@@ -69,13 +70,13 @@
           <a class="btn btn-lg" href="library.html">Create a free account</a>
           <a class="link" href="#how">See how it works</a>
         </div>
-        <p class="hero-note rv now" style="--d:.26s">No card required. Every workspace is on Cloud Pro for now, with the managed AI key included.</p>
+        <p class="hero-note rv now" style="--d:.26s">No card needed. Every workspace is on Cloud Pro for now, managed AI key included.</p>
       </div>
 
       <div class="hero-shelf">
         <article class="card shelf-card rv now" style="--d:.22s">
           <div class="meta"><span class="chip">Web</span> <b>Maggie Appleton</b> <span class="when">· 12 Nov 2026</span></div>
-          <h3>The quiet return of RSS</h3>
+          <h2>The quiet return of RSS</h2>
           <p class="summary">RSS was not beaten by a better product, it was left out of the one everybody opens. The case is for a list you own: a feed you picked, a reader that keeps its place, and no ranking deciding what comes next.</p>
           <div class="foot">
             <span class="chip chip-outline">Reading</span>
@@ -520,19 +521,21 @@ stroke-linejoin="round" aria-hidden="true"><path d="M1.9 5.4a1.7 1.7 0 0 1 1.7-1
 
   <section class="statement">
     <div class="wrap">
-      <p class="micro rv">Why it is short</p>
+      <div class="statement-cap rv">
+        <p class="micro">Why it is short</p>
+        <p class="statement-note">One rule, kept on every save.</p>
+      </div>
       <p class="statement-text rv" style="--d:.08s">The point of a summary is not to replace the article. It is to tell you whether to spend <em>the ten minutes</em>.</p>
     </div>
   </section>
 
-  <section class="section" id="pricing" style="padding-top:0">
+  <section class="section" id="pricing">
     <div class="wrap">
       <div class="plan-grid rv">
         <div>
           <p class="micro">Pricing</p>
           <h2 class="h2" style="margin-top:12px">One plan, while it is early.</h2>
           <p class="body" style="margin-top:12px;max-width:46ch">Every workspace is on Cloud Pro. The managed AI key is included, so a summary arrives without you pasting a key anywhere. Checkout opens later; nothing to cancel today.</p>
-          <p class="body" style="margin-top:16px;color:var(--faint);font-size:13px">The self-hosted Worker is open source and free, if you would rather run it on your own Cloudflare account.</p>
         </div>
 
         <div class="plan-card">
@@ -548,34 +551,67 @@ stroke-linejoin="round" aria-hidden="true"><path d="M1.9 5.4a1.7 1.7 0 0 1 1.7-1
           <p class="fine">No card. No seat count.</p>
         </div>
       </div>
+      <p class="plan-foot rv"><span>The self-hosted Worker is open source and free, if you would rather run it on your own Cloudflare account.</span></p>
     </div>
   </section>
 
-  <section class="section" id="apps">
+  <section class="section apps" id="apps">
     <div class="wrap">
-      <div class="band-head rv">
-        <div>
+      <div class="apps-grid">
+        <div class="apps-copy rv">
           <p class="micro">Clients</p>
-          <h2 class="h2" style="margin-top:12px">Save from the phone. Read anywhere.</h2>
+          <h2 class="h2">Save from the phone. Read anywhere.</h2>
+          <p class="body">The web library and two native apps read the same account. A save made in either share sheet is on the laptop before you sit down.</p>
         </div>
-        <p class="body">The web library and two native apps read the same account.</p>
-      </div>
 
-      <div class="clients">
-        <article class="client rv">
-          <p class="micro">Android</p>
-          <h3>A share sheet that files for you.</h3>
-          <p class="body">Send a link from any app's share sheet, then read and search the shelf, archive a save you are done with, and point the app at Shelf Cloud or at your own Worker in settings.</p>
-          <a class="link" href="https://github.com/nuuritas/shelfcloud-apk/releases/latest" rel="noopener">Download the signed APK</a>
-        </article>
-        <article class="client rv" style="--d:.08s">
-          <p class="micro">iOS</p>
-          <h3>SwiftUI, from the same shelf.</h3>
-          <p class="body">A native app in SwiftUI, on TestFlight while it is in beta. The share sheet saves a link, and the library, the summaries, the archive and the settings are all in the app.</p>
-          <a class="link" href="https://testflight.apple.com/join/mXUn54N4" rel="noopener">Join the beta on TestFlight</a>
-        </article>
+        <div class="apps-shot rv" style="--d:.14s" aria-hidden="true">
+          <div class="sheet-mini">
+            <span class="sheet-mini-grab"></span>
+            <div class="sheet-mini-file">
+              <span class="sheet-mini-tile"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M6.6 9.4 9.4 6.6"/><path d="M7.4 4.2 8.9 2.7a2.9 2.9 0 0 1 4.1 4.1l-1.7 1.7"/><path d="M8.6 11.8 7.1 13.3a2.9 2.9 0 0 1-4.1-4.1l1.7-1.7"/></svg></span>
+              <span class="sheet-mini-name"><b>The quiet return of RSS</b><span>thequietfeed.com</span></span>
+            </div>
+            <div class="sheet-mini-apps">
+              <span class="sheet-mini-app is-on"><span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" aria-hidden="true" focusable="false">
+  <g fill="none" stroke="currentColor" stroke-width="36">
+    <rect x="272" y="184" width="480" height="656" rx="60"/>
+    <path d="M254 526H770"/>
+  </g>
+  <g fill="currentColor">
+    <rect x="340" y="370" width="60" height="119" rx="10"/>
+    <rect x="424" y="348" width="60" height="141" rx="10"/>
+    <rect x="508" y="396" width="60" height="93" rx="10"/>
+    <rect x="340" y="618" width="60" height="204" rx="10"/>
+    <rect x="424" y="588" width="60" height="234" rx="10"/>
+    <rect x="508" y="644" width="60" height="178" rx="10"/>
+  </g>
+  <rect x="614" y="638" width="56" height="182" rx="10" fill="currentColor" transform="rotate(10 642 729)"/>
+</svg></span><em>Shelf</em></span>
+              <span class="sheet-mini-app"><span class="ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="1.7" y="5" width="7.6" height="8.6" rx="2"/><path d="M4.9 5V3.6a1.9 1.9 0 0 1 1.9-1.9h4.5a1.9 1.9 0 0 1 1.9 1.9v4.5a1.9 1.9 0 0 1-1.9 1.9H9.3"/></svg></span><em>Copy</em></span>
+              <span class="sheet-mini-app"><span class="ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="1.8" y="3.5" width="12.4" height="9" rx="2"/><path d="m2.6 4.8 5.4 3.9 5.4-3.9"/></svg></span><em>Mail</em></span>
+              <span class="sheet-mini-app"><span class="ico"><svg viewBox="0 0 16 16" fill="currentColor"><circle cx="3.3" cy="8" r="1.3"/><circle cx="8" cy="8" r="1.3"/><circle cx="12.7" cy="8" r="1.3"/></svg></span><em>More</em></span>
+            </div>
+            <p class="sheet-mini-save"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M4.4 2.4h7.2v11.2L8 10.8l-3.6 2.8z"/></svg><span>Save to Shelf</span><b>one tap</b></p>
+          </div>
+          <p class="apps-figcap">The share sheet, with Shelf first</p>
+        </div>
+
+        <div class="apps-cards">
+          <article class="client rv">
+            <div class="client-top"><p class="micro">Android</p><span class="chip">Signed APK</span></div>
+            <h3>A share sheet that files for you.</h3>
+            <p class="body">Send a link from any app's share sheet, then read and search the shelf, archive a save you are done with, and point the app at Shelf Cloud or at your own Worker in settings.</p>
+            <a class="link" href="https://github.com/nuuritas/shelfcloud-apk/releases/latest" rel="noopener">Download the signed APK</a>
+          </article>
+          <article class="client rv" style="--d:.08s">
+            <div class="client-top"><p class="micro">iOS</p><span class="chip">TestFlight</span></div>
+            <h3>SwiftUI, from the same shelf.</h3>
+            <p class="body">A native app in SwiftUI, on TestFlight while it is in beta. The share sheet saves a link, and the library, the summaries, the archive and the settings are all in the app.</p>
+            <a class="link" href="https://testflight.apple.com/join/mXUn54N4" rel="noopener">Join the beta on TestFlight</a>
+          </article>
+        </div>
       </div>
-      <p class="band-foot rv">Both clients can point at Shelf Cloud or at your own Worker.</p>
+      <p class="apps-foot rv">Both clients point at Shelf Cloud or at your own Worker.</p>
     </div>
   </section>
 
@@ -612,7 +648,7 @@ stroke-linejoin="round" aria-hidden="true"><path d="M1.9 5.4a1.7 1.7 0 0 1 1.7-1
         <p class="blurb">A hosted library for the links you keep. Send from any device, read the summary, search the rest.</p>
       </div>
       <div>
-        <h4>Product</h4>
+        <p class="foot-h">Product</p>
         <ul>
           <li><a href="#how">How it works</a></li>
           <li><a href="pricing.html">Pricing</a></li>
@@ -620,7 +656,7 @@ stroke-linejoin="round" aria-hidden="true"><path d="M1.9 5.4a1.7 1.7 0 0 1 1.7-1
         </ul>
       </div>
       <div>
-        <h4>Apps</h4>
+        <p class="foot-h">Apps</p>
         <ul>
           <li><a href="https://github.com/nuuritas/shelfcloud-apk/releases/latest" rel="noopener">Android APK</a></li>
           <li><a href="https://testflight.apple.com/join/mXUn54N4" rel="noopener">iOS · TestFlight</a></li>
@@ -628,14 +664,14 @@ stroke-linejoin="round" aria-hidden="true"><path d="M1.9 5.4a1.7 1.7 0 0 1 1.7-1
         </ul>
       </div>
       <div>
-        <h4>Source</h4>
+        <p class="foot-h">Source</p>
         <ul>
           <li><a href="library.html">nuuritas/shelf</a></li>
           <li><a href="library.html">Changelog</a></li>
         </ul>
       </div>
       <div>
-        <h4>Legal</h4>
+        <p class="foot-h">Legal</p>
         <ul>
           <li><a href="library.html">Privacy</a></li>
           <li><a href="library.html">Terms</a></li>
@@ -654,6 +690,21 @@ stroke-linejoin="round" aria-hidden="true"><path d="M1.9 5.4a1.7 1.7 0 0 1 1.7-1
 </footer>
 
 <div class="toast" id="toast"><span class="tick">✓</span><span id="toast-text">Copied</span></div>
-<script src="assets/app.js?v=1f9b1a72"></script>
+<script src="assets/app.js?v=3df41100"></script>
+<script>
+/* The phone menu is a panel, so a tap on a link inside it closes it — otherwise
+   the section it jumped to stays under the panel. Escape closes it too. */
+(function () {
+  function close() {
+    document.body.classList.remove('nav-open');
+    var b = document.querySelector('[data-nav-toggle]');
+    if (b) b.setAttribute('aria-expanded', 'false');
+  }
+  var nav = document.querySelector('.site-nav');
+  if (!nav) return;
+  nav.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', close); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+})();
+</script>
 </body>
 </html>

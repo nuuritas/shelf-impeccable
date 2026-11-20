@@ -311,7 +311,7 @@
       }
 
       var note = card.getAttribute('data-source') === 'note';
-      var link = note ? $('h3 a', card) : $('a.src', card);
+      var link = note ? $('h2 a, h3 a', card) : $('a.src', card);
       if (link) {
         var out = document.createElement('a');
         out.href = link.getAttribute('href');

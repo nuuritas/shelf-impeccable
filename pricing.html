@@ -30,7 +30,8 @@
 <meta name="twitter:description" content="Shelf Cloud pricing: every workspace is on Cloud Pro, with the managed AI key included.">
 <meta name="twitter:image" content="https://nuuritas.github.io/shelf-impeccable/assets/og.png">
 <meta name="twitter:image:alt" content="The Shelf Cloud mark beside a saved link card and its summary.">
-<link rel="stylesheet" href="assets/app.css?v=69645661">
+<link rel="stylesheet" href="assets/app.css?v=f8f0ab3d">
+<link rel="stylesheet" href="assets/pages.css?v=0677232e">
 </head>
 <body>
 
@@ -40,8 +41,9 @@
       <svg class="mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><path d="M3.1 5.1h3.1v14.7H3.1z"/><path d="M7.5 5.1h3.1v14.7H7.5z"/><path d="M12.4 5.5l3-.4 1.9 14.5-3 .4z" fill="currentColor" fill-opacity=".18"/><path d="M2.4 20.9h19.2"/></svg>
       Shelf Cloud
     </a>
-    <nav>
+    <nav id="menu">
       <a href="index.html#how">How it works</a>
+      <a href="index.html#apps">Apps</a>
       <a href="pricing.html">Pricing</a>
       <a href="library.html">Library</a>
     </nav>
@@ -53,62 +55,138 @@
   </div>
 </header>
 
-<main>
-  <section class="section" style="padding-bottom:0">
+<main class="price">
+
+  <section class="price-head">
     <div class="wrap">
       <p class="micro rv now">Pricing</p>
-      <h1 class="display rv now" style="margin-top:14px;max-width:16ch">One plan, while it is early.</h1>
-      <p class="lede rv now" style="--d:.10s;margin-top:18px;max-width:52ch">Every workspace is on Cloud Pro. The managed key is included, so a summary arrives without you pasting a key anywhere. Checkout opens later; nothing to cancel today.</p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap">
-      <div class="plan-grid">
-        <div class="rv" style="--d:.18s">
-          <div class="plan-card">
-            <div class="row"><span class="price">Cloud Pro</span><span class="per">included</span></div>
-            <p class="body">For one person and the links they keep.</p>
-            <ul class="plan-list">
-              <li><span class="tick">✓</span>Unlimited saves, one searchable library</li>
-              <li><span class="tick">✓</span>Summaries on the managed key</li>
-              <li><span class="tick">✓</span>Web, Android, iOS and the hosted MCP</li>
-              <li><span class="tick">✓</span>Agent notes and HTML artifacts</li>
-              <li><span class="tick">✓</span>Archive, topics and full-text search</li>
-            </ul>
-            <a class="btn btn-lg" href="library.html">Create a free account</a>
-            <p class="fine">No card. No seat count.</p>
-          </div>
-        </div>
-
-        <div class="rv" style="--d:.28s">
-          <p class="micro">The small print, in plain words</p>
-          <dl class="post-facts" style="margin-top:14px">
-            <div class="f"><dt class="micro">Price</dt><dd>Free while Cloud Pro is the only plan.</dd></div>
-            <div class="f"><dt class="micro">AI key</dt><dd>Managed. You can bring your own later.</dd></div>
-            <div class="f"><dt class="micro">Limits</dt><dd>One library per workspace. Notes share the same search.</dd></div>
-            <div class="f"><dt class="micro">Leaving</dt><dd>Export every save as Markdown, any time.</dd></div>
-            <div class="f"><dt class="micro">Self-host</dt><dd>The Worker is open source. Run it on your own Cloudflare account.</dd></div>
-          </dl>
-          <p class="body" style="margin-top:22px;max-width:46ch">A plan is a promise about what happens to a page you saved two years ago. Ours is that it is still there, still searchable, and still yours.</p>
-          <a class="link" href="index.html" style="display:inline-block;margin-top:16px">Read how the shelf works</a>
-        </div>
+      <div class="price-head-grid">
+        <h1 class="display rv now">One plan, while it is <em>early</em>.</h1>
+        <p class="lede rv now" style="--d:.1s">Every workspace is on Cloud Pro. The managed key is included, so a summary arrives without you pasting a key anywhere. Checkout opens later; nothing to cancel today.</p>
       </div>
     </div>
   </section>
+
+  <section class="spec">
+    <div class="wrap">
+
+      <div class="spec-row plan rv">
+        <p class="micro">The plan</p>
+        <div>
+          <h2 class="plan-name">Cloud Pro</h2>
+          <p class="body plan-who">For one person and the links they keep.</p>
+          <p class="plan-fine">No card. No seat count.</p>
+        </div>
+        <div class="spec-price">
+          <p class="free">Free</p>
+          <p class="note">while Cloud Pro is the only plan</p>
+          <a class="btn btn-lg" href="library.html">Create a free account</a>
+        </div>
+      </div>
+
+      <div class="spec-row rv">
+        <p class="micro">Included</p>
+        <ul class="inc-list">
+          <li>Unlimited saves, one searchable library
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.6 12.6l4.6 4.5L19.4 6.9"/></svg>
+          </li>
+          <li>Summaries on the managed key
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.6 12.6l4.6 4.5L19.4 6.9"/></svg>
+          </li>
+          <li>Web, Android, iOS and the hosted MCP
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.6 12.6l4.6 4.5L19.4 6.9"/></svg>
+          </li>
+          <li>Agent notes and HTML artifacts
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.6 12.6l4.6 4.5L19.4 6.9"/></svg>
+          </li>
+          <li>Archive, topics and full-text search
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.6 12.6l4.6 4.5L19.4 6.9"/></svg>
+          </li>
+        </ul>
+      </div>
+
+      <div class="spec-row rv">
+        <p class="micro">The small print</p>
+        <dl class="price-facts">
+          <div class="f"><dt class="micro">Price</dt><dd>Free while Cloud Pro is the only plan.</dd></div>
+          <div class="f"><dt class="micro">AI key</dt><dd>Managed. You can bring your own later.</dd></div>
+          <div class="f"><dt class="micro">Limits</dt><dd>One library per workspace. Notes share the same search.</dd></div>
+        </dl>
+      </div>
+
+      <div class="spec-row rv">
+        <p class="micro">Leaving</p>
+        <div class="leave-grid">
+          <p class="promise">Export every save as Markdown, any time.</p>
+          <div>
+            <p class="body">A plan is a promise about what happens to a page you saved two years ago. Ours is that it is still there, still searchable, and still yours.</p>
+            <a class="link" href="index.html#how">Read how the shelf works</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="spec-row note-row rv">
+        <p class="micro">Self-host</p>
+        <p class="body">The Worker is open source. Run it on your own Cloudflare account.</p>
+      </div>
+
+    </div>
+  </section>
+
 </main>
 
 <footer class="site-foot">
   <div class="wrap">
-    <div class="foot-bottom" style="margin-top:0;border-top:0;padding-top:0">
+    <div class="foot-grid rv">
+      <div>
+        <a class="brand" href="index.html">
+          <svg class="mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><path d="M3.1 5.1h3.1v14.7H3.1z"/><path d="M7.5 5.1h3.1v14.7H7.5z"/><path d="M12.4 5.5l3-.4 1.9 14.5-3 .4z" fill="currentColor" fill-opacity=".18"/><path d="M2.4 20.9h19.2"/></svg>
+          Shelf Cloud
+        </a>
+        <p class="blurb">A hosted library for the links you keep. Send from any device, read the summary, search the rest.</p>
+      </div>
+      <div>
+        <p class="foot-h">Product</p>
+        <ul>
+          <li><a href="index.html#how">How it works</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="library.html">Start free</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-h">Apps</p>
+        <ul>
+          <li><a href="https://github.com/nuuritas/shelfcloud-apk/releases/latest" rel="noopener">Android APK</a></li>
+          <li><a href="https://testflight.apple.com/join/mXUn54N4" rel="noopener">iOS · TestFlight</a></li>
+          <li><a href="library.html">Hosted MCP</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-h">Source</p>
+        <ul>
+          <li><a href="library.html">nuuritas/shelf</a></li>
+          <li><a href="library.html">Changelog</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-h">Legal</p>
+        <ul>
+          <li><a href="library.html">Privacy</a></li>
+          <li><a href="library.html">Terms</a></li>
+          <li><a href="library.html">Support</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
       <span>© 2026 Shelf Cloud</span>
       <span>·</span>
       <span>Design study — Impeccable</span>
-      <span class="right"><a href="index.html">Home</a><a href="library.html">Library</a><a href="post.html">One save</a></span>
+      <a class="link" href="screens.html">Screens</a>
+      <span class="right"><span>Paper #f4f6f9</span><span>Ink #0f1720</span><span>Cobalt #1d4ed8</span></span>
     </div>
   </div>
 </footer>
 
-<script src="assets/app.js?v=1f9b1a72"></script>
+<script src="assets/app.js?v=3df41100"></script>
 </body>
 </html>

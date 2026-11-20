@@ -29,53 +29,97 @@
 <meta name="twitter:description" content="A reel plays on the source's own screen: the one save a card cannot hold.">
 <meta name="twitter:image" content="https://nuuritas.github.io/shelf-impeccable/assets/og.png">
 <meta name="twitter:image:alt" content="The Shelf Cloud mark beside a saved link card and its summary.">
-<link rel="stylesheet" href="assets/app.css?v=69645661">
+<link rel="stylesheet" href="assets/app.css?v=f8f0ab3d">
+<link rel="stylesheet" href="assets/detail.css?v=476f7847">
 </head>
-<body>
+<body class="pl-body">
 
-<div class="player">
-  <div class="player-bar">
-    <a class="x" href="library.html" aria-label="Back to the library">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+<div class="pl">
+  <header class="pl-bar">
+    <a class="pl-x" href="library.html" aria-label="Back to the library">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
     </a>
-    <span class="nm">studio.field · Reel</span>
-    <span class="ref">M4Q7B</span>
-    <a class="x" href="library.html" aria-label="Close">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg>
-    </a>
-  </div>
-
-  <h1 class="vh">studio.field · Reel, saved as M4Q7B</h1>
-
-  <div class="player-stage">
-    <div class="player-frame">
-      <div class="pf-top">
-        <span class="pf-av">SF</span>
-        <span class="pf-name">studio.field</span>
-        <span class="pf-follow">Following</span>
-      </div>
-
-      <span class="pf-glyph" aria-hidden="true">Aa</span>
-
-      <button class="pf-play" type="button" aria-label="Pause">
-        <svg viewBox="0 0 12 14" fill="currentColor" aria-hidden="true"><rect x="1" y="1" width="3.4" height="12" rx="1"/><rect x="7.2" y="1" width="3.4" height="12" rx="1"/></svg>
+    <span class="pl-crumb"><a href="library.html">Library</a><span class="pl-sl">/</span><span class="pl-crumb-ref">M4Q7B</span></span>
+    <span class="pl-bar-r">
+      <button class="pl-copy" type="button" data-copy="M4Q7B" title="Copy post id">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M15 5.6H6.6A2.6 2.6 0 0 0 4 8.2v8.4"/></svg>
+        <span>copy ref</span>
       </button>
+      <a class="pl-x" href="library.html" aria-label="Close">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg>
+      </a>
+    </span>
+  </header>
 
-      <div class="pf-foot">
-        <p class="pf-cap">A scale is a feeling before it is a ratio. Five sizes, five jobs: caption, body, lead, section, display — pick by the job, then let a ratio settle the gaps.</p>
-        <div class="pf-row">
-          <span class="pf-time">0:34</span>
-          <span class="pf-track"><i></i></span>
-          <span class="pf-mute" aria-hidden="true">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H3v6h3l5 4z"/><path d="M16 9l4 6M20 9l-4 6"/></svg>
-          </span>
+  <main class="pl-main">
+    <div class="pl-grid">
+
+      <figure class="pl-reel">
+        <div class="pl-frame">
+          <div class="pl-top">
+            <span class="pl-av">SF</span>
+            <span class="pl-who"><b>studio.field</b><span>Instagram · Reel</span></span>
+            <span class="pl-follow">Following</span>
+          </div>
+
+          <span class="pl-glyph" aria-hidden="true">Aa</span>
+
+          <button class="pl-play" type="button" aria-label="Pause">
+            <svg viewBox="0 0 12 14" fill="currentColor" aria-hidden="true"><rect x="1" y="1" width="3.4" height="12" rx="1"/><rect x="7.2" y="1" width="3.4" height="12" rx="1"/></svg>
+          </button>
+
+          <div class="pl-prog">
+            <span class="pl-time">0:34</span>
+            <span class="pl-track"><i></i></span>
+            <span class="pl-mute" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H3v6h3l5 4z"/><path d="M16 9l4 6M20 9l-4 6"/></svg>
+            </span>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
 
-  <p class="player-foot">Playing on Instagram — the source's own player, not Shelf's. <a href="https://www.instagram.com" target="_blank" rel="noreferrer">Open on instagram.com</a></p>
+        <figcaption class="pl-cap">
+          <p class="pl-cap-t">A scale is a feeling before it is a ratio. Five sizes, five jobs: caption, body, lead, section, display — pick by the job, then let a ratio settle the gaps.</p>
+          <p class="pl-cap-m">Reel · 0:34 · posted 19 Nov 2026</p>
+        </figcaption>
+      </figure>
+
+      <aside class="pl-side">
+        <div class="pl-side-top">
+          <span class="micro">Saved reel</span>
+          <button class="pl-ref" type="button" data-copy="M4Q7B" title="Copy post id">M4Q7B</button>
+        </div>
+
+        <h1>A scale is a feeling before it is a ratio</h1>
+
+        <div class="pl-sum">
+          <span class="pl-ai">AI</span>
+          <p>A working method rather than a theory post: choose caption, body, lead, section and display by the job each one does, then let a ratio settle the gaps.</p>
+        </div>
+
+        <dl class="pl-facts">
+          <div><dt>Source</dt><dd>Instagram</dd></div>
+          <div><dt>Author</dt><dd>studio.field</dd></div>
+          <div><dt>Filed</dt><dd>Design · Type</dd></div>
+          <div><dt>Saved</dt><dd>19 Nov 2026</dd></div>
+          <div><dt>Ref</dt><dd>M4Q7B</dd></div>
+        </dl>
+
+        <div class="pl-note">
+          <p><b>Playing on Instagram.</b> Shelf does not re-host the reel, so this frame is the source's own player: the audio, the counts and the account are the real ones. Close it and the save is still on your shelf.</p>
+          <a href="https://www.instagram.com" target="_blank" rel="noreferrer">Open on instagram.com</a>
+        </div>
+
+        <div class="pl-acts">
+          <a class="pl-btn" href="library.html">Back to the library</a>
+          <button class="pl-quiet" type="button" data-copy="M4Q7B">Copy ref</button>
+        </div>
+      </aside>
+
+    </div>
+  </main>
 </div>
 
+<div class="toast" id="toast"><span class="tick">✓</span><span id="toast-text">Copied</span></div>
+<script src="assets/app.js?v=3df41100"></script>
 </body>
 </html>

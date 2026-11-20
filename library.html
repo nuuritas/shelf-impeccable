@@ -30,13 +30,15 @@
 <meta name="twitter:description" content="The Shelf Cloud library: every link you kept, summarized and searchable.">
 <meta name="twitter:image" content="https://nuuritas.github.io/shelf-impeccable/assets/og.png">
 <meta name="twitter:image:alt" content="The Shelf Cloud mark beside a saved link card and its summary.">
-<link rel="stylesheet" href="assets/app.css?v=69645661">
+<link rel="stylesheet" href="assets/app.css?v=f8f0ab3d">
+<link rel="stylesheet" href="assets/library.css?v=87900aae">
 </head>
 <body>
 
 <div class="shell">
 
   <aside class="side">
+   <div class="side-in">
     <a class="brand" href="index.html">
       <svg class="mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><path d="M3.1 5.1h3.1v14.7H3.1z"/><path d="M7.5 5.1h3.1v14.7H7.5z"/><path d="M12.4 5.5l3-.4 1.9 14.5-3 .4z" fill="currentColor" fill-opacity=".18"/><path d="M2.4 20.9h19.2"/></svg>
       Shelf Cloud
@@ -71,102 +73,128 @@
       <a href="library.html" data-topic-jump="work"><span class="sw"></span>Work<span class="count">5</span></a>
     </div>
 
+    <div class="rail-hint">
+      <b>Every save gets a ref</b>
+      <p>Five characters, no <span class="mono">i</span>, <span class="mono">l</span> or <span class="mono">o</span> to misread.</p>
+      <p>Type it anywhere and the save opens.</p>
+    </div>
+
     <div class="side-foot">
       <a href="pricing.html">Plan · Cloud Pro</a>
       <a href="screens.html">App screens</a>
       <a href="index.html">Settings</a>
     </div>
+   </div>
   </aside>
 
   <div class="main">
     <div class="app-bar">
-      <a class="brand m-brand" href="index.html">
-        <svg class="mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><path d="M3.1 5.1h3.1v14.7H3.1z"/><path d="M7.5 5.1h3.1v14.7H7.5z"/><path d="M12.4 5.5l3-.4 1.9 14.5-3 .4z" fill="currentColor" fill-opacity=".18"/><path d="M2.4 20.9h19.2"/></svg>
-        <span class="m-ws">Nuri’s shelf</span>
-      </a>
-      <span class="crumbs"><b>Nuri’s shelf</b><span class="sep">/</span>Library</span>
-      <div class="right">
-        <span class="total" id="total">8 active</span>
-        <label class="search">
-          <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg>
-          <input id="q" type="search" placeholder="Search text or author" autocomplete="off" aria-label="Search the library">
-        </label>
-        <button class="icon-round m-only" type="button" aria-label="Search" aria-expanded="false" data-search-toggle>
-          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg>
-        </button>
-        <button class="btn btn-sm" type="button" data-add><span class="m-only" aria-hidden="true">+</span><span class="d-only">Add a link</span></button>
-        <span class="av-btn" title="Signed in as Nuri">N</span>
+      <div class="bar-in">
+        <a class="brand m-brand" href="index.html">
+          <svg class="mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><path d="M3.1 5.1h3.1v14.7H3.1z"/><path d="M7.5 5.1h3.1v14.7H7.5z"/><path d="M12.4 5.5l3-.4 1.9 14.5-3 .4z" fill="currentColor" fill-opacity=".18"/><path d="M2.4 20.9h19.2"/></svg>
+          <span class="m-ws">Nuri’s shelf</span>
+        </a>
+        <span class="crumbs"><b>Nuri’s shelf</b></span>
+        <div class="right">
+          <label class="search">
+            <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg>
+            <input id="q" type="search" placeholder="Search text or author" autocomplete="off" aria-label="Search the library">
+          </label>
+          <button class="icon-round m-only" type="button" aria-label="Search" aria-expanded="false" data-search-toggle>
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg>
+          </button>
+          <button class="add-chip m-only" type="button" data-add aria-label="Add a link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <span class="av-btn" title="Signed in as Nuri">N</span>
+        </div>
+      </div>
+
+      <div class="shelf-bar">
+          <div class="shelf-title">
+            <h1>Library</h1>
+            <span class="total" id="total">8 active</span>
+          </div>
+
+          <div class="filters" data-filters>
+            <details class="fmenu" data-menu="source">
+              <summary><span class="fname">Source</span><span class="fval">All</span><span class="caret">▾</span></summary>
+              <div class="panel">
+                <p class="phead">Source</p>
+                <button type="button" class="opt" data-set="source:" data-label="All" aria-current="true">All sources</button>
+                <button type="button" class="opt" data-set="source:x" data-label="X">X<span class="n">3</span></button>
+                <button type="button" class="opt" data-set="source:instagram" data-label="Instagram">Instagram<span class="n">1</span></button>
+                <button type="button" class="opt" data-set="source:youtube" data-label="YouTube">YouTube<span class="n">1</span></button>
+                <button type="button" class="opt" data-set="source:linkedin" data-label="LinkedIn">LinkedIn<span class="n">1</span></button>
+                <button type="button" class="opt" data-set="source:web" data-label="Web">Web<span class="n">2</span></button>
+                <button type="button" class="opt" data-set="source:note" data-label="Artifact">Artifact<span class="n">2</span></button>
+              </div>
+            </details>
+            <details class="fmenu" data-menu="folder">
+              <summary><span class="fname">Folder</span><span class="fval">All</span><span class="caret">▾</span></summary>
+              <div class="panel">
+                <p class="phead">Folder</p>
+                <button type="button" class="opt" data-set="folder:" data-label="All" aria-current="true">All folders</button>
+                <button type="button" class="opt" data-set="folder:design" data-label="Design">Design<span class="n">4</span></button>
+                <button type="button" class="opt" data-set="folder:reading" data-label="Reading">Reading<span class="n">4</span></button>
+                <button type="button" class="opt" data-set="folder:work" data-label="Work">Work<span class="n">5</span></button>
+              </div>
+            </details>
+            <details class="fmenu" data-menu="label">
+              <summary><span class="fname">Labels</span><span class="fval">All</span><span class="caret">▾</span></summary>
+              <div class="panel">
+                <p class="phead">Labels</p>
+                <button type="button" class="opt" data-set="label:" data-label="All" aria-current="true">All labels</button>
+                <button type="button" class="opt" data-set="label:research" data-label="Research">Research<span class="n">2</span></button>
+                <button type="button" class="opt" data-set="label:type" data-label="Type">Type<span class="n">1</span></button>
+                <button type="button" class="opt" data-set="label:draft" data-label="Draft">Draft<span class="n">1</span></button>
+              </div>
+            </details>
+            <details class="fmenu is-set" data-menu="view">
+              <summary><span class="fname">View</span><span class="fval">Active</span><span class="fcount" data-count="view">8</span><span class="caret">▾</span></summary>
+              <div class="panel">
+                <p class="phead">View</p>
+                <button type="button" class="opt" data-set="view:active" data-label="Active" aria-current="true">Active<span class="n" data-count="active">8</span></button>
+                <button type="button" class="opt" data-set="view:archived" data-label="Archived">Archived<span class="n" data-count="archived">2</span></button>
+              </div>
+            </details>
+          </div>
+
+          <button class="btn btn-sm add-link" type="button" data-add>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+            <span class="d-only">Add a link</span>
+          </button>
       </div>
     </div>
 
     <div class="app-body">
-      <h1 class="vh">Library</h1>
       <div class="col">
-        <div class="filters rv now" data-filters>
-          <details class="fmenu" data-menu="source">
-            <summary><span class="fname">Source</span><span class="fval">All</span><span class="caret">▾</span></summary>
-            <div class="panel">
-              <p class="phead">Source</p>
-              <a href="#" data-set="source:" data-label="All" aria-current="true">All sources</a>
-              <a href="#" data-set="source:x" data-label="X">X<span class="n">3</span></a>
-              <a href="#" data-set="source:instagram" data-label="Instagram">Instagram<span class="n">1</span></a>
-              <a href="#" data-set="source:youtube" data-label="YouTube">YouTube<span class="n">1</span></a>
-              <a href="#" data-set="source:linkedin" data-label="LinkedIn">LinkedIn<span class="n">1</span></a>
-              <a href="#" data-set="source:web" data-label="Web">Web<span class="n">2</span></a>
-              <a href="#" data-set="source:note" data-label="Artifact">Artifact<span class="n">2</span></a>
-            </div>
-          </details>
-          <details class="fmenu" data-menu="folder">
-            <summary><span class="fname">Folder</span><span class="fval">All</span><span class="caret">▾</span></summary>
-            <div class="panel">
-              <p class="phead">Folder</p>
-              <a href="#" data-set="folder:" data-label="All" aria-current="true">All folders</a>
-              <a href="#" data-set="folder:design" data-label="Design">Design<span class="n">4</span></a>
-              <a href="#" data-set="folder:reading" data-label="Reading">Reading<span class="n">4</span></a>
-              <a href="#" data-set="folder:work" data-label="Work">Work<span class="n">5</span></a>
-            </div>
-          </details>
-          <details class="fmenu" data-menu="label">
-            <summary><span class="fname">Labels</span><span class="fval">All</span><span class="caret">▾</span></summary>
-            <div class="panel">
-              <p class="phead">Labels</p>
-              <a href="#" data-set="label:" data-label="All" aria-current="true">All labels</a>
-              <a href="#" data-set="label:research" data-label="Research">Research<span class="n">2</span></a>
-              <a href="#" data-set="label:type" data-label="Type">Type<span class="n">1</span></a>
-              <a href="#" data-set="label:draft" data-label="Draft">Draft<span class="n">1</span></a>
-            </div>
-          </details>
-          <details class="fmenu is-set" data-menu="view">
-            <summary><span class="fname">View</span><span class="fval">Active</span><span class="fcount" data-count="view">8</span><span class="caret">▾</span></summary>
-            <div class="panel">
-              <p class="phead">View</p>
-              <a href="#" data-set="view:active" data-label="Active" aria-current="true">Active<span class="n" data-count="active">8</span></a>
-              <a href="#" data-set="view:archived" data-label="Archived">Archived<span class="n" data-count="archived">2</span></a>
-            </div>
-          </details>
-        </div>
-
         <div class="list" id="list">
-
-          <article class="save" data-status="active" data-source="instagram" data-topic="design" data-label="type" data-text="studio field instagram reel type scale feeling ratio five sizes jobs voice specimen">
+<article class="save" data-status="active" data-source="instagram" data-topic="design" data-label="type" data-text="studio field instagram reel type scale feeling ratio five sizes jobs voice specimen">
             <div class="save-top">
               <span class="av">SF</span>
               <span class="by"><b>studio.field</b><span class="d">·</span><a class="src" href="https://www.instagram.com" target="_blank" rel="noreferrer">Instagram</a><span class="d">·</span><span>19 Nov</span></span>
-              <span class="tail"><button class="ref" type="button" data-copy="M4Q7B" title="Copy post id">M4Q7B</button><button class="fold" type="button" aria-expanded="false" data-fold aria-label="Read more"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button></span>
             </div>
-            <div class="save-split">
-              <a class="still reel" href="player.html" aria-label="Play the reel">
+            <a class="band reel-band" href="player.html" aria-label="Play the reel">
+              <span class="still reel">
                 <span class="k">Reel · 04</span>
                 <span class="glyph" aria-hidden="true">Aa</span>
-                <span class="t">A scale is a feeling before it is a ratio</span>
                 <span class="n">0:34</span>
                 <span class="play" aria-hidden="true"><svg viewBox="0 0 12 12" fill="currentColor"><path d="M2 1l9 5-9 5z"/></svg></span>
-              </a>
-              <div class="split-body">
-                <p class="txt clamp">Five sizes, five jobs, one voice. The trick is picking the sizes by the job they do before touching the ratio.</p>
-                <div class="ai"><span class="ai-mark">AI</span><p class="clamp">A working method rather than a theory post: choose caption, body, lead, section and display by the job each one does, then let a ratio settle the gaps. The reel shows a real scale from a note-app redesign and the two sizes that had to merge.</p></div>
-                <div class="labels"><a class="lab" href="#" data-label-jump="type">Type</a></div>
-              </div>
+              </span>
+              <span class="reel-meta">
+                <span class="rm-by"><span class="rm-av">SF</span>studio.field</span>
+                <span class="rm-k">Reel · 0:34</span>
+                <span class="rm-quote">“Five sizes, five jobs, one voice.”</span>
+                <span class="rm-cue">Play the reel<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+              </span>
+            </a>
+            <h2><a href="player.html">A scale is a feeling before it is a ratio</a></h2>
+            <p class="txt clamp">Five sizes, five jobs, one voice. The trick is picking the sizes by the job they do before touching the ratio.</p>
+            <div class="ai"><span class="ai-mark">AI</span><p class="clamp">A working method rather than a theory post: choose caption, body, lead, section and display by the job each one does, then let a ratio settle the gaps. The reel shows a real scale from a note-app redesign and the two sizes that had to merge.</p></div>
+            <div class="save-foot">
+              <div class="labels"><a class="lab" href="library.html" data-topic-jump="design"><span class="sw"></span>Design</a><button class="lab" type="button" data-label-jump="type">Type</button></div>
+              <span class="tail"><button class="ref" type="button" data-copy="M4Q7B" title="Copy ref">M4Q7B</button><button class="fold" type="button" aria-expanded="false" data-fold aria-label="Read more"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button></span>
             </div>
           </article>
 
@@ -174,122 +202,161 @@
             <div class="save-top">
               <span class="av">AO</span>
               <span class="by"><b>Amara Osei</b><span class="d">·</span><a class="src" href="https://x.com" target="_blank" rel="noreferrer">X</a><span class="d">·</span><span>18 Nov</span></span>
-              <span class="tail"><button class="ref" type="button" data-copy="N8W3E" title="Copy post id">N8W3E</button><button class="fold" type="button" aria-expanded="false" data-fold aria-label="Read more"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button></span>
             </div>
-            <a class="still cover" href="https://x.com" target="_blank" rel="noreferrer" aria-label="Open the article">
-              <span class="k">Essay · 7 min</span>
-              <span class="t">Search, folders and labels are three cuts of one list.</span>
-              <span class="cols" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
-              <span class="n">Amara Osei · x.com</span>
+            <a class="band plate-band" href="https://x.com" target="_blank" rel="noreferrer" aria-label="Open the article">
+              <span class="still cover">
+                <span class="k">Essay · 7 min</span>
+                <span class="t">Search, folders and labels are three cuts of one list.</span>
+                <span class="cols" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                <span class="n">Amara Osei · x.com</span>
+              </span>
             </a>
             <h2><a href="https://x.com" target="_blank" rel="noreferrer">The library is the interface</a></h2>
             <p class="txt clamp">Every save app returns to the same question: what does the list itself know? Search, folders and labels are cuts of one shelf, not pages beside it.</p>
             <div class="ai"><span class="ai-mark">AI</span><p class="clamp">The argument is that the list is the product, so the design work lives in the card and the cut rather than in a page per save. Two worked examples: a reading queue and an agent's research folder.</p></div>
+            <div class="save-foot">
+              <div class="labels"><a class="lab" href="library.html" data-topic-jump="design"><span class="sw"></span>Design</a><a class="lab" href="library.html" data-topic-jump="work"><span class="sw"></span>Work</a></div>
+              <span class="tail"><button class="ref" type="button" data-copy="N8W3E" title="Copy ref">N8W3E</button><button class="fold" type="button" aria-expanded="false" data-fold aria-label="Read more"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button></span>
+            </div>
           </article>
 
           <article class="save note" data-status="active" data-source="note" data-topic="work" data-text="shelf agent artifact five teams saved links research note pattern habits">
             <div class="save-top">
               <span class="av">AI</span>
               <span class="by"><b>Shelf agent</b><span class="d">·</span><span class="src">Artifact</span><span class="d">·</span><span>17 Nov</span></span>
-              <span class="tail"><button class="ref" type="button" data-copy="H3QDX" title="Copy post id">H3QDX</button><button class="fold" type="button" aria-expanded="false" data-fold aria-label="Read more"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button></span>
             </div>
             <h2><a href="post.html">What five teams actually do with saved links</a></h2>
             <p class="txt clamp">Five teams, fourteen weeks of saves, one pattern: the tooling that stuck wrote into the place people already looked. A note on where saves go wrong, and the three habits that keep a shelf alive.</p>
-            <div class="labels"><span class="note-tag">Agent note</span><a class="lab" href="#" data-label-jump="draft">Draft</a></div>
+            <div class="save-foot">
+              <div class="labels"><span class="note-tag">Agent note</span><a class="lab" href="library.html" data-topic-jump="work"><span class="sw"></span>Work</a><button class="lab" type="button" data-label-jump="draft">Draft</button></div>
+              <span class="tail"><button class="ref" type="button" data-copy="H3QDX" title="Copy ref">H3QDX</button><button class="fold" type="button" aria-expanded="false" data-fold aria-label="Read more"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button></span>
+            </div>
           </article>
 
           <article class="save" data-status="active" data-source="x" data-topic="design" data-text="deniz kaya x saved links to do list inbox shelf deadline pressure">
             <div class="save-top">
               <span class="av">DK</span>
               <span class="by"><b>Deniz Kaya</b><span class="d">·</span><a class="src" href="https://x.com" target="_blank" rel="noreferrer">X</a><span class="d">·</span><span>16 Nov</span></span>
-              <span class="tail"><button class="ref" type="button" data-copy="K7F2M" title="Copy post id">K7F2M</button><button class="fold" type="button" aria-expanded="false" data-fold aria-label="Read more"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button></span>
             </div>
-            <p class="txt clamp">Saved links are not a to-do list. The moment a save has a deadline it stops being a shelf and becomes another inbox, and you will avoid it the way you avoid the last one.</p>
+            <p class="txt clamp lead">Saved links are not a to-do list. The moment a save has a deadline it stops being a shelf and becomes another inbox, and you will avoid it the way you avoid the last one.</p>
             <div class="ai"><span class="ai-mark">AI</span><p class="clamp">The distinction the post draws: a shelf is read later by choice, an inbox is read later under pressure. Filing every link as a task turns the library into a second job — which is why the shelf has no due dates and never nags.</p></div>
+            <div class="save-foot">
+              <div class="labels"><a class="lab" href="library.html" data-topic-jump="design"><span class="sw"></span>Design</a></div>
+              <span class="tail"><button class="ref" type="button" data-copy="K7F2M" title="Copy ref">K7F2M</button><button class="fold" type="button" aria-expanded="false" data-fold aria-label="Read more"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button></span>
+            </div>
           </article>
 
           <article class="save" data-status="active" data-source="youtube" data-topic="reading work" data-text="priya raman youtube designing a search you can trust ranking intent matched video talk">
             <div class="save-top">
               <span class="av">PR</span>
               <span class="by"><b>Priya Raman</b><span class="d">·</span><a class="src" href="https://www.youtube.com" target="_blank" rel="noreferrer">YouTube</a><span class="d">·</span><span>14 Nov</span></span>
-              <span class="tail"><button class="ref" type="button" data-copy="V6K2S" title="Copy post id">V6K2S</button><button class="fold" type="button" aria-expanded="false" data-fold aria-label="Read more"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button></span>
             </div>
-            <a class="still video" href="https://www.youtube.com" target="_blank" rel="noreferrer" aria-label="Watch the talk">
-              <span class="k">Conference talk</span>
-              <span class="t">Designing a search you can trust</span>
-              <span class="n">18:24</span>
-              <span class="play" aria-hidden="true"><svg viewBox="0 0 12 12" fill="currentColor"><path d="M2 1l9 5-9 5z"/></svg></span>
+            <a class="band video-band" href="https://www.youtube.com" target="_blank" rel="noreferrer" aria-label="Watch the talk">
+              <span class="still video">
+                <span class="k">Conference talk</span>
+                <span class="n">18:24</span>
+                <span class="talk-plate">
+                  <span class="talk-speaker">Priya Raman</span>
+                  <span class="talk-by">Ranking and intent</span>
+                </span>
+                <span class="play" aria-hidden="true"><svg viewBox="0 0 12 12" fill="currentColor"><path d="M2 1l9 5-9 5z"/></svg></span>
+              </span>
             </a>
+            <h2><a href="https://www.youtube.com" target="_blank" rel="noreferrer">Designing a search you can trust</a></h2>
             <div class="ai"><span class="ai-mark">AI</span><p class="clamp">Ranking is a guess about intent. The talk argues for a search that shows the three things it matched and why, so the list stays something a reader can correct instead of something that happens to them.</p></div>
+            <div class="save-foot">
+              <div class="labels"><a class="lab" href="library.html" data-topic-jump="reading"><span class="sw"></span>Reading</a><a class="lab" href="library.html" data-topic-jump="work"><span class="sw"></span>Work</a></div>
+              <span class="tail"><button class="ref" type="button" data-copy="V6K2S" title="Copy ref">V6K2S</button><button class="fold" type="button" aria-expanded="false" data-fold aria-label="Read more"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button></span>
+            </div>
           </article>
 
           <article class="save" data-status="active" data-source="linkedin" data-topic="reading work" data-text="tobias renner linkedin reading on a phone measure thumb highlights resumable">
             <div class="save-top">
               <span class="av">TR</span>
               <span class="by"><b>Tobias Renner</b><span class="d">·</span><a class="src" href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a><span class="d">·</span><span>12 Nov</span></span>
-              <span class="tail"><button class="ref" type="button" data-copy="R2C6P" title="Copy post id">R2C6P</button><button class="fold" type="button" aria-expanded="false" data-fold aria-label="Read more"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button></span>
             </div>
             <h2>Reading on a phone is a skill you can design for</h2>
             <p class="txt clamp">A phone column wants a shorter measure than a desktop one, and the thumb decides the gestures. What makes a half-read page resumable is a highlight that holds its place.</p>
             <div class="ai"><span class="ai-mark">AI</span><p class="clamp">Practical notes on measure, scroll and interruption: 54–62 characters on a phone, paragraph breaks as the anchor, and a saved position that survives the app being closed. The claim is that resumability, not speed, is what gets long pieces finished.</p></div>
+            <div class="save-foot">
+              <div class="labels"><a class="lab" href="library.html" data-topic-jump="reading"><span class="sw"></span>Reading</a><a class="lab" href="library.html" data-topic-jump="work"><span class="sw"></span>Work</a></div>
+              <span class="tail"><button class="ref" type="button" data-copy="R2C6P" title="Copy ref">R2C6P</button><button class="fold" type="button" aria-expanded="false" data-fold aria-label="Read more"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button></span>
+            </div>
           </article>
 
           <article class="save" data-status="active" data-source="web" data-topic="reading" data-label="research" data-text="maggie appleton web the quiet return of rss feed reader list you own chronological">
             <div class="save-top">
               <span class="av">MA</span>
               <span class="by"><b>Maggie Appleton</b><span class="d">·</span><a class="src" href="https://maggieappleton.com" target="_blank" rel="noreferrer">Web</a><span class="d">·</span><span>10 Nov</span></span>
-              <span class="tail"><button class="ref" type="button" data-copy="P5N8V" title="Copy post id">P5N8V</button><button class="fold" type="button" aria-expanded="false" data-fold aria-label="Read more"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button></span>
             </div>
-            <a class="still wide" href="https://maggieappleton.com" target="_blank" rel="noreferrer" aria-label="Open the article">
-              <span class="k">maggieappleton.com · 6 min</span>
-              <span class="t">The quiet return of RSS</span>
-              <span class="lines" aria-hidden="true"><i></i><i></i><i></i></span>
-            </a>
+            <h2><a href="https://maggieappleton.com" target="_blank" rel="noreferrer">The quiet return of RSS</a></h2>
             <div class="ai"><span class="ai-mark">AI</span><p class="clamp">RSS was not beaten by a better product, it was left out of the one everybody opens. The case here is for a list you own: a feed you picked, a reader that keeps its place, and no ranking deciding what comes next.</p></div>
-            <div class="labels"><a class="lab" href="#" data-label-jump="research">Research</a></div>
+            <div class="save-foot">
+              <div class="labels"><a class="lab" href="library.html" data-topic-jump="reading"><span class="sw"></span>Reading</a><button class="lab" type="button" data-label-jump="research">Research</button></div>
+              <span class="tail"><button class="ref" type="button" data-copy="P5N8V" title="Copy ref">P5N8V</button><button class="fold" type="button" aria-expanded="false" data-fold aria-label="Read more"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button></span>
+            </div>
           </article>
 
           <article class="save note" data-status="active" data-source="note" data-topic="reading" data-label="research" data-text="shelf agent artifact a reading list for the shelf nine pieces lists libraries keeping reading">
             <div class="save-top">
               <span class="av">AI</span>
               <span class="by"><b>Shelf agent</b><span class="d">·</span><span class="src">Artifact</span><span class="d">·</span><span>8 Nov</span></span>
-              <span class="tail"><button class="ref" type="button" data-copy="T8J3D" title="Copy post id">T8J3D</button><button class="fold" type="button" aria-expanded="false" data-fold aria-label="Read more"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button></span>
             </div>
             <h2><a href="post.html">A reading list for the shelf</a></h2>
             <p class="txt clamp">Nine pieces on lists, libraries and the difference between keeping something and meaning to read it. Assembled from this shelf's own Reading folder, with one line on why each one is here.</p>
-            <div class="labels"><span class="note-tag">Agent note</span><a class="lab" href="#" data-label-jump="research">Research</a></div>
+            <div class="save-foot">
+              <div class="labels"><span class="note-tag">Agent note</span><a class="lab" href="library.html" data-topic-jump="reading"><span class="sw"></span>Reading</a><button class="lab" type="button" data-label-jump="research">Research</button></div>
+              <span class="tail"><button class="ref" type="button" data-copy="T8J3D" title="Copy ref">T8J3D</button><button class="fold" type="button" aria-expanded="false" data-fold aria-label="Read more"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button></span>
+            </div>
           </article>
 
           <article class="save" data-status="archived" data-source="x" data-topic="work" data-label="draft" data-text="nadia rahimi x meetings that could have been a document decision options objection room">
             <div class="save-top">
               <span class="av">NR</span>
               <span class="by"><b>Nadia Rahimi</b><span class="d">·</span><a class="src" href="https://x.com" target="_blank" rel="noreferrer">X</a><span class="d">·</span><span>5 Nov</span></span>
-              <span class="tail"><button class="ref" type="button" data-copy="J6H9F" title="Copy post id">J6H9F</button><button class="fold" type="button" aria-expanded="false" data-fold aria-label="Read more"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button></span>
             </div>
-            <p class="txt clamp">Write the decision, the options and the objection before anyone books a room. What is left is a comment thread with a date.</p>
+            <p class="txt clamp lead">Write the decision, the options and the objection before anyone books a room. What is left is a comment thread with a date.</p>
             <div class="ai"><span class="ai-mark">AI</span><p class="clamp">A short rule with a long tail: the document is the meeting, and the meeting exists only for the parts a document cannot settle. The post closes with the two questions worth asking before you accept an invite.</p></div>
-            <div class="labels"><a class="lab" href="#" data-label-jump="draft">Draft</a></div>
+            <div class="save-foot">
+              <div class="labels"><a class="lab" href="library.html" data-topic-jump="work"><span class="sw"></span>Work</a><button class="lab" type="button" data-label-jump="draft">Draft</button></div>
+              <span class="tail"><button class="ref" type="button" data-copy="J6H9F" title="Copy ref">J6H9F</button><button class="fold" type="button" aria-expanded="false" data-fold aria-label="Read more"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button></span>
+            </div>
           </article>
 
           <article class="save" data-status="archived" data-source="web" data-topic="design" data-text="iris chen web colour tokens that survive a dark theme surface ink accent rule values">
             <div class="save-top">
               <span class="av">IC</span>
               <span class="by"><b>Iris Chen</b><span class="d">·</span><a class="src" href="https://eightshapes.com" target="_blank" rel="noreferrer">Web</a><span class="d">·</span><span>2 Nov</span></span>
-              <span class="tail"><button class="ref" type="button" data-copy="X8R5C" title="Copy post id">X8R5C</button><button class="fold" type="button" aria-expanded="false" data-fold aria-label="Read more"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button></span>
             </div>
             <h2><a href="https://eightshapes.com" target="_blank" rel="noreferrer">Colour tokens that survive a dark theme</a></h2>
             <div class="ai"><span class="ai-mark">AI</span><p class="clamp">A token is a promise about a job — surface, ink, accent, rule — not a shade. Once the name says what it is for, a dark theme is a second set of values instead of a second stylesheet.</p></div>
+            <div class="save-foot">
+              <div class="labels"><a class="lab" href="library.html" data-topic-jump="design"><span class="sw"></span>Design</a></div>
+              <span class="tail"><button class="ref" type="button" data-copy="X8R5C" title="Copy ref">X8R5C</button><button class="fold" type="button" aria-expanded="false" data-fold aria-label="Read more"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button></span>
+            </div>
           </article>
 
         </div>
 
-        <p class="empty" id="empty" hidden>Nothing on the shelf for that. <button class="link" type="button" data-clear>Clear the filters</button></p>
+        <p class="empty" id="empty" hidden><span class="k">Nothing on the shelf</span>No save matches that cut of the list. <button class="link" type="button" data-clear>Clear the filters</button></p>
+
+        <div class="shelf-end">
+          <p class="end-line"><span class="k">End of shelf</span>Ten saves, six sources, one list. The oldest came in on 2 November.</p>
+          <button class="end-add" type="button" data-add>
+            <span class="plus" aria-hidden="true">+</span>
+            <span><span class="t">Add a link</span><span class="sub">Every save comes back summarized, with a ref you can type.</span></span>
+          </button>
+          <nav class="end-foot" aria-label="Shelf">
+            <span class="grp"><a href="library.html" aria-current="page">Library</a><a href="post.html">Artifacts</a></span>
+            <span class="grp meta"><a href="pricing.html">Plan · Cloud Pro</a><a href="screens.html">App screens</a><a href="index.html">Settings</a></span>
+          </nav>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 <div class="toast" id="toast"><span class="tick">✓</span><span id="toast-text">Copied</span></div>
-<script src="assets/app.js?v=1f9b1a72"></script>
+<script src="assets/app.js?v=3df41100"></script>
 </body>
 </html>
