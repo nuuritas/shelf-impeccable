@@ -868,7 +868,7 @@ text-transform:uppercase;color:var(--accent)}
 .showcase #stage-t2:checked ~ .ways-stage .ph-toast,
 .showcase #stage-t3:checked ~ .ways-stage .ph-toast{display:none}
 
-.showcase .ph-note{padding:0 12px;animation:sc-rise .42s var(--ease) both}
+.showcase .ph-note{padding:0 12px}
 .showcase .ph-note-card{border-color:#d9e1f6;background:linear-gradient(180deg,#fbfcff,#f6f8ff)}
 .showcase .ph-av.is-ai{background:var(--accent);color:#fff;font-family:var(--mono);font-size:.5rem;letter-spacing:.04em}
 .showcase .ph-kind{font:500 .4375rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);
@@ -909,7 +909,11 @@ background:var(--accent-wash);color:var(--ink);white-space:nowrap}
 .showcase .ways-stage *{animation-duration:7.5s}
 .showcase .ways-src{display:none}
 
-/* both agent screens arrive the same way, so switching tabs never snaps */
-.showcase .ph-doc{animation:sc-rise .42s var(--ease) both}
-/* the retimed loop is the share demo's; a tab's screen still rises in 0.42s */
-.showcase .ways-stage .ph-tab{animation-duration:.42s}
+/* both agent screens arrive the same way, so switching tabs never snaps. The
+   shared loop's 7.5s duration is the share demo's; a tab's screen keeps the
+   0.42s rise it was designed with. */
+.showcase .ways-stage .ph-tab{animation:sc-rise .42s var(--ease) both}
+
+/* the phone's document is a still: its bars are drawn, not swept in on the
+   share loop's clock, which would leave them flat for five seconds first */
+.showcase .ph-doc .a-bar{animation:none;transform:none}
