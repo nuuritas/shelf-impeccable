@@ -424,7 +424,7 @@ a.src:hover{color:var(--accent)}
 .save.note:hover{border-color:#ccd6ef}
 .save.note.is-open{border-color:#c3cfec}
 .save.note .av{background:var(--accent);color:#fff;font-family:var(--mono);font-size:7.5px;letter-spacing:.06em}
-.save.note h3{font-size:16px}
+.save.note h2{font-size:16px}
 .note-tag{font-family:var(--mono);font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);
   background:#fff;border:1px solid #dde4f7;border-radius:4px;padding:1px 4px}
 
@@ -787,7 +787,7 @@ a.src:hover{color:var(--accent)}
 .phone figcaption b{font-weight:560;color:var(--ink)}
 .phone figcaption .ref{margin-left:auto;font-size:9.5px;color:var(--faint)}
 .rev-notes{max-width:34ch}
-.rev-notes h3{font-size:14px;font-weight:590;letter-spacing:-.012em}
+.rev-notes h2{font-size:14px;font-weight:590;letter-spacing:-.012em}
 .rev-notes ul{margin-top:12px;display:grid;gap:10px;font-size:13px;line-height:1.55;color:var(--soft)}
 .rev-notes li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px}
 .rev-notes li::before{content:"—";color:var(--faint)}
