@@ -150,6 +150,11 @@
   .spec-row,.spec-row.plan,.spec-row.note-row{grid-template-columns:minmax(0,1fr);gap:10px;padding:22px 0 24px}
   .spec-row > .micro{padding-top:0}
   .spec-row.plan .spec-price{text-align:left;margin-top:6px;padding-top:14px;border-top:1px solid var(--rule)}
+  /* On a phone the row stacks, and the fine print belongs under the button,
+     not between the description and the amount: the wrapper is only a box, so
+     its children join the row and the fine print takes the last place. */
+  .spec-row.plan > div:not(.spec-price){display:contents}
+  .spec-row.plan .plan-fine{order:1;margin-top:2px}
   .spec-price .free{font-size:38px}
   .spec-price .btn{width:100%;margin-top:20px}
   .price-facts .f{grid-template-columns:minmax(0,1fr);gap:3px}
